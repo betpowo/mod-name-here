@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fish.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="fish0000" x="412" y="3" width="424" height="293" frameX="0" frameY="-17" frameWidth="424" frameHeight="419"/>
+	<SubTexture name="fish0001" x="839" y="258" width="268" height="251" frameX="-83" frameY="-58" frameWidth="424" frameHeight="419"/>
+	<SubTexture name="fish0002" x="839" y="3" width="268" height="252" frameX="-81" frameY="-58" frameWidth="424" frameHeight="419"/>
+	<SubTexture name="fish0003" x="3" y="3" width="406" height="419" frameX="-12" frameY="0" frameWidth="424" frameHeight="419"/>
+	<SubTexture name="fish0004" x="623" y="299" width="191" height="257" frameX="-99" frameY="-58" frameWidth="424" frameHeight="419"/>
+	<SubTexture name="fish0005" x="412" y="299" width="208" height="244" frameX="-101" frameY="-72" frameWidth="424" frameHeight="419"/>
+	<SubTexture name="fish0006" x="3" y="425" width="255" height="177" frameX="-105" frameY="-135" frameWidth="424" frameHeight="419"/>
+	<SubTexture name="fish0007" x="817" y="512" width="256" height="118" frameX="-106" frameY="-187" frameWidth="424" frameHeight="419"/>
+	<SubTexture name="fish0008" x="261" y="425" width="78" height="67" frameX="-300" frameY="-209" frameWidth="424" frameHeight="419"/>
+	<SubTexture name="fish0009" x="1076" y="512" width="2" height="2" frameX="-371" frameY="-233" frameWidth="424" frameHeight="419"/>
+</TextureAtlas>

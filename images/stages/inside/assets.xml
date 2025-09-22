@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="assets.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="EMINEM !!!!!!!!!!!!!0000" x="519" y="532" width="270" height="356"/>
+	<SubTexture name="couch0000" x="2" y="2" width="1095" height="528"/>
+	<SubTexture name="door0000" x="1099" y="2" width="468" height="595"/>
+	<SubTexture name="welcome mat0000" x="2" y="532" width="515" height="280"/>
+</TextureAtlas>

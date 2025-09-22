@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="theo.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="down0000" x="299" y="400" width="254" height="374"/>
+	<SubTexture name="down0001" x="299" y="400" width="254" height="374"/>
+	<SubTexture name="down0002" x="315" y="2" width="254" height="374"/>
+	<SubTexture name="down0003" x="315" y="2" width="254" height="374"/>
+	<SubTexture name="idle0000" x="555" y="378" width="254" height="374"/>
+	<SubTexture name="left0000" x="571" y="2" width="254" height="374"/>
+	<SubTexture name="left0001" x="571" y="2" width="254" height="374"/>
+	<SubTexture name="left0002" x="811" y="378" width="254" height="374"/>
+	<SubTexture name="left0003" x="811" y="378" width="254" height="374"/>
+	<SubTexture name="right0000" x="827" y="2" width="254" height="374"/>
+	<SubTexture name="right0001" x="827" y="2" width="254" height="374"/>
+	<SubTexture name="right0002" x="1067" y="378" width="254" height="374"/>
+	<SubTexture name="right0003" x="1067" y="378" width="254" height="374"/>
+	<SubTexture name="ugh0000" x="2" y="2" width="311" height="396" frameX="0" frameY="0" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0001" x="2" y="2" width="311" height="396" frameX="0" frameY="0" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0002" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0003" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0004" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0005" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0006" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0007" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0008" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0009" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0010" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0011" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0012" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0013" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0014" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0015" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0016" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0017" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0018" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="ugh0019" x="2" y="400" width="295" height="353" frameX="-18" frameY="-42" frameWidth="313" frameHeight="396"/>
+	<SubTexture name="up0000" x="1083" y="2" width="254" height="374"/>
+	<SubTexture name="up0001" x="1083" y="2" width="254" height="374"/>
+	<SubTexture name="up0002" x="1323" y="378" width="254" height="374"/>
+	<SubTexture name="up0003" x="1323" y="378" width="254" height="374"/>
+</TextureAtlas>

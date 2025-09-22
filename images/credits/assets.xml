@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="assets.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="board0000" x="3" y="3" width="611" height="678"/>
+	<SubTexture name="bubble0000" x="617" y="494" width="755" height="483" frameX="0" frameY="-4" frameWidth="755" frameHeight="488"/>
+	<SubTexture name="bubble0001" x="617" y="3" width="755" height="488"/>
+</TextureAtlas>

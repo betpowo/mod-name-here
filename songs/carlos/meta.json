@@ -1,0 +1,20 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "carlos",
+	"difficulties": [
+		"normal",
+		"pico"
+	],
+	"customValues": {
+		"composer": "airhorn76 (ft. hifish)",
+		"stars": "5"
+	},
+	"color": -10053121,
+	"name": "carlos",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "carlos",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 164
+}

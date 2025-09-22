@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="chi.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="chi0000" x="257" y="829" width="139" height="91" frameX="-85" frameY="-522" frameWidth="268" frameHeight="1364"/>
+	<SubTexture name="chi0001" x="271" y="367" width="256" height="228" frameX="-10" frameY="-384" frameWidth="268" frameHeight="1364"/>
+	<SubTexture name="chi0002" x="271" y="597" width="252" height="230" frameX="-15" frameY="-383" frameWidth="268" frameHeight="1364"/>
+	<SubTexture name="chi0003" x="2" y="617" width="253" height="228" frameX="-15" frameY="-384" frameWidth="268" frameHeight="1364"/>
+	<SubTexture name="chi0004" x="2" y="2" width="267" height="613" frameX="0" frameY="0" frameWidth="268" frameHeight="1364"/>
+	<SubTexture name="chi0005" x="271" y="2" width="203" height="363" frameX="-35" frameY="-230" frameWidth="268" frameHeight="1364"/>
+	<SubTexture name="chi0006" x="476" y="2" width="4" height="4" frameX="-123" frameY="-1360" frameWidth="268" frameHeight="1364"/>
+</TextureAtlas>

@@ -1,0 +1,18 @@
+{
+	"customValues": {
+		"composer": "Betopia",
+		"stars": 9
+	},
+	"color": "#FF6633",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"normal"
+	],
+	"icon": "betpo",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Tu Madre",
+	"needsVoices": false,
+	"beatsPerMeasure": 4,
+	"bpm": 200
+}

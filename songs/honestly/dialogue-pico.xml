@@ -1,0 +1,99 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="mnh">
+	<!-- All characters -->
+	<char name="0" char="blank" position="left" />
+	<char name="1" char="blank" position="right" />
+	<char name="2" char="blank" position="middle" />
+
+	<!-- Lines -->
+	<line char="1" changeMusic="misc/wacky">
+		dude
+	</line>
+	<line char="0">
+		what... did i beat ur ass...
+	</line>
+	<line char="1">
+		no. what the fuck was that. what the hell were you saying
+	</line>
+	<line char="0">
+		idk bruh i didn't understand you either bruh
+	</line>
+	<line char="1">
+		...
+	</line>
+	<line char="0">
+		lol lmao
+	</line>
+	<line char="2">
+		just for being mean to him, y'all will do another song. now
+	</line>
+	<line char="2">
+		we're not leaving until my booboo bear wins and gets inside...
+	</line>
+	<line char="0">
+		?????
+	</line>
+	<line char="0">
+		tf do you even need to do there.... i'm not letting you in
+	</line>
+	<line char="0">
+		i already filed a restraining order on you  . get the hell out bro
+	</line>
+	<line char="1">
+		get a load of this guy
+	</line>
+	<line char="2">
+		just let us in and nobody gets hurt........promise....... <format color="#ff6699">:pleading_face:</format>
+	</line>
+	<line char="0">
+		cool it, pink sauce. there's no reason to hurt Me for not letting you in My house.    MY.     house
+	</line>
+	<line char="0">
+		i'm not letting you in ever cus why tf do you need that anyways... honestly.... what's your problem...huh.....
+	</line>
+	<line char="1">
+		(someone.... help me...)
+	</line>
+	<line char="2">
+		pleasepleasepleasepleasepleasepleasepleasepleasepleasepleaseplease.....
+	</line>
+	<line char="0">
+		that won't make me let you in   . dummy
+	</line>
+	<line char="0">
+		unless i <format color="#ff6633">fall onto the ground</format> and stay there like i'm dead there is no way you're getting through that door
+	</line>
+	<line char="0">
+		<format color="#ff6633">not on my watch</format> bruh
+	</line>
+	<line char="1">
+		okay man. whatever you say
+	</line>
+	<line char="2">
+		PLEASEEEEE  i need this.... we need this...
+	</line>
+	<line char="1">
+		"WE" ????
+	</line>
+	<line char="0">
+		so how is skibidi toilet going
+	</line>
+	<line char="0">
+		you probably own skibidi toilet plushies and you don't want anyone to know huh. stupid kid  .   pink sauce
+	</line>
+	<line char="2">
+		rahh!!!
+	</line>
+	<line char="2">
+		<format color="#ccff66">phil</format>!!! do something!!!
+	</line>
+	<line char="1">
+		sigh. alright.
+	</line>
+	<line char="1">
+		let's do another one.
+	</line>
+	<line char="0">
+		ok brah
+	</line>
+</dialogue>

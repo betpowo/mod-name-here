@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="glenda.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="dance left0000" x="524" y="2" width="259" height="357" frameX="-1" frameY="-12" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="dance left0001" x="524" y="2" width="259" height="357" frameX="-1" frameY="-12" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="dance left0002" x="2" y="2" width="258" height="364" frameX="0" frameY="-4" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="dance left0003" x="2" y="2" width="258" height="364" frameX="0" frameY="-4" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="dance left0004" x="785" y="2" width="253" height="361" frameX="-16" frameY="-5" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="dance left0005" x="785" y="2" width="253" height="361" frameX="-16" frameY="-5" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="dance left0006" x="262" y="362" width="254" height="362" frameX="-22" frameY="0" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="dance left0007" x="262" y="362" width="254" height="362" frameX="-22" frameY="0" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="dance left0008" x="2" y="368" width="258" height="357" frameX="-22" frameY="-6" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="dance left0009" x="2" y="368" width="258" height="357" frameX="-22" frameY="-6" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="dance right0000" x="262" y="2" width="260" height="358" frameX="-14" frameY="-5" frameWidth="274" frameHeight="366"/>
+	<SubTexture name="dance right0001" x="262" y="2" width="260" height="358" frameX="-14" frameY="-5" frameWidth="274" frameHeight="366"/>
+	<SubTexture name="dance right0002" x="1040" y="2" width="255" height="358" frameX="-7" frameY="-8" frameWidth="274" frameHeight="366"/>
+	<SubTexture name="dance right0003" x="1040" y="2" width="255" height="358" frameX="-7" frameY="-8" frameWidth="274" frameHeight="366"/>
+	<SubTexture name="dance right0004" x="1029" y="365" width="249" height="357" frameX="-5" frameY="-6" frameWidth="274" frameHeight="366"/>
+	<SubTexture name="dance right0005" x="1029" y="365" width="249" height="357" frameX="-5" frameY="-6" frameWidth="274" frameHeight="366"/>
+	<SubTexture name="dance right0006" x="262" y="362" width="254" height="362" frameX="0" frameY="0" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="dance right0007" x="262" y="362" width="254" height="362" frameX="0" frameY="0" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="dance right0008" x="2" y="368" width="258" height="357" frameX="0" frameY="-6" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="dance right0009" x="2" y="368" width="258" height="357" frameX="0" frameY="-6" frameWidth="280" frameHeight="369"/>
+	<SubTexture name="sad0000" x="518" y="362" width="256" height="354" frameX="0" frameY="-2" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0001" x="518" y="362" width="256" height="354" frameX="0" frameY="-2" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0002" x="776" y="365" width="251" height="356" frameX="-5" frameY="0" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0003" x="776" y="365" width="251" height="356" frameX="-5" frameY="0" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0004" x="776" y="365" width="251" height="356" frameX="-5" frameY="0" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0005" x="776" y="365" width="251" height="356" frameX="-5" frameY="0" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0006" x="776" y="365" width="251" height="356" frameX="-5" frameY="0" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0007" x="776" y="365" width="251" height="356" frameX="-5" frameY="0" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0008" x="776" y="365" width="251" height="356" frameX="-5" frameY="0" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0009" x="776" y="365" width="251" height="356" frameX="-5" frameY="0" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0010" x="776" y="365" width="251" height="356" frameX="-5" frameY="0" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0011" x="776" y="365" width="251" height="356" frameX="-5" frameY="0" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0012" x="776" y="365" width="251" height="356" frameX="-5" frameY="0" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0013" x="776" y="365" width="251" height="356" frameX="-5" frameY="0" frameWidth="256" frameHeight="356"/>
+	<SubTexture name="sad0014" x="776" y="365" width="251" height="356" frameX="-5" frameY="0" frameWidth="256" frameHeight="356"/>
+</TextureAtlas>

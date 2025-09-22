@@ -1,0 +1,21 @@
+{
+	"beatsPerMeasure": 4,
+	"stepsPerBeat": 4,
+	"bpm": 120,
+	"difficulties": [
+		"normal",
+		"pico"
+	],
+	"needsVoices": false,
+	"parsedColor": -39373,
+	"displayName": "Honestly",
+	"icon": "betpo",
+	"name": "honestly",
+	"color": "#FF6633",
+	"opponentModeAllowed": true,
+	"coopAllowed": true,
+	"customValues": {
+		"composer": "Blue_Kyt (ft. Betopia, hifish & airhorn76)",
+		"stars": "5"
+	}
+}

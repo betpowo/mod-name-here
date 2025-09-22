@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="main week assets.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="cake0000" x="3" y="194" width="222" height="187" frameX="0" frameY="-1" frameWidth="222" frameHeight="188"/>
+	<SubTexture name="cake0001" x="3" y="3" width="222" height="188"/>
+</TextureAtlas>

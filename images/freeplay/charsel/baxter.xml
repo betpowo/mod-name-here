@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="baxter.png" color="2eaeac">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="baxter0000" x="806" y="515" width="372" height="494" frameX="-65" frameY="-27" frameWidth="504" frameHeight="524"/>
+	<SubTexture name="baxter0001" x="430" y="515" width="374" height="498" frameX="-63" frameY="-26" frameWidth="504" frameHeight="524"/>
+	<SubTexture name="baxter0002" x="2" y="515" width="426" height="455" frameX="-68" frameY="-50" frameWidth="504" frameHeight="524"/>
+	<SubTexture name="baxter0003" x="2" y="515" width="426" height="455" frameX="-68" frameY="-50" frameWidth="504" frameHeight="524"/>
+	<SubTexture name="baxter0004" x="2" y="2" width="503" height="510" frameX="-1" frameY="0" frameWidth="504" frameHeight="524"/>
+	<SubTexture name="baxter0005" x="507" y="2" width="501" height="511" frameX="0" frameY="0" frameWidth="504" frameHeight="524"/>
+</TextureAtlas>

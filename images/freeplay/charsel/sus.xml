@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sus.png" color="9999cc">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="sus0000" x="2" y="288" width="314" height="282" frameX="-1" frameY="-2" frameWidth="315" frameHeight="284"/>
+	<SubTexture name="sus0001" x="2" y="2" width="312" height="284" frameX="0" frameY="0" frameWidth="315" frameHeight="284"/>
+	<SubTexture name="sus0002" x="2" y="288" width="314" height="282" frameX="-1" frameY="-2" frameWidth="315" frameHeight="284"/>
+	<SubTexture name="sus0003" x="2" y="2" width="312" height="284" frameX="0" frameY="0" frameWidth="315" frameHeight="284"/>
+	<SubTexture name="sus0004" x="318" y="288" width="314" height="282" frameX="-1" frameY="-2" frameWidth="315" frameHeight="284"/>
+	<SubTexture name="sus0005" x="316" y="2" width="312" height="284" frameX="0" frameY="0" frameWidth="315" frameHeight="284"/>
+</TextureAtlas>

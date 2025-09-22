@@ -1,0 +1,18 @@
+{
+	"customValues": {
+		"composer": "hifish",
+		"stars": "7"
+	},
+	"color": "#FFCC99",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"normal"
+	],
+	"icon": "tankman",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Guns Gameplay",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 177
+}

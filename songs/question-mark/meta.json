@@ -1,0 +1,20 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": true,
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"bpm": 169,
+	"difficulties": [
+		"normal"
+	],
+	"needsVoices": false,
+	"parsedColor": -14462302,
+	"displayName": "???",
+	"icon": "spooky",
+	"name": "question-mark",
+	"color": "#2352A2",
+	"customValues": {
+		"composer": "KawaiSprite",
+		"stars": 1
+	}
+}

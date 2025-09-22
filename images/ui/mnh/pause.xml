@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="pause.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bottom0000" x="1065" y="598" width="517" height="371" frameX="0" frameY="-21" frameWidth="528" frameHeight="392"/>
+	<SubTexture name="bottom0001" x="534" y="598" width="528" height="369" frameX="0" frameY="-23" frameWidth="528" frameHeight="392"/>
+	<SubTexture name="bottom0002" x="3" y="598" width="528" height="392"/>
+	<SubTexture name="top0000" x="3" y="207" width="1397" height="197" frameX="0" frameY="0" frameWidth="1397" frameHeight="201"/>
+	<SubTexture name="top0001" x="3" y="407" width="1395" height="188" frameX="-2" frameY="0" frameWidth="1397" frameHeight="201"/>
+	<SubTexture name="top0002" x="3" y="3" width="1395" height="201" frameX="-2" frameY="0" frameWidth="1397" frameHeight="201"/>
+</TextureAtlas>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="ui.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="accurext0000" x="2" y="104" width="740" height="100" frameX="-1" frameY="0" frameWidth="742" frameHeight="100"/>
+	<SubTexture name="accurext0001" x="2" y="2" width="742" height="100"/>
+	<SubTexture name="healthbar0000" x="2" y="206" width="678" height="57"/>
+	<SubTexture name="healthbar0001" x="2" y="265" width="678" height="57"/>
+	<SubTexture name="healthbar0002" x="2" y="324" width="668" height="46" frameX="-5" frameY="-5" frameWidth="678" frameHeight="57"/>
+	<SubTexture name="score0000" x="2" y="372" width="262" height="75" frameX="-1" frameY="0" frameWidth="263" frameHeight="75"/>
+	<SubTexture name="score0001" x="266" y="372" width="262" height="73" frameX="0" frameY="0" frameWidth="263" frameHeight="75"/>
+</TextureAtlas>

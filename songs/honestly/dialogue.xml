@@ -1,0 +1,78 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="mnh">
+	<!-- All characters -->
+	<char name="0" char="blank" position="left" />
+	<char name="1" char="blank" position="right" />
+	<char name="2" char="blank" position="middle" />
+
+	<!-- Lines -->
+	<line char="1" changeMusic="misc/wacky">
+		dude
+	</line>
+	<line char="0">
+		what... did i beat ur ass...
+	</line>
+	<line char="1">
+		no dumbass. that was not a rap battle you were just mumbling
+	</line>
+	<line char="0">
+		you were speaking like a microwave bro. microwave boy. oohh
+	</line>
+	<line char="1">
+		BRAH
+	</line>
+	<line char="0">
+		got ur ass lmaooo
+	</line>
+	<line char="1">
+		i'm enraged. let me in your house. Now
+	</line>
+	<line char="0">
+		?????
+	</line>
+	<line char="0">
+		tf do you even need to do there.... i'm not letting you in
+	</line>
+	<line char="0">
+		i already filed a restraining order on you  . get the hell out bro
+	</line>
+	<line char="1">
+		the hell are you talking about??? you didn't do shit
+	</line>
+	<line char="1">
+		just let me in and nobody gets hurt
+	</line>
+	<line char="0">
+		cool it, ice soup. there's no reason to hurt Me for not letting you in My house.    MY.     house
+	</line>
+	<line char="0">
+		i'm not letting you in ever cus why tf do you need that anyways... honestly.... what's your problem...huh.....
+	</line>
+	<line char="1">
+		brah fuck you
+	</line>
+	<line char="0">
+		that won't make me let you in   . dummy
+	</line>
+	<line char="0">
+		unless i <format color="#ff6633">fall onto the ground</format> and stay there like i'm dead there is no way you're getting through that door
+	</line>
+	<line char="0">
+		<format color="#ff6633">not on my watch</format> bruh
+	</line>
+	<line char="1">
+		sybau icl ts pmo :100::fire:
+	</line>
+	<line char="0">
+		so how is skibidi toilet going
+	</line>
+	<line char="0">
+		you're probably wearing skibidi toilet boxers under there and you don't want anyone to know huh. stupid kid  .   ice soup
+	</line>
+	<line char="1">
+		oh that's how we're playing huh???? bring it on bitch
+	</line>
+	<line char="0">
+		ok brah
+	</line>
+</dialogue>

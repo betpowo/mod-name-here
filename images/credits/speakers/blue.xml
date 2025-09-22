@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="blue.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="blue0000" x="582" y="282" width="232" height="31" frameX="-404" frameY="-203" frameWidth="654" frameHeight="249"/>
+	<SubTexture name="blue0001" x="3" y="239" width="266" height="233" frameX="-367" frameY="0" frameWidth="654" frameHeight="249"/>
+	<SubTexture name="blue0002" x="623" y="3" width="299" height="232" frameX="-351" frameY="0" frameWidth="654" frameHeight="249"/>
+	<SubTexture name="blue0003" x="3" y="3" width="307" height="233" frameX="-347" frameY="0" frameWidth="654" frameHeight="249"/>
+	<SubTexture name="blue0004" x="313" y="3" width="307" height="232" frameX="-346" frameY="-1" frameWidth="654" frameHeight="249"/>
+	<SubTexture name="blue0005" x="623" y="3" width="299" height="232" frameX="-351" frameY="0" frameWidth="654" frameHeight="249"/>
+	<SubTexture name="blue0006" x="313" y="238" width="266" height="234" frameX="-367" frameY="-15" frameWidth="654" frameHeight="249"/>
+	<SubTexture name="blue0007" x="582" y="238" width="232" height="41" frameX="-404" frameY="-193" frameWidth="654" frameHeight="249"/>
+	<SubTexture name="blue0008" x="272" y="239" width="6" height="8" frameX="0" frameY="-182" frameWidth="654" frameHeight="249"/>
+</TextureAtlas>

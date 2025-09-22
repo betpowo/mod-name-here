@@ -1,0 +1,18 @@
+{
+	"customValues": {
+		"composer": "Betopia (ft. hifish)",
+		"stars": "7"
+	},
+	"color": "#12DF9D",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"pico"
+	],
+	"icon": "betpo",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Honestly",
+	"needsVoices": false,
+	"beatsPerMeasure": 4,
+	"bpm": 120
+}

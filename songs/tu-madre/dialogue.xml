@@ -1,0 +1,77 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="mnh">
+    <!-- All characters -->
+    <char name="0" char="blank" position="left" />
+    <char name="1" char="blank" position="right" />
+    <char name="2" char="blank" position="middle" />
+
+    <!-- Lines -->
+    <line char="1" changeMusic="misc/wacky">
+		nah.   nah   .  nah. this has to be it right?? can i get in now..
+    </line>
+    <line char="0">
+        no LMFAOOOO
+    </line>
+    <line char="0">
+        you don't have a right to just break into people's houses... you know that...
+    </line>
+    <line char="1">
+        womp womp. let me in
+    </line>
+    <line char="0">
+        fuck you man
+    </line>
+    <line char="0">
+        i was playing nice these first 2 rounds...
+    </line>
+    <line char="0">
+        but now... i will Not be nice,.
+    </line>
+    <line char="0">
+        i'm gonna hit you .... with my SPECIL ATTAc.....
+    </line>
+    <line char="0">
+        you'll see.....
+    </line>
+    <line char="1">
+        hey <format color="#b20069">glen</format> tf is he talking about...
+    </line>
+    <line char="2">
+        ..?        <br/>
+        <format size="18">(i don't know what that means...)</format>
+    </line>
+    <line char="2">
+        "\_(:&gt;)_/"
+        <format size="18">(i guess it's gonna be like <format color="#bbaa66">fart notes</format> you gotta avoid... idk.. i've seen a lot like this)</format>
+    </line>
+    <line char="1">
+        wow.. no real answer.. u suck.. lol
+    </line>
+    <line char="2">
+        :,(
+    </line>
+    <line char="0">
+        enough . this is the last one And You leave Ok???? Ok?? .   Ok
+    </line>
+    <line char="1">
+        whatever man. one day i'm gonna find the right house
+    </line>
+    <line char="0">
+        you ain't finding shit
+    </line>
+    <line char="0">
+        and you ain't leaving either . i've Fucjing Had it with you ,. I'm gonna make you suffer with 1 more song ... and you can't leave until it's over..  aaahaha
+    </line>
+    <line char="1">
+        wow man do they pay you to do this shit
+    </line>
+    <line char="0">
+        no breh
+    </line>
+    <line char="0">
+        alright, here it comes, last tune you will ever hear in your life:
+    </line>
+    <line char="0" musicVolume="0">
+        "tu madre tiene una polla" .   in a# minor  .   bring it on.
+    </line>
+</dialogue>

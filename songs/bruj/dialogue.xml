@@ -1,0 +1,102 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="mnh">
+	<!-- All characters -->
+	<char name="0" char="blank" position="left" />
+	<char name="1" char="blank" position="right" />
+	<char name="2" char="blank" position="middle" />
+
+	<!-- Lines -->
+	<line char="1">
+		brah
+	</line>
+	<line char="1">
+		i walked all the way here
+	</line>
+	<line char="1">
+		just for this??
+	</line>
+	<line char="1">
+		nah man i'm sure i need to find another house to break in this shit's stupid
+	</line>
+	<line char="0" changeMusic="misc/wacky">
+		brah who the hell are you
+	</line>
+	<line char="1">
+		you don't know me??
+	</line>
+	<line char="1">
+		i'm <format color="#2eaeac">baxter</format>, world famous rapper and home invader
+	</line>
+	<line char="1">
+		now can you leave me alone... i need to break in... for the funny
+	</line>
+	<line char="0">
+		no bro
+	</line>
+	<line char="0">
+		that's MY house... me... <format color="#ff6633">betpo</format>'s house... i only let people in when i want to
+	</line>
+	<line char="0">
+		and i Don't want you To
+	</line>
+	<line char="1">
+		you're LAMEEE
+	</line>
+	<line char="0" musicVolume="0" speed="0.1">
+		kill yourself bruj
+	</line>
+	<line char="1" musicVolume="0.8">
+		Don't <format color="#b20069" italic="true" bold="true" font="Times New Roman">Fucking.</format> say that...
+	</line>
+	<line char="1">
+		You do Not realize who you're Messing with    ...
+	</line>
+	<line char="2" musicVolume="0.5">
+		:(
+	</line>
+	<line char="1" musicVolume="0.8">
+		see... even my baby agrees...
+	</line>
+	<line char="1">
+		she doesn't talk but she still agrees with me right.....
+	</line>
+	<line char="2" musicVolume="0.5">
+		<format size="18">(i don't...)</format>
+	</line>
+	<line char="1" musicVolume="0.8">
+		..so pleaseee let me in
+	</line>
+	<line char="0">
+		can youshut The up man i ain't giving you all that
+	</line>
+	<line char="1">
+		okok how about this:
+	</line>
+	<line char="1">
+		a rap battle.
+	</line>
+	<line char="0">
+		dude
+	</line>
+	<line char="1">
+		yes sir .  a rap battle. if i win you let me in ok? Ok
+	</line>
+	<line char="0">
+		i'm only gonna agree just so that you shut up about all of this. you are an annoying fuck
+	</line>
+	<line char="0">
+		i despise you with all my being and i pray on your downfall
+	</line>
+	<line char="1">
+		what kinda crash out is ts :joy::joy::joy::joy::100::fire:
+	</line>
+	<line char="0">
+		nah man
+	</line>
+	<line char="0">
+		that's just not it my man
+	</line>
+	<line char="0">
+		here, i'll show you real bars, just watch:
+	</line>
+</dialogue>

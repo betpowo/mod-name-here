@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="marco.png" color="cc0033">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="marco0000" x="526" y="2" width="271" height="275" frameX="-1" frameY="-115" frameWidth="278" frameHeight="391"/>
+	<SubTexture name="marco0001" x="526" y="279" width="270" height="275" frameX="0" frameY="-116" frameWidth="278" frameHeight="391"/>
+	<SubTexture name="marco0002" x="2" y="294" width="223" height="253" frameX="-15" frameY="-120" frameWidth="278" frameHeight="391"/>
+	<SubTexture name="marco0003" x="227" y="296" width="223" height="252" frameX="-15" frameY="-121" frameWidth="278" frameHeight="391"/>
+	<SubTexture name="marco0004" x="266" y="2" width="258" height="292" frameX="-17" frameY="0" frameWidth="278" frameHeight="391"/>
+	<SubTexture name="marco0005" x="2" y="2" width="262" height="290" frameX="-16" frameY="-1" frameWidth="278" frameHeight="391"/>
+</TextureAtlas>

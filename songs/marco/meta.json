@@ -1,0 +1,21 @@
+{
+    "opponentModeAllowed": true,
+    "icon": "marco",
+    "difficulties": [
+        "normal",
+        "pico"
+    ],
+    "parsedColor": -3394765,
+    "customValues": {
+        "composer": "Betopia",
+        "stars": 7
+    },
+    "color": "#CC3333",
+    "name": "marco",
+    "coopAllowed": true,
+    "stepsPerBeat": 4,
+    "displayName": "marco",
+    "beatsPerMeasure": 4,
+    "needsVoices": false,
+    "bpm": 203
+}

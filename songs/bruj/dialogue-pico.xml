@@ -1,0 +1,109 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="mnh">
+  <!-- All characters -->
+  <char name="0" char="blank" position="left" />
+  <char name="1" char="blank" position="right" />
+  <char name="2" char="blank" position="middle" />
+
+  <!-- Lines -->
+  <line char="1">
+		brah
+  </line>
+  <line char="1">
+		i walked all the way here
+  </line>
+  <line char="1">
+		just for this??
+  </line>
+  <line char="1">
+        like who the hell is this?
+  </line>
+  <line char="0" changeMusic="misc/wacky">
+		  brah who are YOU to be saying that breh
+  </line>
+  <line char="1">
+        ok man. i'll tell you
+  </line>
+  <line char="1">
+        the name's <format color="#cefa71">philip</format>; that one guy who saved a school remember...
+  </line>
+  <line char="1">
+		now can you let me in your house? please? <format color="#ff6699">nancy</format> won't stop telling me to ask someone to let them in their house
+  </line>
+  <line char="2">
+    <format size="40">?!</format>
+  </line>
+  <line char="2">
+        sweetie... why did you have to say that !!!! now i will look weird !!!!
+  </line>
+  <line char="1">
+        don't <format color="#b20069" italic="true" bold="true" font="Times New Roman">Fucking.</format> call me that  . ok
+  </line>
+  <line char="1">
+        please just let me in so this bitch shuts up god DAMN
+  </line>
+  <line char="0">
+		no bro
+  </line>
+  <line char="0">
+		that's MY house... me... <format color="#ff6633">betpo</format>'s house... i only let people in when i want to
+  </line>
+  <line char="0">
+		and i Don't want you To
+  </line>
+  <line char="2">
+		grrr !!!
+  </line>
+  <line char="2">
+        please... stick guy... <format color="#ff6699">*sniff*</format> pls.... let my pookie have his way...
+  </line>
+  <line char="1">
+		ugh.
+  </line>
+  <line char="0">
+		can youshut The up man i ain't giving you all that
+  </line>
+  <line char="2">
+		WAITWAITWAIT!! IDEA!!!
+  </line>
+  <line char="2">
+		rap battle!
+  </line>
+  <line char="0">
+		dude
+  </line>
+  <line char="2">
+        if <format color="#cefa71">philly</format> wins he gets to enter ur house !!! pls... it would be so fun...
+  </line>
+  <line char="0">
+		i'm only gonna agree just so that you shut up about all of this. you are an annoying fuck
+  </line>
+  <line char="0">
+		i despise you with all my being and i pray on your downfall
+  </line>
+  <line char="2" speed="0.3" textSound="pixel/ANGRY_TEXT_BOX">
+    <format size="90"> &gt;:( </format>
+  </line>
+  <line char="0">
+		nah man
+  </line>
+  <line char="1">
+		whatever. i've got bars up my sleeve and i'll demolish you with them... heh
+  </line>
+  <line char="2">
+		that's my boy!!!
+  </line>
+  <line char="1" speed="0.01">
+		SHUT. THE FUCK UP
+  </line>
+  <line char="0">
+		nah. that's just not it bruj
+  </line>
+  <line char="0">
+        you've got <format color="#ff6633">0</format> bar.<br/>
+i know bro. i know it. you have no bars. 0 bars. -1 bars even. impossible but it's true
+  </line>
+  <line char="0">
+            here, i'll show you real bars, just watch:
+  </line>
+</dialogue>

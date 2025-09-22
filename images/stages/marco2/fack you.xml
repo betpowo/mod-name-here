@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="spritesheet.png">
+	<SubTexture name="anim0000" x="0" y="0" width="114" height="111" frameX="0" frameY="0" frameWidth="114" frameHeight="111" />
+	<SubTexture name="anim0001" x="0" y="0" width="114" height="111" frameX="0" frameY="0" frameWidth="114" frameHeight="111" />
+	<SubTexture name="anim0002" x="114" y="0" width="114" height="111" frameX="0" frameY="0" frameWidth="114" frameHeight="111" />
+	<SubTexture name="anim0003" x="114" y="0" width="114" height="111" frameX="0" frameY="0" frameWidth="114" frameHeight="111" />
+</TextureAtlas>

@@ -1,0 +1,21 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": true,
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"bpm": 145,
+	"difficulties": [
+		"normal",
+		"pico"
+	],
+	"needsVoices": false,
+	"parsedColor": -39888,
+	"displayName": "carlos",
+	"icon": "carlos",
+	"name": "carlos",
+	"color": "#FF6430",
+	"customValues": {
+		"composer": "plank",
+		"stars": "9"
+	}
+}

@@ -1,0 +1,18 @@
+{
+	"color": "#32CC32",
+	"customValues": {
+		"composer": "zack_so_dumb",
+		"stars": "9"
+	},
+	"opponentModeAllowed": true,
+	"icon": "luis",
+	"difficulties": [
+		"normal"
+	],
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "new super marco hermano",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 203
+}

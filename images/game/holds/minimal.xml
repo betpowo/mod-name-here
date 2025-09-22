@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="minimal.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="start0000" x="87" y="194" width="106" height="65" frameX="-19" frameY="-11" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="start0001" x="2" y="2" width="144" height="91" frameX="0" frameY="-4" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="cover0002" x="98" y="114" width="83" height="75" frameX="-29" frameY="-2" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="cover0003" x="98" y="114" width="83" height="75" frameX="-29" frameY="-2" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="cover0004" x="2" y="194" width="83" height="88" frameX="-29" frameY="-2" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="cover0005" x="2" y="194" width="83" height="88" frameX="-29" frameY="-2" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="cover0006" x="183" y="114" width="83" height="71" frameX="-29" frameY="-12" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="cover0007" x="183" y="114" width="83" height="71" frameX="-29" frameY="-12" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="end0008" x="195" y="187" width="75" height="72" frameX="-34" frameY="-14" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="end0009" x="2" y="95" width="94" height="97" frameX="-23" frameY="-5" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="end0010" x="148" y="2" width="111" height="110" frameX="-13" frameY="0" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="end0011" x="148" y="2" width="111" height="110" frameX="-13" frameY="0" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="end0012" x="87" y="261" width="131" height="10" frameX="-5" frameY="-42" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="end0013" x="87" y="261" width="131" height="10" frameX="-5" frameY="-42" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="end0014" x="2" y="284" width="139" height="7" frameX="0" frameY="-43" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="end0015" x="2" y="284" width="139" height="7" frameX="0" frameY="-43" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="end0016" x="87" y="273" width="92" height="4" frameX="-24" frameY="-45" frameWidth="144" frameHeight="110"/>
+	<SubTexture name="end0017" x="87" y="273" width="92" height="4" frameX="-24" frameY="-45" frameWidth="144" frameHeight="110"/>
+</TextureAtlas>

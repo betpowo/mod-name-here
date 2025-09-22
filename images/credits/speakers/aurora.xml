@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="aurora.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="aurora0000" x="0" y="0" width="248" height="274" frameX="-61" frameY="-11" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0001" x="252" y="0" width="248" height="274" frameX="-61" frameY="-11" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0002" x="504" y="0" width="333" height="250" frameX="0" frameY="-36" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0003" x="0" y="278" width="333" height="250" frameX="0" frameY="-36" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0004" x="337" y="278" width="333" height="250" frameX="0" frameY="-36" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0005" x="674" y="278" width="333" height="250" frameX="0" frameY="-36" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0006" x="0" y="532" width="221" height="281" frameX="-79" frameY="-40" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0007" x="225" y="532" width="220" height="281" frameX="-80" frameY="-40" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0008" x="0" y="0" width="248" height="274" frameX="-61" frameY="-11" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0009" x="449" y="532" width="162" height="55" frameX="-114" frameY="-232" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0010" x="615" y="532" width="261" height="271" frameX="-54" frameY="-1" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0011" x="0" y="817" width="260" height="271" frameX="-54" frameY="0" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0012" x="264" y="817" width="312" height="247" frameX="-50" frameY="-38" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0013" x="580" y="817" width="348" height="270" frameX="-41" frameY="-15" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0014" x="0" y="1092" width="378" height="270" frameX="-29" frameY="-15" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0015" x="382" y="1092" width="254" height="270" frameX="-59" frameY="-15" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0016" x="640" y="1092" width="234" height="249" frameX="-85" frameY="-17" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0017" x="0" y="1366" width="173" height="194" frameX="-96" frameY="-75" frameWidth="407" frameHeight="321"/>
+	<SubTexture name="aurora0018" x="177" y="1366" width="0" height="0" frameX="-185" frameY="-267" frameWidth="407" frameHeight="321"/>
+</TextureAtlas>

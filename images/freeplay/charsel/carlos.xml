@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="carlos.png" color="6699ff">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="carlos0000" x="2" y="2" width="237" height="230" frameX="0" frameY="0" frameWidth="238" frameHeight="230"/>
+	<SubTexture name="carlos0001" x="2" y="234" width="237" height="228" frameX="0" frameY="0" frameWidth="238" frameHeight="230"/>
+	<SubTexture name="carlos0002" x="2" y="2" width="237" height="230" frameX="0" frameY="0" frameWidth="238" frameHeight="230"/>
+	<SubTexture name="carlos0003" x="2" y="234" width="237" height="228" frameX="0" frameY="0" frameWidth="238" frameHeight="230"/>
+	<SubTexture name="carlos0004" x="241" y="230" width="209" height="222" frameX="-29" frameY="-3" frameWidth="238" frameHeight="230"/>
+	<SubTexture name="carlos0005" x="241" y="2" width="210" height="226" frameX="-28" frameY="-1" frameWidth="238" frameHeight="230"/>
+</TextureAtlas>

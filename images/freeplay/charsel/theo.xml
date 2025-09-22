@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="theo.png" color="ffcc99">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="theo0000" x="2" y="583" width="340" height="511" frameX="-83" frameY="-104" frameWidth="470" frameHeight="616"/>
+	<SubTexture name="theo0001" x="470" y="577" width="339" height="514" frameX="-80" frameY="-102" frameWidth="470" frameHeight="616"/>
+	<SubTexture name="theo0002" x="1273" y="2" width="325" height="602" frameX="-83" frameY="-8" frameWidth="470" frameHeight="616"/>
+	<SubTexture name="theo0003" x="939" y="2" width="332" height="612" frameX="-79" frameY="0" frameWidth="470" frameHeight="616"/>
+	<SubTexture name="theo0004" x="2" y="2" width="466" height="579" frameX="-4" frameY="-34" frameWidth="470" frameHeight="616"/>
+	<SubTexture name="theo0005" x="470" y="2" width="467" height="573" frameX="0" frameY="-41" frameWidth="470" frameHeight="616"/>
+</TextureAtlas>

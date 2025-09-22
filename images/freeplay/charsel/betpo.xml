@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="betpo.png" color="ff6633">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="betpo0000" x="806" y="404" width="291" height="417" frameX="-98" frameY="-10" frameWidth="507" frameHeight="427"/>
+	<SubTexture name="betpo0001" x="508" y="404" width="296" height="415" frameX="-95" frameY="-9" frameWidth="507" frameHeight="427"/>
+	<SubTexture name="betpo0002" x="876" y="2" width="363" height="400" frameX="-80" frameY="-2" frameWidth="507" frameHeight="427"/>
+	<SubTexture name="betpo0003" x="510" y="2" width="364" height="400" frameX="-78" frameY="0" frameWidth="507" frameHeight="427"/>
+	<SubTexture name="betpo0004" x="2" y="2" width="506" height="381" frameX="0" frameY="-38" frameWidth="507" frameHeight="427"/>
+	<SubTexture name="betpo0005" x="2" y="385" width="504" height="377" frameX="-3" frameY="-37" frameWidth="507" frameHeight="427"/>
+</TextureAtlas>

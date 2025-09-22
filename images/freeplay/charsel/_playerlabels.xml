@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="_playerlabels.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="_mode0000" x="291" y="293" width="154" height="53"/>
+	<SubTexture name="_mode-labels0000" x="148" y="308" width="141" height="61" frameX="-5" frameY="-40" frameWidth="254" frameHeight="101"/>
+	<SubTexture name="_mode-labels0001" x="2" y="308" width="144" height="72" frameX="0" frameY="-16" frameWidth="254" frameHeight="101"/>
+	<SubTexture name="_mode-labels0002" x="2" y="2" width="251" height="98" frameX="-3" frameY="0" frameWidth="254" frameHeight="101"/>
+	<SubTexture name="_mode-labels0003" x="2" y="102" width="193" height="64" frameX="-3" frameY="-34" frameWidth="254" frameHeight="101"/>
+	<SubTexture name="_p10000" x="2" y="169" width="128" height="137"/>
+	<SubTexture name="_p10001" x="132" y="169" width="126" height="137" frameX="0" frameY="0" frameWidth="128" frameHeight="137"/>
+	<SubTexture name="_p20000" x="382" y="169" width="119" height="122" frameX="0" frameY="0" frameWidth="120" frameHeight="122"/>
+	<SubTexture name="_p20001" x="260" y="169" width="120" height="122"/>
+	<SubTexture name="_tab0000" x="255" y="2" width="276" height="82" frameX="0" frameY="0" frameWidth="277" frameHeight="83"/>
+	<SubTexture name="_tab0001" x="255" y="86" width="277" height="81" frameX="0" frameY="-2" frameWidth="277" frameHeight="83"/>
+</TextureAtlas>

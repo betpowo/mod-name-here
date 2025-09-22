@@ -1,0 +1,18 @@
+{
+	"customValues": {
+		"composer": "Betopia",
+		"stars": "3"
+	},
+	"color": "#999FBC",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"normal"
+	],
+	"icon": "sus",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Amogus",
+	"needsVoices": false,
+	"beatsPerMeasure": 4,
+	"bpm": 103
+}

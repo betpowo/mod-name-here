@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="airhorn.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="airhorn0000" x="879" y="2" width="106" height="129" frameX="-250" frameY="-82" frameWidth="515" frameHeight="328"/>
+	<SubTexture name="airhorn0001" x="2" y="2" width="393" height="328" frameX="-122" frameY="0" frameWidth="515" frameHeight="328"/>
+	<SubTexture name="airhorn0002" x="2" y="332" width="251" height="255" frameX="-164" frameY="-3" frameWidth="515" frameHeight="328"/>
+	<SubTexture name="airhorn0003" x="255" y="332" width="249" height="254" frameX="-165" frameY="-4" frameWidth="515" frameHeight="328"/>
+	<SubTexture name="airhorn0004" x="2" y="332" width="251" height="255" frameX="-164" frameY="-3" frameWidth="515" frameHeight="328"/>
+	<SubTexture name="airhorn0005" x="397" y="2" width="240" height="217" frameX="-163" frameY="-28" frameWidth="515" frameHeight="328"/>
+	<SubTexture name="airhorn0006" x="639" y="2" width="238" height="180" frameX="-162" frameY="-53" frameWidth="515" frameHeight="328"/>
+	<SubTexture name="airhorn0007" x="757" y="349" width="238" height="154" frameX="-160" frameY="-77" frameWidth="515" frameHeight="328"/>
+	<SubTexture name="airhorn0008" x="757" y="184" width="236" height="163" frameX="-159" frameY="-81" frameWidth="515" frameHeight="328"/>
+	<SubTexture name="airhorn0009" x="506" y="221" width="249" height="183" frameX="-157" frameY="-80" frameWidth="515" frameHeight="328"/>
+	<SubTexture name="airhorn0010" x="506" y="406" width="169" height="123" frameX="-197" frameY="-110" frameWidth="515" frameHeight="328"/>
+	<SubTexture name="airhorn0011" x="397" y="221" width="91" height="62" frameX="-236" frameY="-141" frameWidth="515" frameHeight="328"/>
+	<SubTexture name="airhorn0012" x="490" y="221" width="11" height="7" frameX="-276" frameY="-168" frameWidth="515" frameHeight="328"/>
+	<SubTexture name="airhorn0013" x="503" y="221" width="1" height="1" frameX="0" frameY="-183" frameWidth="515" frameHeight="328"/>
+</TextureAtlas>

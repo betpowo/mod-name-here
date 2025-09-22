@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fartEffect.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="cloud0000" x="1222" y="684" width="356" height="281" frameX="-13" frameY="-3" frameWidth="376" frameHeight="284"/>
+	<SubTexture name="cloud0001" x="1222" y="684" width="356" height="281" frameX="-13" frameY="-3" frameWidth="376" frameHeight="284"/>
+	<SubTexture name="cloud0002" x="851" y="680" width="369" height="272" frameX="-7" frameY="-6" frameWidth="376" frameHeight="284"/>
+	<SubTexture name="cloud0003" x="851" y="680" width="369" height="272" frameX="-7" frameY="-6" frameWidth="376" frameHeight="284"/>
+	<SubTexture name="cloud0004" x="1534" y="398" width="376" height="284"/>
+	<SubTexture name="explosion0000" x="1580" y="684" width="258" height="284" frameX="-282" frameY="-235" frameWidth="847" frameHeight="810"/>
+	<SubTexture name="explosion0001" x="1534" y="2" width="441" height="394" frameX="-188" frameY="-185" frameWidth="847" frameHeight="810"/>
+	<SubTexture name="explosion0002" x="851" y="2" width="681" height="676" frameX="-57" frameY="-52" frameWidth="847" frameHeight="810"/>
+	<SubTexture name="explosion0003" x="851" y="2" width="681" height="676" frameX="-57" frameY="-52" frameWidth="847" frameHeight="810"/>
+	<SubTexture name="explosion0004" x="2" y="2" width="847" height="810"/>
+	<SubTexture name="explosion0005" x="2" y="2" width="847" height="810"/>
+</TextureAtlas>

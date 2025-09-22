@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="spritesheet.png">
+	<SubTexture name="jump0000" x="0" y="0" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="jump0001" x="0" y="0" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="luis0000" x="108" y="0" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="luis0001" x="108" y="0" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="luis0002" x="216" y="0" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="luis0003" x="216" y="0" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="idle0000" x="324" y="0" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="idle0001" x="324" y="0" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="left0000" x="432" y="0" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="left0001" x="432" y="0" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="left0002" x="0" y="48" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="left0003" x="0" y="48" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="down0000" x="108" y="48" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="down0001" x="108" y="48" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="down0002" x="216" y="48" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="down0003" x="216" y="48" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="up0000" x="324" y="48" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="up0001" x="324" y="48" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="up0002" x="432" y="48" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="up0003" x="432" y="48" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="right0000" x="0" y="96" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="right0001" x="0" y="96" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="right0002" x="108" y="96" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="right0003" x="108" y="96" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="WHAT0000" x="216" y="96" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="WHAT0001" x="216" y="96" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="srs-or-j0000" x="324" y="96" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="srs-or-j0001" x="324" y="96" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="srs-or-j0002" x="432" y="96" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="srs-or-j0003" x="432" y="96" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="star0000" x="0" y="96" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="star0001" x="0" y="96" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="star0002" x="0" y="144" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="star0003" x="0" y="144" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="star0004" x="108" y="144" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+	<SubTexture name="star0005" x="108" y="144" width="108" height="48" frameX="0" frameY="0" frameWidth="108" frameHeight="48" />
+</TextureAtlas>

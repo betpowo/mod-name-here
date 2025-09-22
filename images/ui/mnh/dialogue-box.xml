@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="dialogue-box.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="close0000" x="372" y="291" width="333" height="238" frameX="-19" frameY="0" frameWidth="352" frameHeight="251"/>
+	<SubTexture name="close0001" x="372" y="291" width="333" height="238" frameX="-19" frameY="0" frameWidth="352" frameHeight="251"/>
+	<SubTexture name="close0002" x="403" y="3" width="241" height="161" frameX="0" frameY="-90" frameWidth="352" frameHeight="251"/>
+	<SubTexture name="close0003" x="372" y="532" width="4" height="4" frameX="-11" frameY="-238" frameWidth="352" frameHeight="251"/>
+	<SubTexture name="idle0000" x="349" y="539" width="341" height="245" frameX="-2" frameY="-1" frameWidth="343" frameHeight="249"/>
+	<SubTexture name="idle0001" x="349" y="539" width="341" height="245" frameX="-2" frameY="-1" frameWidth="343" frameHeight="249"/>
+	<SubTexture name="idle0002" x="3" y="539" width="343" height="249"/>
+	<SubTexture name="idle0003" x="3" y="539" width="343" height="249"/>
+	<SubTexture name="open0000" x="403" y="167" width="97" height="63" frameX="0" frameY="-254" frameWidth="417" frameHeight="317"/>
+	<SubTexture name="open0001" x="3" y="3" width="397" height="285" frameX="-20" frameY="0" frameWidth="417" frameHeight="317"/>
+	<SubTexture name="open0002" x="3" y="3" width="397" height="285" frameX="-20" frameY="0" frameWidth="417" frameHeight="317"/>
+	<SubTexture name="open0003" x="3" y="291" width="366" height="245" frameX="-29" frameY="-43" frameWidth="417" frameHeight="317"/>
+	<SubTexture name="open0004" x="3" y="291" width="366" height="245" frameX="-29" frameY="-43" frameWidth="417" frameHeight="317"/>
+</TextureAtlas>

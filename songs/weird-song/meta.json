@@ -1,0 +1,18 @@
+{
+	"color": "#FF3061",
+	"customValues": {
+		"composer": "hifish (ft. Betopia)",
+		"stars": "8"
+	},
+	"opponentModeAllowed": true,
+	"icon": "josephine",
+	"difficulties": [
+		"normal"
+	],
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "WEIRD SONG!!",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 156
+}

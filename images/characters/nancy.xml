@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="nancy.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="cancel0000" x="1238" y="1044" width="295" height="447" frameX="0" frameY="0" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0001" x="1238" y="1044" width="295" height="447" frameX="0" frameY="0" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0002" x="1535" y="1492" width="293" height="442" frameX="0" frameY="-2" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0003" x="1535" y="1492" width="293" height="442" frameX="0" frameY="-2" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0004" x="1535" y="1044" width="294" height="446" frameX="-5" frameY="-1" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0005" x="1535" y="1044" width="294" height="446" frameX="-5" frameY="-1" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0006" x="943" y="1475" width="292" height="445" frameX="-4" frameY="-2" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0007" x="943" y="1475" width="292" height="445" frameX="-4" frameY="-2" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0008" x="1238" y="1044" width="295" height="447" frameX="0" frameY="0" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0009" x="1238" y="1044" width="295" height="447" frameX="0" frameY="0" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0010" x="1535" y="1492" width="293" height="442" frameX="0" frameY="-2" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0011" x="1535" y="1492" width="293" height="442" frameX="0" frameY="-2" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0012" x="1535" y="1044" width="294" height="446" frameX="-5" frameY="-1" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0013" x="1535" y="1044" width="294" height="446" frameX="-5" frameY="-1" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0014" x="943" y="1475" width="292" height="445" frameX="-4" frameY="-2" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0015" x="943" y="1475" width="292" height="445" frameX="-4" frameY="-2" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0016" x="1238" y="1044" width="295" height="447" frameX="0" frameY="0" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0017" x="1238" y="1044" width="295" height="447" frameX="0" frameY="0" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0018" x="1535" y="1492" width="293" height="442" frameX="0" frameY="-2" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0019" x="1535" y="1492" width="293" height="442" frameX="0" frameY="-2" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0020" x="1535" y="1044" width="294" height="446" frameX="-5" frameY="-1" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0021" x="1535" y="1044" width="294" height="446" frameX="-5" frameY="-1" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0022" x="943" y="1475" width="292" height="445" frameX="-4" frameY="-2" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0023" x="943" y="1475" width="292" height="445" frameX="-4" frameY="-2" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0024" x="706" y="2" width="300" height="446" frameX="0" frameY="-1" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="cancel0025" x="706" y="2" width="300" height="446" frameX="0" frameY="-1" frameWidth="300" frameHeight="447"/>
+	<SubTexture name="idle0000" x="2" y="1535" width="299" height="454" frameX="0" frameY="-1" frameWidth="299" frameHeight="457"/>
+	<SubTexture name="idle0001" x="1008" y="2" width="293" height="456" frameX="-4" frameY="-1" frameWidth="299" frameHeight="457"/>
+	<SubTexture name="idle0002" x="943" y="1018" width="293" height="455" frameX="-2" frameY="0" frameWidth="299" frameHeight="457"/>
+	<SubTexture name="prepare0000" x="1330" y="2" width="504" height="519" frameX="0" frameY="0" frameWidth="504" frameHeight="521"/>
+	<SubTexture name="prepare0001" x="475" y="1018" width="466" height="520" frameX="-23" frameY="-1" frameWidth="504" frameHeight="521"/>
+	<SubTexture name="prepare0002" x="1330" y="523" width="493" height="519" frameX="-2" frameY="-2" frameWidth="504" frameHeight="521"/>
+	<SubTexture name="prepare0003" x="2" y="1018" width="471" height="515" frameX="-26" frameY="-4" frameWidth="504" frameHeight="521"/>
+	<SubTexture name="sad0000" x="2" y="516" width="662" height="500" frameX="-27" frameY="-5" frameWidth="702" frameHeight="512"/>
+	<SubTexture name="sad0001" x="2" y="2" width="702" height="512"/>
+	<SubTexture name="sad0002" x="666" y="516" width="662" height="500" frameX="-27" frameY="-5" frameWidth="702" frameHeight="512"/>
+</TextureAtlas>

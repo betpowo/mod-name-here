@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="ratings.png" width="685" height="610">
+	<SubTexture name="bad" x="1" y="1" width="312" height="166" frameX="-0" frameY="-0" frameWidth="312" frameHeight="166"/>
+	<SubTexture name="combo" x="467" y="310" width="100" height="253" rotated="true" frameX="-0" frameY="-0" frameWidth="253" frameHeight="100"/>
+	<SubTexture name="dookie" x="330" y="1" width="134" height="370" rotated="true" frameX="-0" frameY="-0" frameWidth="370" frameHeight="134"/>
+	<SubTexture name="good" x="1" y="170" width="326" height="157" frameX="-0" frameY="-0" frameWidth="326" frameHeight="157"/>
+	<SubTexture name="num0" x="106" y="512" width="101" height="89" rotated="true" frameX="-3" frameY="-2" frameWidth="100" frameHeight="106"/>
+	<SubTexture name="num1" x="598" y="106" width="49" height="102" frameX="-20" frameY="-2" frameWidth="100" frameHeight="106"/>
+	<SubTexture name="num2" x="350" y="479" width="97" height="102" frameX="-2" frameY="-1" frameWidth="100" frameHeight="106"/>
+	<SubTexture name="num3" x="570" y="310" width="87" height="102" frameX="-3" frameY="-1" frameWidth="100" frameHeight="106"/>
+	<SubTexture name="num4" x="350" y="374" width="99" height="102" frameX="-1" frameY="-2" frameWidth="100" frameHeight="106"/>
+	<SubTexture name="num5" x="570" y="415" width="87" height="102" frameX="-3" frameY="-1" frameWidth="100" frameHeight="106"/>
+	<SubTexture name="num6" x="598" y="1" width="86" height="102" frameX="-3" frameY="-1" frameWidth="100" frameHeight="106"/>
+	<SubTexture name="num7" x="1" y="512" width="102" height="97" rotated="true" frameX="-0" frameY="-2" frameWidth="100" frameHeight="106"/>
+	<SubTexture name="num8" x="570" y="520" width="106" height="83" rotated="true" frameX="-4" frameY="-0" frameWidth="100" frameHeight="106"/>
+	<SubTexture name="num9" x="210" y="512" width="106" height="84" rotated="true" frameX="-4" frameY="-0" frameWidth="100" frameHeight="106"/>
+	<SubTexture name="shit" x="1" y="374" width="346" height="135" frameX="-0" frameY="-0" frameWidth="346" frameHeight="135"/>
+	<SubTexture name="sick" x="467" y="1" width="128" height="306" rotated="true" frameX="-0" frameY="-0" frameWidth="306" frameHeight="128"/>
+</TextureAtlas>
