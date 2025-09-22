@@ -1,0 +1,18 @@
+{
+	"customValues": {
+		"composer": "Betopia",
+		"stars": "8"
+	},
+	"color": "#03690A",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"normal"
+	],
+	"icon": "eduar",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": ":eduar:",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"bpm": 176
+}

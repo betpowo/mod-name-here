@@ -1,0 +1,23 @@
+<!DOCTYPE codename-mod-options>
+<!-- TEMPLATE FOR CUSTOM OPTIONS!!! -->
+<menu name="Mod Name Here" desc="Modify mod options here">
+	<checkbox id="compact" name="Compact UI" desc="If checked, will only display the health bar and score, so it doesn't clutter the screen a lot" />
+	<checkbox id="pbot" name="Points Based On Timing" desc="If checked, the score will not be fixed to a note's judgement, forcing you to play better (trust), added in Base Game v0.3.0" />
+	<checkbox id="cbreak" name="Tougher Combo Breaks" desc="If checked, hitting a 'Bad' or 'Shit' will reset your combo, added in Base Game v0.3.0" />
+	<checkbox id="susLink" name="Sustains as One Note" desc="If checked, missing a hold note won't leave the rest of the pieces to be missed so you dont get 3 million misses from just one note" />
+	<checkbox id="middleScroll" name="Middlescroll" desc="If checked, player notes will be in the middle of the screen" />
+	<checkbox id="holdCovers" name="Hold Covers" desc="If checked, holding a note will show a special effect, added in Base Game v0.3.0" />
+	<checkbox id="enableSubs" name="Subtitles" desc="If checked, will show subtitles, what else do you expect..?" />
+
+	<choice id="choiceExample" name="Choice Example">
+		<value name="Disabled" value="disabled"/>
+		<value name="This only" value="thisOnly"/>
+		<value name="jersey club beat" value="jersey"/>
+		<value name="All" value="all"/>
+	</choice>
+	<number id="bumpscocity" name="Bumpscocity" min="0" max="1000" change="100" desc="Controls how bumpscocious the gameplay is."/>
+
+	<menu name="Pneumonoultramicroscopicsilicovolcanoconiosis Options" desc="What">
+		<checkbox id="breathing" name="enable breathing" />
+	</menu>
+</menu>

@@ -1,0 +1,14 @@
+{
+    "params": [
+        {
+            "name": "Property",
+            "type": "String",
+            "defaultValue": "camZooming"
+        },
+        {
+            "name": "Value",
+            "type": "String",
+            "defaultValue": "true"
+        }
+    ]
+}

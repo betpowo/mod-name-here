@@ -1,0 +1,7 @@
+<!DOCTYPE codename-engine-character>
+<character y="-190" sprite="nancy" camx="-140" camy="300" icon="nene" color="#FF6699" dialx="200" isGF="true" dialy="-100" dialcamx="100" dialcamy="-100">
+	<anim name="idle" anim="idle" x="0" y="0" fps="24" loop="true"/>
+	<anim name="sad" anim="sad" x="147" y="86" fps="24" loop="false" indices="0..2,0..2,0..2,0..2,0..2"/>
+	<anim name="prepare" anim="prepare" x="250" y="66" fps="24" loop="true"/>
+	<anim name="cancel" anim="cancel" x="-8" y="-9" fps="24" loop="false"/>
+</character>

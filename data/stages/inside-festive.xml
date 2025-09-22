@@ -1,0 +1,34 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.75" name="inside-festive" folder="stages/inside/christmas/" startCamPosY="600" startCamPosX="1000">
+	<ext script="mnh" folder="interfaces/" />
+
+	<solid name="floor" x="-500" y="700" width="2500" height="1440" color="#ff8c80" scroll="0.7" />
+	<solid name="ceiling" x="-500" y="-1440" width="2500" height="1440" color="#ff7676" scroll="0.7" />
+
+	<high-memory>
+		<sprite name="door" x="1740" y="256" sprite="christmasBGAssets" scroll="0.7" scale="0.75" updateHitbox="true">
+			<anim name="idle" anim="door" fps="0" />
+		</sprite>
+		<sprite name="eminem" x="1234" y="40" sprite="christmasBGAssets" scroll="0.7" scale="0.75" updateHitbox="true">
+			<anim name="idle" anim="EMINEM" fps="0" />
+		</sprite>
+	</high-memory>
+
+	<sprite name="couch" x="200" y="275" sprite="christmasBGAssets" scrollx="0.8" scrolly="0.73" scale="0.9" updateHitbox="true">
+		<anim name="idle" anim="couch" fps="0" />
+	</sprite>
+
+	<sprite name="tree" x="-370" y="0" sprite="christmasBGAssets" scrollx="0.85" scrolly="0.77" scale="0.95" updateHitbox="true">
+		<anim name="idle" anim="tree and gifts" fps="0" />
+	</sprite>
+
+	<sprite name="lights" x="-315" y="210" sprite="christmasBGAssets" scrollx="0.85" scrolly="0.77" scale="0.95" updateHitbox="true">
+		<anim name="idle" anim="lights" fps="0" />
+	</sprite>
+
+	<girlfriend x="1000" y="250" scroll="1" />
+	<dad x="300" y="175" camyoffset="30" />
+	<boyfriend x="1500" y="175" camyoffset="30" />
+
+	<combo x="1000" y="700" />
+</stage>

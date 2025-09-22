@@ -1,0 +1,5 @@
+<!DOCTYPE codename-engine-character>
+<character y="350" sprite="philip-die" flipX="true" camx="100" camy="120" isPlayer="true" icon="pico" gameOverChar="philip-dead" isGF="false">
+	<anim name="firstDeath" anim="die" x="0" y="0" fps="24" loop="false" indices="0..36"/>
+	<anim name="deathLoop" anim="die" x="0" y="0" fps="24" loop="true" indices="74..103"/>
+</character>

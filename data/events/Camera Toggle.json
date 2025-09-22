@@ -1,0 +1,14 @@
+{
+    "params": [
+        {
+            "name": "Visible",
+            "type": "Bool",
+            "defaultValue": true
+        },
+        {
+            "name": "Camera",
+            "type": "DropDown('camGame', 'camHUD')",
+            "defaultValue": "camGame"
+        }
+    ]
+}

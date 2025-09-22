@@ -1,0 +1,44 @@
+{
+	"params": [
+		{
+			"name": "Camera Target",
+			"type": "StrumLine",
+			"defaultValue": 0
+		},
+		{
+			"name": "Use Absolute Position",
+			"type": "Bool",
+			"defaultValue": false
+		},
+		{
+			"name": "Offset X",
+			"type": "Float(-9999, 9999, 1, 3)",
+			"defaultValue": 0
+		},
+		{
+			"name": "Offset Y",
+			"type": "Float(-9999, 9999, 1, 3)",
+			"defaultValue": 0
+		},
+		{
+			"name": "Mode",
+			"type": "DropDown('Classic', 'Instant', 'Tweened')",
+			"defaultValue": "Classic"
+		},
+		{
+			"name": "Tween Time (Steps) [If Tweened]",
+			"type": "Float(0.25, 9999, 0.25, 2)",
+			"defaultValue": 8
+		},
+		{
+			"name": "Tween Ease (ex: circ, quad, cube) [If Tweened]",
+			"type": "DropDown('linear', 'back', 'bounce', 'circ', 'cube', 'elastic', 'expo', 'quad', 'quart', 'quint', 'sine', 'smoothStep', 'smootherStep')",
+			"defaultValue": "linear"
+		},
+		{
+			"name": "Tween Type (ex: InOut) [If Tweened]",
+			"type": "DropDown('In', 'Out', 'InOut')",
+			"defaultValue": "Out"
+		}
+	]
+}

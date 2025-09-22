@@ -1,0 +1,40 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.8" name="inside" folder="stages/inside/" startCamPosY="600" startCamPosX="1000">
+	<ext script="mnh" folder="interfaces/"/>
+
+	<solid name="sky" x="1150" y="-300" width="2500" height="1440" color="#ffffff" scrollx="0.7" scrolly="0" zoomfactor="0.6"/>
+
+	<high-memory>
+		<sprite sprite="bg" name="bg" x="900" y="200" scroll="0.5" zoomfactor="0.2"/>
+		<sprite sprite="road" name="road" x="1100" y="550" scroll="0.8" zoomfactor="0.4"/>
+	</high-memory>
+
+	<solid name="bgwall" x="-1350" y="-300" width="2500" height="1440" color="#ff9c8f" scroll="0.7" zoomfactor="0.6"/>
+	<solid name="ceiling" x="-1350" y="-1300" width="2500" height="1440" color="#ff7676" scroll="0.7" zoomfactor="0.6" />
+	<solid name="floor" x="-1350" y="668" width="2500" height="1440" color="#ff8c80" scroll="0.7" zoomfactor="0.6" />
+
+	<sprite name="door" x="640" y="228" sprite="assets" scroll="0.7" scale="0.75" zoomfactor="0.6" updateHitbox="true">
+		<anim name="idle" anim="door" fps="0" />
+	</sprite>
+
+	<high-memory>
+		<sprite name="eminem" x="234" y="180" sprite="assets" scroll="0.7" scale="0.75" zoomfactor="0.6" updateHitbox="true">
+			<anim name="idle" anim="EMINEM" fps="0" />
+		</sprite>
+	</high-memory>
+
+	<sprite name="couch" x="-750" y="300" sprite="assets" scrollx="0.8" scrolly="0.73" zoomfactor="0.7" scale="0.8" updateHitbox="true">
+		<anim name="idle" anim="couch" fps="0" />
+	</sprite>
+	<sprite name="wall" sprite="breaky wall" x="1220" y="-835" scroll="0.7" zoomfactor="0.6" scale="0.87" updateHitbox="true"/>
+	<sprite name="mat" x="1360" y="800" sprite="assets" scrollx="1.05" scrolly="0.9" zoomfactor="0.8">
+		<anim name="idle" anim="welcome mat" fps="0" />
+	</sprite>
+
+	<girlfriend x="1000" y="230" scroll="1"/>
+	<dad x="405" y="175"/>
+	<boyfriend x="1200" y="175"/>
+
+	<combo x="1000" y="730" />
+
+</stage>

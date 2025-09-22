@@ -1,0 +1,21 @@
+<!DOCTYPE codename-engine-stage>
+<stage startCamPosX="1000" startCamPosY="600" folder="stages/man/" zoom="0.8" name="man">
+	<ext script="mnh" folder="interfaces/"/>
+	<ext script="forceFPSshadow" folder="data/scripts/" />
+
+	<sprite x="-706" zoomfactor="0.9" scroll="0.9" sprite="walls" y="-284" name="walls"/>
+	<sprite x="-799.5" zoomfactor="0.9" scroll="0.92" sprite="lightrods" y="42" name="lightrods"/>
+	<high-memory>
+		<sprite x="299" sprite="stars" y="-100" name="stars"/>
+	</high-memory>
+	<sprite x="1727" scroll="0.92" zoomfactor="0.96" sprite="ac" y="-226" name="ac"/>
+	<girlfriend x="800" y="175"/>
+	<dad x="430" y="150"/>
+	<boyfriend x="1300" y="150"/>
+	<sprite x="-333" scroll="0.96" sprite="bed" y="423" name="bed"/>
+	<high-memory>
+		<sprite x="-772" scrollx="0.95" scrolly="0.92" zoomfactor="0.9" sprite="lights" y="-350" name="lights">
+			<property name="blend" type="float" value="0" />
+		</sprite>
+	</high-memory>
+</stage>

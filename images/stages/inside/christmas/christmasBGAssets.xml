@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="christmasBGAssets.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="EMINEM !!!!!!!!!!!!!0000" x="1192" y="914" width="270" height="356"/>
+	<SubTexture name="bepo gift0000" x="898" y="532" width="152" height="125"/>
+	<SubTexture name="ceiling light0000" x="472" y="1088" width="278" height="73"/>
+	<SubTexture name="couch0000" x="2" y="2" width="1095" height="528"/>
+	<SubTexture name="donut0000" x="898" y="914" width="292" height="353"/>
+	<SubTexture name="door0000" x="2" y="532" width="468" height="595"/>
+	<SubTexture name="lights0000" x="472" y="532" width="424" height="554"/>
+	<SubTexture name="tree and gifts0000" x="1099" y="2" width="575" height="910"/>
+</TextureAtlas>

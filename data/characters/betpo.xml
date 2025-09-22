@@ -1,0 +1,13 @@
+<!DOCTYPE codename-engine-character>
+<character y="350" sprite="betpo" camy="87" icon="betpo" color="#FF6633" gameOverChar="die/betpo-dead" isGF="false">
+	<anim name="idle" anim="idle" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="left" x="50" y="-6" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="down" x="13" y="-43" fps="24" loop="false"/>
+	<anim name="singUP" anim="up" x="32" y="80" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="right" x="-40" y="-6" fps="24" loop="false"/>
+	<anim name="hey" anim="hey" x="12" y="43" fps="24" loop="false"/>
+	<anim name="die" anim="die" x="35" y="-135" fps="24" loop="true"/>
+	<anim name="sad" anim="sad" x="1" y="-2" fps="24" loop="true"/>
+	<anim name="laser" anim="laser" x="120" y="106" fps="24" loop="false" indices="0..56"/>
+	<anim name="laser-loop" anim="laser" x="120" y="106" fps="24" loop="true" indices="56"/>
+</character>

@@ -1,0 +1,11 @@
+<!DOCTYPE codename-engine-character>
+<character x="-50" y="380" camx="-60" camy="20" color="#E1E1E1" holdTime="5" isGF="false">
+	<anim name="idle" anim="idle"/>
+	<anim name="singLEFT" anim="left" x="379" y="-30"/>
+	<anim name="singDOWN" anim="down" x="-38" y="-92"/>
+	<anim name="singUP" anim="up" x="-72" y="59"/>
+	<anim name="singRIGHT" anim="right" x="-66" y="120"/>
+	<anim name="amogus" anim="amogus" x="75" y="54"/>
+	<anim name="sus" anim="sus" x="23" y="184"/>
+	<anim name="taunt" anim="taunt" fps="0.01" x="83" y="70"/>
+</character>

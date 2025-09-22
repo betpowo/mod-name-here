@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-icon>
+<icon scale="1" offsetX="10" offsetY="10">
+    <anim name="neutral" anim="neutral" fps="12" loop="true"/>
+    <anim name="losing" anim="losing" fps="12" loop="true"/>
+    <anim name="winning" anim="winning" fps="12" loop="true"/>
+</icon>

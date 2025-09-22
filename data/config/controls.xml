@@ -1,0 +1,7 @@
+<!DOCTYPE mod-controls>
+
+<controls>
+	<category name="mod name here">
+		<control name="switchvar" saveName="switchvar" menuName="Variation" keyP1="P" keyP2=""/>
+	</category>
+</controls>

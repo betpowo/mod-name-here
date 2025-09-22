@@ -1,0 +1,36 @@
+{
+	"multipleInstances": false,
+	"useAlphabetForMs": false,
+	"rating": {
+		"props": {
+			"scale.x": 0.91,
+			"scale.y": 0.91
+		},
+		"tweens": {
+			"ScaleXTween": ["doTweenX", "scale", 0.7, 2, "expoOut"],
+			"ScaleYTween": ["doTweenY", "scale", 0.7, 2, "expoOut"]
+		}
+	},
+	"numbers": {
+		"props": {
+			"scale.x": 0.715,
+			"scale.y": 0.715
+		},
+		"tweens": {
+			"ScaleXTween": ["doTweenX", "scale", 0.5, 2, "expoOut"],
+			"ScaleYTween": ["doTweenY", "scale", 0.5, 2, "expoOut"]
+		}
+	},
+	"ms": {
+		"props": {
+			"scale.x": 1.2,
+			"scale.y": 1.2,
+			"font": "comicsans.ttf",
+			"borderColor": "2f2e38"
+		},
+		"tweens": {
+			"ScaleXTween": ["doTweenX", "scale", 1, 2, "expoOut"],
+			"ScaleYTween": ["doTweenY", "scale", 1, 2, "expoOut"]
+		}
+	}
+}

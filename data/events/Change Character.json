@@ -1,0 +1,24 @@
+{
+	"params": [
+		{
+			"name": "Target",
+			"type": "StrumLine",
+			"defaultValue": 0
+		},
+		{
+			"name": "New Character ID",
+			"type": "Character",
+			"defaultValue": "dad"
+		},
+		{
+			"name": "Target Index",
+			"type": "Int(0, 999999, 1)",
+			"defaultValue": 0
+		},
+		{
+			"name": "Update Icon and HealthBar Color?",
+			"type": "Bool",
+			"defaultValue": true
+		}
+	]
+}

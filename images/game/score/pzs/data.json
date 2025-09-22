@@ -1,0 +1,31 @@
+{
+	"multipleInstances": false,
+	"useAlphabetForMs": false,
+	"rating": {
+		"props": {
+			"scale.x": 1.14,
+			"scale.y": 1.14,
+			"offset.x": -26.8,
+			"offset.y": -19,
+			"velocity.y": -140
+		}
+	},
+	"numbers": {
+		"props": {
+			"velocity.y": -140,
+			"scale.x": 1.06,
+			"scale.y": 1.06,
+			"offset.x": -71.7,
+			"offset.y": -17
+		}
+	},
+	"ms": {
+		"props": {
+			"scale.x": 1.2,
+			"scale.y": 1.2,
+			"font": "aeromatics.ttf",
+			"moves": true,
+			"velocity.y": -140
+		}
+	}
+}

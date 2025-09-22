@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-stage>
+<stage startCamPosX="1000" startCamPosY="600" folder="stages/marco2/" zoom="0.9" name="marco2">
+	<ext script="pixel" folder="interfaces/"/>
+	<sprite antialiasing="false" x="316" scroll="0.2" sprite="weebSky" y="98" scale="6" name="sky"/>
+	<sprite antialiasing="false" x="502" scroll="0.3" sprite="stupidHillsCastle" y="635" type="none" scale="6" name="castle"/>
+	<sprite antialiasing="false" x="460" scroll="0.6" sprite="stupidHillsBack" y="605" type="none" scale="6" name="hills"/>
+	<sprite antialiasing="false" x="533" sprite="stupidHill" y="753" type="none" scale="6" name="ground"/>
+	<girlfriend x="520" y="90"/>
+	<dad x="-71" y="50"/>
+	<boyfriend x="872" y="50" camyoffset="40"/>
+	<combo x="700" y="500"/>
+</stage>

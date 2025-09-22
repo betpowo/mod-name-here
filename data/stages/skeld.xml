@@ -1,0 +1,18 @@
+<!DOCTYPE codename-engine-stage>
+<!-- this is the reversed skeld from april fools btw . to let yall know at least -->
+<stage folder="stages/skeld/" startCamPosX="600" name="skeld" zoom="0.8">
+	<sprite x="-841" sprite="OH MY GOD bruh" y="-530" scrollx="0.98" name="bg"/>
+	<sprite x="861" scroll="0.9" sprite="table" y="405" zoomfactor="0.9" scale="0.95" name="table1"/>
+	<high-memory>
+		<sprite x="1013" scroll="0.9" sprite="cups" y="347" zoomfactor="0.9" name="cups"/>
+		<sprite x="1861" scroll="0.95" sprite="table" y="486" zoomfactor="0.9" name="table2"/>
+	</high-memory>
+	<girlfriend x="455" y="147" scroll="1"/>
+	<dad/>
+	<boyfriend x="960" y="89"/>
+	<high-memory>
+		<sprite x="1450" scroll="1.05" zoomfactor="1.1" sprite="table" y="720" scale="1.05" name="table3"/>
+		<sprite x="241" y="1030" sprite="vent" name="vent"/>
+	</high-memory>
+	<combo x="700" y="500"/>
+</stage>

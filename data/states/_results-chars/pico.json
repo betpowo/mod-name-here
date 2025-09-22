@@ -1,0 +1,100 @@
+{
+	"ownedChars": [
+		"pico",
+		"pico-playable",
+		"pico-blazin",
+		"pico-christmas",
+		"pico-dark",
+		"philip"
+	],
+	"results": {
+		"folder": "results/base/results-pico",
+		"music": {
+			"PERFECT_GOLD": "pico/resultsPERFECT-pico",
+			"PERFECT": "pico/resultsPERFECT-pico",
+			"EXCELLENT": "pico/resultsEXCELLENT-pico",
+			"GREAT": "pico/resultsNORMAL-pico",
+			"GOOD": "pico/resultsNORMAL-pico",
+			"LOSS": "pico/resultsSHIT-pico"
+		},
+		"perfect_gold": [
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsPERFECT",
+				"zIndex": 500,
+				"scale": 0.88,
+				"offsets": [
+					385,
+					82
+				],
+				"loopFrame": 91
+			}
+		],
+		"perfect": [
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsPERFECT",
+				"zIndex": 500,
+				"scale": 0.88,
+				"offsets": [
+					385,
+					82
+				],
+				"loopFrame": 91
+			}
+		],
+		"excellent": [
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsGREAT",
+				"zIndex": 500,
+				"scale": 1.25,
+				"offsets": [
+					555,
+					225
+				],
+				"looped": true,
+				"loopFrame": 32
+			}
+		],
+		"great": [
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsGREAT",
+				"zIndex": 500,
+				"scale": 1.25,
+				"offsets": [
+					555,
+					225
+				],
+				"looped": true,
+				"loopFrame": 32
+			}
+		],
+		"good": [
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsGOOD",
+				"zIndex": 500,
+				"scale": 1.25,
+				"offsets": [
+					360,
+					125
+				],
+				"loopFrame": 41
+			}
+		],
+		"loss": [
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsSHIT",
+				"zIndex": 500,
+				"offsets": [
+					-185,
+					-125
+				],
+				"loopFrame": 0
+			}
+		]
+	}
+}

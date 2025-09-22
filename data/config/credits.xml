@@ -1,0 +1,111 @@
+<!DOCTYPE codename-mod-credits>
+<!-- TEMPLATE FOR CUSTOM CREDITS!!! -->
+<menu name="Mod Credits" desc="Modify mod credits here">
+	<credit name="betopia" desc="coder, artist, composer, made 80% of everything" color="#996666" speaker="betty" spkname="betty" url="https://betpowo.github.io" x="-144" y="-15">
+		<anim name="open" length="4" loop="false" />
+		<anim name="idle" offset="3" length="2" />
+		<anim name="happy" offset="5" length="2" />
+		<anim name="sad" offset="7" length="2" />
+		<anim name="close" offset="9" length="5" loop="false" />
+		<!-- dialogue -->
+		<line>here? so soon?</line>
+		<line>i thought i wouldn't see anyone here..</line>
+		<line anim="happy">thanks for checking in and thanks for playing!</line>
+		<line anim="sad">most of it might suck, and i'm sorry.. i just did most of the stuff alone..</line>
+		<line anim="happy">but i got people who helped me in my journey and i'm glad i wasn't always alone..!</line>
+		<line anim="sad">i wouldn't have gotten this out on my own.. i think..</line>
+		<line>well i hope you're enjoying the mod so far.. the others and i have worked on it hard.. mostly to get this out in time...</line>
+		<line anim="sad">i nearly couldn't get it out due to electricity problems..</line>
+		<line>but that's probably tmi at this point. srry. lol</line>
+		<line anim="happy">ok i'll go now.. bye..</line>
+		<line>you can still navigate this menu like normal btw. up and down to scroll thru members.. yknow.. alr i'll go now..</line>
+	</credit>
+
+	<credit name="airhorn76" desc="composer" color="#93cdfa" speaker="airhorn" spkname="airhorn76" url="https://youtube.com/@airhorn76" x="-43" y="56">
+		<anim name="open" length="2" loop="false" />
+		<anim name="idle" offset="2" length="2" />
+		<anim name="close" offset="4" length="10" loop="false" />
+		<!-- dialogue -->
+		<line>hey there</line>
+		<line>I made the Awesome music for ts (this) mod</line>
+		<line>if you liked what I did well too bad cause i dont post my music anywhere else</line>
+		<line>but ill post my Mod Name Here songs on my youtube maybe</line>
+		<line>this is not the last time youll see me hopfully</line>
+		<line>*hopefully</line>
+	</credit>
+
+	<credit name="hifish" desc="composer, coder sometimes" color="#66cccc" speaker="fish" spkname="hifish" url="https://twitter.com/hifish__" x="-13" y="90">
+		<anim name="open" length="1" loop="false" />
+		<anim name="idle" offset="1" length="2" />
+		<anim name="close" offset="3" length="7" loop="false" />
+		<!-- dialogue -->
+		<line>hi guys</line>
+		<line>i did      stuff     and    you should enjoy it</line>
+		<line>Pay attention in honestly. Okay? Okay? THanks. Okay. Bye. Okay. Okay? Alright.</line>
+		<line>Tomorrow is the Fall Of Man</line>
+	</credit>
+
+	<credit name="blue_kyt" desc="ceo of honestly" color="#6666cc" speaker="blue" url="https://twitter.com/Blue_Kyt" x="-173" y="-6">
+		<anim name="open" length="3" loop="false" />
+		<anim name="idle" offset="3" length="2" />
+		<anim name="close" offset="5" length="4" loop="false" />
+		<!-- dialogue -->
+		<line>hi guys</line>
+		<line>it's me</line>
+		<line>i helped on a song and that's it lmao</line>
+	</credit>
+
+	<credit name="plank" desc="girl why are you here you only made the menu music what the fuck. all you talk about is katamari and littlebigplanet" color="#F9B9E8" speaker="aurora" spkname="aurora" url="https://bsky.app/profile/plankdev.gay" x="-15" y="45">
+		<anim name="open" offset="9" length="7" loop="false" />
+		<anim name="idle" length="2" />
+		<anim name="read" offset="6" length="2" />
+		<anim name="allyoutalkaboutiskatamari" offset="2" length="2" />
+		<anim name="thatswhatyoufuckingget" offset="4" length="2" />
+		<anim name="close" offset="16" length="3" loop="false" />
+		<!-- dialogue -->
+		<line>who the hell disturbed my daily thinking about women session</line>
+		<line>also why the hell am i here</line>
+		<line anim="read">i didnt work on this didn't i</line>
+		<line anim="read">...</line>
+		<line anim="read">betty would NOT hire me this has to be some sort of joke</line>
+		<line anim="read">"menu music"</line>
+		<line>why did i only do the menu music? weird</line>
+		<line anim="allyoutalkaboutiskatamari">anyway you should play Katamari Forever for the PlayStation® 3</line>
+		<line anim="allyoutalkaboutiskatamari">very good game</line>
+		<line anim="thatswhatyoufuckingget">okayyyyy im being way too annoying i should shut up</line>
+		<line>bye!!!!!!!!!!!!!!</line>
+	</credit>
+
+	<credit name="stewshop" desc="(future) composer" color="#403646" speaker="stew" url="https://twitter.com/stewsh0p" x="-6" y="339">
+		<anim name="open" length="3" loop="false" />
+		<anim name="idle" offset="3" length="2" />
+		<anim name="ds" offset="5" length="2"/>
+		<anim name="close" offset="7" length="11" loop="false" />
+		<!-- dialogue -->
+		<line>alright i'm here now . uh</line>
+		<line>i like wafflez and going outside!!! &gt;w&lt;</line>
+		<line anim="ds">anyways i have they/them pronouns and i like playing on my ds</line>
+		<line anim="ds">ok</line>
+	</credit>
+
+	<credit name="zack_so_dumb" desc="composer" color="#dd5566" speaker="zack" url="https://www.youtube.com/@Zack_so_dumb/" x="-6" y="320">
+		<anim name="open" length="2" loop="false" />
+		<anim name="idle" offset="2" length="2" />
+		<anim name="close" offset="4" length="9" loop="false" />
+		<!-- dialogue -->
+		<line>I make-a da music for the Italians🤌 with my bro Chiito GLT.</line>
+		<line>idk</line>
+		<line>Shoutout to Balatro</line>
+	</credit>
+
+	<credit name="cherrychii" desc="mobile playtester and ui assistant artist" color="#c9a97f" speaker="chi" url="https://twitter.com/cherrychrii" x="-6" y="748">
+		<anim name="open" length="2" loop="false" />
+		<anim name="idle" offset="2" length="2" />
+		<anim name="close" offset="4" length="3" loop="false" />
+		<!-- dialogue -->
+		<line>hi</line>
+		<line>i did nothing in this mod ngl</line>
+		<line>i drew some assets for the mobile support and thats it...gulp</line>
+		<line>(theres not even a real cne port yet i just thought itll be cool)</line>
+	</credit>
+</menu>

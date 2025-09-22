@@ -1,0 +1,23 @@
+<!DOCTYPE codename-engine-character>
+<character y="350" flipX="true" camx="-100" camy="37" isPlayer="true" icon="baxter" color="#2EAEAC" gameOverChar="baxter" isGF="false">
+	<anim name="idle" anim="idle"/>
+	<anim name="singLEFT" anim="left" x="45" y="-15"/>
+	<anim name="singDOWN" anim="down" x="10" y="-43"/>
+	<anim name="singUP" anim="up0" x="-4" y="42"/>
+	<anim name="singRIGHT" anim="right" x="-30" y="-11"/>
+	<anim name="singLEFTmiss" anim="miss" x="9" y="31" fps="8" indices="0"/>
+	<anim name="singDOWNmiss" anim="miss" x="4" y="26" fps="8" indices="1"/>
+	<anim name="singUPmiss" anim="miss" x="2" y="31" fps="8" indices="2"/>
+	<anim name="singRIGHTmiss" anim="miss" x="-3" y="26" fps="8" indices="3"/>
+	<anim name="hey" anim="hey" x="-19" y="6"/>
+	<anim name="scream" anim="scream" x="194" y="100" loop="true"/>
+	<anim name="firstDeath" anim="die" x="-18" y="-5" loop="true"/>
+	<anim name="deathLoop" anim="die" x="-18" y="-5" loop="true"/>
+	<anim name="deathConfirm" anim="die" x="-18" y="-5" loop="true"/>
+	<anim name="troll" anim="troll" x="-23" y="-9" loop="true"/>
+	<anim name="point" anim="point" x="50" y="9"/>
+	<anim name="breathe-in" anim="breathe-in" x="-18" y="6"/>
+	<anim name="breathe-out" anim="breathe-out" x="-12" y="-10"/>
+	<anim name="next-big-meme-face" anim="next-big-meme-face" x="129" y="-30" loop="true"/>
+	<anim name="up-talk" anim="up-talk" x="25" y="146"/>
+</character>

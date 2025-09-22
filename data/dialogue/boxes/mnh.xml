@@ -1,0 +1,22 @@
+<!DOCTYPE codename-engine-dialogue-box>
+<dialoguebox sprite="ui/mnh/dialogue-box" textSound="mnh-dialogue" y="0">
+  <!--
+		Node containing all text settings
+	-->
+  <text font="sillyfont.ttf" x="0" y="20" width="280" size="25"/>
+
+  <!--
+		All positions for characters
+	-->
+  <charpos name="left" x="-500" y="184" />
+  <charpos name="middle" x="0" y="184" />
+  <charpos name="right" x="490" y="184" flipBubble="true" />
+
+  <!--
+		All animations for the dialogue box
+		For example, if you wanna add an "angry" animation, add an animation named "angry" (box idle), and "angry-open" (not needed, for box apparition)
+	-->
+  <anim name="normal" anim="idle" fps="24" loop="true" />
+  <anim name="normal-open" anim="open" fps="24" x="42" y="42"/>
+  <anim name="normal-close" anim="close" fps="12" />
+</dialoguebox>

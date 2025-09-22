@@ -1,0 +1,26 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.8" name="outside" folder="stages/outside/" startCamPosY="-600" startCamPosX="500">
+	<ext script="mnh" folder="interfaces/" />
+	<ext script="forceFPSshadow" folder="data/scripts/" />
+
+	<high-memory>
+		<sprite name="bg" x="-200" y="100" sprite="lmao" scroll="0.3" scale="4" updateHitbox="true" color="#fffce9" zoomfactor="0" />
+	</high-memory>
+
+	<solid name="floorTile1" x="-600" y="466" width="2500" height="300" color="#fdffd1" scroll="0.36" />
+
+	<sprite name="house" x="185" y="130" sprite="house" scroll="0.45" zoomfactor="0.5" scale="0.8" updateHitbox="true">
+		<anim name="action" anim="house" loop="false" />
+		<anim name="action-loop" anim="house" loop="true" indices="8,10,12" fps="12" />
+		<anim name="idle" anim="house" loop="true" indices="0" />
+	</sprite>
+
+	<sprite name="cardboard" x="1011" y="357" sprite="cardboard" scroll="0.58" zoomfactor="0.8" scale="0.8" updateHitbox="true" />
+
+	<solid name="floorTile2" x="-600" y="654" width="2500" height="300" color="#f1ffaf" scroll="0.9" />
+	<solid name="floorTile3" x="-600" y="685" width="2500" height="400" color="#acf2bb" scroll="0.9"/>
+
+	<girlfriend x="600" y="145"/>
+	<dad />
+	<boyfriend x="1100"/>
+</stage>

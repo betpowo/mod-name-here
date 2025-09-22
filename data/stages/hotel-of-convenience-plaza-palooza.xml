@@ -1,0 +1,15 @@
+<!DOCTYPE codename-engine-stage>
+<stage startCamPosX="500" startCamPosY="100" folder="stages/hotel-plaza/" zoom="0.8" name="hotel-of-convenience-plaza-palooza">
+	<ext script="mnh" folder="interfaces/" />
+	<ext script="forceFPSshadow" folder="data/scripts/" />
+
+	<sprite x="-857" zoomfactor="0.6" scroll="0.3" sprite="shops" y="-156" type="none" name="shops"/>
+	<sprite x="-552" zoomfactor="0.1" scroll="0.2" sprite="rooms" y="460" type="none" name="rooms"/>
+	<sprite x="-769" zoomfactor="0.6" scroll="0.3" sprite="top" y="-272" type="none" name="top"/>
+	<sprite x="-588" zoomfactor="0.7" scroll="0.4" sprite="floor-back" y="413" type="none" name="floorBack"/>
+	<sprite x="242" zoomfactor="0.7" scroll="0.45" sprite="stairs" y="382" name="stairs"/>
+	<sprite x="-709" scrollx="0.5" sprite="floor-front" y="574" type="none" name="floorFront"/>
+	<girlfriend x="650" scroll="0.98" y="200" camyoffset="-20"/>
+	<dad x="100" y="170" camyoffset="-20"/>
+	<boyfriend x="1100" y="170" camyoffset="-20"/>
+</stage>

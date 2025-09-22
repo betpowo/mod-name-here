@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="gf" y="40" isGF="true" camx="-140" camy="200" color="#b20069" isPlayer="false" gameOverChar="" sprite="glenda" dialx="200" dialy="-100" dialcamx="100" dialcamy="-30">
+	<anim x="0" loop="false" y="0" fps="24" anim="dance left" name="danceLeft"/>
+	<anim x="-20" loop="false" y="0" fps="24" anim="dance right" name="danceRight"/>
+	<anim x="-7" loop="false" y="-9" fps="24" anim="sad" name="sad"/>
+</character>

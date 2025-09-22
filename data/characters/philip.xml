@@ -1,0 +1,14 @@
+<!DOCTYPE codename-engine-character>
+<character y="325" flipX="true" camx="-100" camy="68" isPlayer="true" icon="philip" color="#CEFA71" gameOverChar="philip-dead" isGF="false">
+	<anim name="idle" anim="idle"/>
+	<anim name="singLEFT" anim="left" x="93" y="5"/>
+	<anim name="singDOWN" anim="down" x="25" y="-47"/>
+	<anim name="singUP" anim="up" x="51" y="10"/>
+	<anim name="singRIGHT" anim="right" x="39" y="-11"/>
+	<anim name="singLEFTmiss" anim="miss" x="92" y="6" fps="8" indices="0"/>
+	<anim name="singDOWNmiss" anim="miss" x="84" y="7" fps="8" indices="1"/>
+	<anim name="singUPmiss" anim="miss" x="94" y="4" fps="8" indices="2"/>
+	<anim name="singRIGHTmiss" anim="miss" x="87" fps="8" indices="3"/>
+	<anim name="scream" anim="scream" x="465" y="190" loop="true"/>
+	<anim name="honestly-monologue" anim="monologue" x="96" y="17"/>
+</character>

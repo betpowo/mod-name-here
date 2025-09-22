@@ -1,0 +1,14 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.8" name="hidden" startCamPosY="600" startCamPosX="1000">
+	<ext script="parody" folder="interfaces/" />
+	<ext script="parody-cam" folder="data/scripts/" />
+
+	<high-memory>
+		<sprite name="bg" sprite="stages/cave/bg" x="-300" y="-450" scale="2" updateHitbox="true" antialiasing="false" scroll="0.5"/>
+	</high-memory>
+	<sprite name="pipes" sprite="stages/cave/platforms" x="-400" y="-150" scale="2" updateHitbox="true" antialiasing="false" />
+	<girlfriend y="200" />
+	<dad />
+	<boyfriend />
+	<combo x="700" y="500"/>
+</stage>

@@ -1,0 +1,11 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.9" name="lima" startCamPosY="600" startCamPosX="1000">
+	<ext script="parody" folder="interfaces/" />
+	<ext script="parody-cam" folder="data/scripts/" />
+
+	<sprite name="bg" sprite="stages/lima" x="-1200" y="-900" graphicSizex="5000" graphicSizey="2600" updateHitbox="true" antialiasing="false" />
+	<girlfriend y="200" />
+	<dad />
+	<boyfriend />
+	<combo x="700" y="500"/>
+</stage>

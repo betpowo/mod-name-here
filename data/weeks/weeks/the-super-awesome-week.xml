@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-week>
+<week chars="none,bf,none" sprite="tutorial">
+    <song chars="josephine,baxter" hide="score.weird-song"> weird-song </song>
+    <!-- <song chars="betpo,josephine" locked="score.weird-song"> jingle-balls </song>
+    <song chars="betpo,baxter" hide="score.fword"> fword </song> -->
+</week>

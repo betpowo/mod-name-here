@@ -1,0 +1,11 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.78" name="phillippines" startCamPosY="600" startCamPosX="1000">
+	<ext script="parody" folder="interfaces/" />
+	<ext script="parody-cam" folder="data/scripts/" />
+
+	<sprite name="bg" sprite="stages/phillippines" x="-900" y="-1700" scalex="13" scaley="18" updateHitbox="true" antialiasing="false" />
+	<girlfriend y="-100" />
+	<dad y="-100"/>
+	<boyfriend y="-100"/>
+	<combo x="700" y="200"/>
+</stage>

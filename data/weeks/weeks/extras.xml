@@ -1,0 +1,22 @@
+<!DOCTYPE codename-engine-week>
+<week chars="none,bf,none" sprite="tutorial">
+	<!-- 
+		basic song element.
+
+		this adds a song to the menu
+		"chars" determines the characters in the char select menu when pressin [tab]
+		(defaults to "face,bf" if not found)
+	-->
+	<song chars="sus,bf"> amogus </song>
+	<song chars="carlos,bf"> carlos </song>
+	<song chars="eduar,bf"> eduar </song>
+	<song chars="theo,baxter"> guns-gameplay </song>
+
+	<!--
+		score.song-data-name will only enable it if
+		the song internally called "song-data-name" has been played at least once
+		(in the default variation)
+	-->
+	<song chars="marco,bf" locked="score.carlos"> marco </song>
+	<song chars="marco,bf" locked="score.marco"> new-super-marco-hermano </song>
+</week>

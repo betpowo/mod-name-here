@@ -1,0 +1,354 @@
+<!DOCTYPE codename-engine-alphabet-font>
+<alphabetFont fps="12" advance="50" lineGap="75" forceCasing="lower" colorMode="tint" antialiasing="true">
+	<spritesheet>
+		menus/alphabet-bold
+	</spritesheet>
+	<defaultAnim>
+		character-LETTER0
+	</defaultAnim>
+	<anim char="&amp;">
+		character-ampersand
+	</anim>
+	<anim char="&lt;">
+		character-anglebracket-left
+	</anim>
+	<anim char="&gt;">
+		character-anglebracket-right
+	</anim>
+	<anim char="*" x="0" y="30">
+		character-asterisk
+	</anim>
+	<anim char="@">
+		character-at
+	</anim>
+	<anim char="\">
+		character-backslash
+	</anim>
+	<anim char="`" x="0" y="40">
+		character-backtick
+	</anim>
+	<anim char="^" x="0" y="30">
+		character-caret
+	</anim>
+	<anim char=":" x="0" y="10">
+		character-colon
+	</anim>
+	<anim char="," x="0" y="-15">
+		character-comma
+	</anim>
+	<anim char="{">
+		character-curlybracket-left
+	</anim>
+	<anim char="}">
+		character-curlybracket-right
+	</anim>
+	<anim char="$">
+		character-dollar
+	</anim>
+	<anim char="&quot;" x="0" y="35">
+		character-doublequote0
+	</anim>
+	<anim char="=" x="0" y="20">
+		character-equal
+	</anim>
+	<anim char="!">
+		character-exclamationmark0
+	</anim>
+	<anim char="-" x="0" y="25">
+		character-hyphen
+	</anim>
+	<anim char="%">
+		character-percent
+	</anim>
+	<anim char=".">
+		character-period
+	</anim>
+	<anim char="+" x="0" y="10">
+		character-plus
+	</anim>
+	<anim char="#">
+		character-pound
+	</anim>
+	<anim char="?">
+		character-questionmark0
+	</anim>
+	<anim char="(">
+		character-roundbracket-left
+	</anim>
+	<anim char=")">
+		character-roundbracket-right
+	</anim>
+	<anim char=";" x="0" y="-15">
+		character-semicolon
+	</anim>
+	<anim char="&#039;" x="0" y="35">
+		character-singlequote
+	</anim>
+	<anim char="/">
+		character-slash
+	</anim>
+	<anim char="[">
+		character-squarebracket-left
+	</anim>
+	<anim char="]">
+		character-squarebracket-right
+	</anim>
+	<anim char="~" x="0" y="20">
+		character-tilde0
+	</anim>
+	<anim char="_">
+		character-underscore0
+	</anim>
+	<anim char="|">
+		character-verticalbar0
+	</anim>
+	<anim char="0">
+		character-zero
+	</anim>
+	<anim char="1">
+		character-one
+	</anim>
+	<anim char="2">
+		character-two
+	</anim>
+	<anim char="3">
+		character-three
+	</anim>
+	<anim char="4">
+		character-four
+	</anim>
+	<anim char="5">
+		character-five
+	</anim>
+	<anim char="6">
+		character-six
+	</anim>
+	<anim char="7">
+		character-seven
+	</anim>
+	<anim char="8">
+		character-eight
+	</anim>
+	<anim char="9">
+		character-nine
+	</anim>
+	<composite char="ã">
+		<component anim="character-a0"/>
+		<component anim="diacritic-tilde-fill" x="11" y="73" hasOutline="true" outline="diacritic-tilde-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ẽ">
+		<component anim="character-e0"/>
+		<component anim="diacritic-tilde-fill" x="3" y="73" hasOutline="true" outline="diacritic-tilde-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="õ">
+		<component anim="character-o0"/>
+		<component anim="diacritic-tilde-fill" x="8" y="73" hasOutline="true" outline="diacritic-tilde-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ñ">
+		<component anim="character-n0"/>
+		<component anim="diacritic-tilde-fill" x="3" y="73" hasOutline="true" outline="diacritic-tilde-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="á" advance="55">
+		<component anim="character-a0"/>
+		<component anim="diacritic-acute-fill" x="23" y="70" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="é" advance="44">
+		<component anim="character-e0"/>
+		<component anim="diacritic-acute-fill" x="15" y="70" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="í" advance="43">
+		<component anim="character-i0"/>
+		<component anim="diacritic-acute-fill" x="15" y="68" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ó" advance="50">
+		<component anim="character-o0"/>
+		<component anim="diacritic-acute-fill" x="20" y="70" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ú" advance="53">
+		<component anim="character-u0"/>
+		<component anim="diacritic-acute-fill" x="18" y="70" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="â">
+		<component anim="character-a0"/>
+		<component anim="diacritic-circumflex-fill" x="13" y="70" hasOutline="true" outline="diacritic-circumflex-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ê">
+		<component anim="character-e0"/>
+		<component anim="diacritic-circumflex-fill" x="6" y="70" hasOutline="true" outline="diacritic-circumflex-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ô">
+		<component anim="character-o0"/>
+		<component anim="diacritic-circumflex-fill" x="11" y="70" hasOutline="true" outline="diacritic-circumflex-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="à">
+		<component anim="character-a0"/>
+		<component anim="diacritic-acute-fill" x="16" y="70" flipX="true" flipY="false" hasOutline="true" outline="diacritic-acute-outline" outlineX="1" outlineY="0"/>
+	</composite>
+	<composite char="ą">
+		<component anim="character-a0"/>
+		<component anim="diacritic-ogonek-fill" x="34" y="-12" hasOutline="true" outline="diacritic-ogonek-outline" outlineX="2" outlineY="-2"/>
+	</composite>
+	<composite char="ę">
+		<component anim="character-e0"/>
+		<component anim="diacritic-ogonek-fill" x="23" y="-14" hasOutline="true" outline="diacritic-ogonek-outline" outlineX="2" outlineY="-2"/>
+	</composite>
+	<composite char="ç">
+		<component anim="character-c0"/>
+		<component anim="diacritic-cadilla-fill" x="20" y="-15" hasOutline="true" outline="diacritic-cadilla-outline" outlineX="3" outlineY="-1"/>
+	</composite>
+	<composite char="ć">
+		<component anim="character-c0"/>
+		<component anim="diacritic-acute-fill" x="19.8" y="72.5" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ś">
+		<component anim="character-s0"/>
+		<component anim="diacritic-acute-fill" x="18" y="73" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ń">
+		<component anim="character-n0"/>
+		<component anim="diacritic-acute-fill" x="15.8" y="71.3" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ź">
+		<component anim="character-z0"/>
+		<component anim="diacritic-acute-fill" x="22.3" y="71.7" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ż">
+		<component anim="character-z0"/>
+		<component anim="diacritic-dot-fill" x="20.1" y="73" hasOutline="true" outline="diacritic-dot-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ł">
+		<component anim="character-l0"/>
+		<component anim="diacritic-stroke0-short-fill" x="-2" y="30" hasOutline="true" outline="diacritic-stroke0-short-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<anim char="¿" x="0" y="-12" flipX="true" flipY="true">
+		character-questionmark0
+	</anim>
+	<anim char="¡" x="0" y="-14" flipX="true" flipY="true">
+		character-exclamationmark0
+	</anim>
+	<anim char="❤">
+		character-heart0
+	</anim>
+	<anim char="×" x="0" y="10">
+		character-multiply
+	</anim>
+	<anim char="↑">
+		character-arrow-up0
+	</anim>
+	<anim char="↓">
+		character-arrow-down0
+	</anim>
+	<anim char="→">
+		character-arrow-right0
+	</anim>
+	<anim char="←">
+		character-arrow-left0
+	</anim>
+	<anim char="æ" x="0" y="-2">
+		character-ash
+	</anim>
+	<anim char="�" x="0" y="-1">
+		character-angryfaic0
+	</anim>
+	<anim char="œ">
+		character-ethel
+	</anim>
+	<composite char="ā">
+		<component anim="character-a0"/>
+		<component anim="diacritic-macron-fill" x="10" y="69" hasOutline="true" outline="diacritic-macron-outline"/>
+	</composite>
+	<composite char="ē">
+		<component anim="character-e0"/>
+		<component anim="diacritic-macron-fill" x="4" y="71" hasOutline="true" outline="diacritic-macron-outline"/>
+	</composite>
+	<composite char="ī">
+		<component anim="character-i0"/>
+		<component anim="diacritic-macron-fill" x="3" y="69" hasOutline="true" outline="diacritic-macron-outline"/>
+	</composite>
+	<composite char="ō">
+		<component anim="character-o0"/>
+		<component anim="diacritic-macron-fill" x="8" y="69" hasOutline="true" outline="diacritic-macron-outline"/>
+	</composite>
+	<composite char="ū">
+		<component anim="character-u0"/>
+		<component anim="diacritic-macron-fill" x="5" y="69" hasOutline="true" outline="diacritic-macron-outline"/>
+	</composite>
+	<composite char="ă">
+		<component anim="character-a0"/>
+		<component anim="diacritic-breve-fill" x="12" y="66" hasOutline="true" outline="diacritic-breve-outline" outlineX="0" outlineY="1"/>
+	</composite>
+	<composite char="ĕ">
+		<component anim="character-e0"/>
+		<component anim="diacritic-breve-fill" x="7" y="66" hasOutline="true" outline="diacritic-breve-outline" outlineX="0" outlineY="1"/>
+	</composite>
+	<composite char="ĭ">
+		<component anim="character-i0"/>
+		<component anim="diacritic-breve-fill" x="6" y="66" hasOutline="true" outline="diacritic-breve-outline" outlineX="0" outlineY="1"/>
+	</composite>
+	<composite char="ŏ">
+		<component anim="character-o0"/>
+		<component anim="diacritic-breve-fill" x="11" y="69" hasOutline="true" outline="diacritic-breve-outline" outlineX="0" outlineY="1"/>
+	</composite>
+	<composite char="ŭ">
+		<component anim="character-u0"/>
+		<component anim="diacritic-breve-fill" x="8" y="68" hasOutline="true" outline="diacritic-breve-outline" outlineX="0" outlineY="1"/>
+	</composite>
+	<composite char="ğ">
+		<component anim="character-g0"/>
+		<component anim="diacritic-breve-fill" x="14" y="69" hasOutline="true" outline="diacritic-breve-outline" outlineX="0" outlineY="1"/>
+	</composite>
+	<composite char="ø">
+		<component anim="character-o0"/>
+		<component anim="diacritic-stroke45-long-fill" x="0" y="6" hasOutline="true" outline="diacritic-stroke45-long-outline"/>
+	</composite>
+	<composite char="å">
+		<component anim="character-a0"/>
+		<component anim="diacritic-ring-fill" x="19" y="65" hasOutline="true" outline="diacritic-ring-outline"/>
+	</composite>
+	<composite char="ů">
+		<component anim="character-u0"/>
+		<component anim="diacritic-ring-fill" x="14" y="68" hasOutline="true" outline="diacritic-ring-outline"/>
+	</composite>
+	<composite char="ä">
+		<component anim="character-a0"/>
+		<component anim="diacritic-dot-fill" x="12" y="69" hasOutline="true" outline="diacritic-dot-outline" outlineX="-1" outlineY="0"/>
+		<component anim="diacritic-dot-fill" x="33" y="69" hasOutline="true" outline="diacritic-dot-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ë">
+		<component anim="character-e0"/>
+		<component anim="diacritic-dot-fill" x="8" y="69" hasOutline="true" outline="diacritic-dot-outline" outlineX="-1" outlineY="0"/>
+		<component anim="diacritic-dot-fill" x="28" y="69" hasOutline="true" outline="diacritic-dot-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ï">
+		<component anim="character-i0"/>
+		<component anim="diacritic-dot-fill" x="4" y="69" hasOutline="true" outline="diacritic-dot-outline" outlineX="-1" outlineY="0"/>
+		<component anim="diacritic-dot-fill" x="26" y="69" hasOutline="true" outline="diacritic-dot-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ö">
+		<component anim="character-o0"/>
+		<component anim="diacritic-dot-fill" x="8" y="69" hasOutline="true" outline="diacritic-dot-outline" outlineX="-1" outlineY="0"/>
+		<component anim="diacritic-dot-fill" x="30" y="69" hasOutline="true" outline="diacritic-dot-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ü">
+		<component anim="character-u0"/>
+		<component anim="diacritic-dot-fill" x="7" y="69" hasOutline="true" outline="diacritic-dot-outline" outlineX="-1" outlineY="0"/>
+		<component anim="diacritic-dot-fill" x="27" y="69" hasOutline="true" outline="diacritic-dot-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ÿ">
+		<component anim="character-y0"/>
+		<component anim="diacritic-dot-fill" x="8" y="69" hasOutline="true" outline="diacritic-dot-outline" outlineX="-1" outlineY="0"/>
+		<component anim="diacritic-dot-fill" x="35" y="69" hasOutline="true" outline="diacritic-dot-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ý">
+		<component anim="character-y0"/>
+		<component anim="diacritic-acute-fill" x="23" y="67" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ĺ">
+		<component anim="character-l0"/>
+		<component anim="diacritic-acute-fill" x="12" y="70" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+	<composite char="ŕ">
+		<component anim="character-r0"/>
+		<component anim="diacritic-acute-fill" x="12" y="70" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
+	</composite>
+</alphabetFont>

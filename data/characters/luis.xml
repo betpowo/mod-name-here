@@ -1,0 +1,14 @@
+<!DOCTYPE codename-engine-character>
+<character x="120" y="576" scale="6" antialiasing="false" camx="-350" camy="70" icon="luis" color="#49F983">
+	<anim name="idle" anim="idle" loop="true"/>
+	<anim name="singLEFT" anim="left"/>
+	<anim name="singDOWN" anim="down"/>
+	<anim name="singUP" anim="up"/>
+	<anim name="singRIGHT" anim="right"/>
+	<anim name="jump" anim="jump"/>
+	<anim name="luis" anim="luis"/>
+	<anim name="WHAT" anim="WHAT"/>
+	<anim name="srs-or-j" anim="srs-or-j" fps="12" loop="true"/>
+	<anim name="star" anim="star" x="50"/>
+	<anim name="star-loop" anim="star" fps="12" loop="true" indices="2..5" x="50"/>
+</character>

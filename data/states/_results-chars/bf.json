@@ -1,0 +1,140 @@
+{
+	"ownedChars": [
+		"bf",
+		"bf-car",
+		"bf-pixel",
+		"bf-christmas",
+		"bf-holding-gf"
+	],
+	"results": {
+		"folder": "results/base/results-bf",
+		"music": {
+			"PERFECT_GOLD": "resultsPERFECT",
+			"PERFECT": "resultsPERFECT",
+			"EXCELLENT": "resultsEXCELLENT",
+			"GREAT": "resultsNORMAL",
+			"GOOD": "resultsNORMAL",
+			"LOSS": "resultsSHIT"
+		},
+		"perfect_gold": [
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsPERFECT",
+				"zIndex": 500,
+				"offsets": [
+					1342,
+					370
+				],
+				"loopFrame": 137
+			},
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsPERFECT/hearts",
+				"zIndex": 501,
+				"delay": 4.41,
+				"offsets": [
+					1342,
+					370
+				],
+				"loopFrame": 43
+			}
+		],
+		"perfect": [
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsPERFECT",
+				"zIndex": 500,
+				"offsets": [
+					1342,
+					370
+				],
+				"loopFrame": 137
+			},
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsPERFECT/hearts",
+				"zIndex": 501,
+				"delay": 4.41,
+				"offsets": [
+					1342,
+					370
+				],
+				"loopFrame": 43
+			}
+		],
+		"excellent": [
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsEXCELLENT",
+				"zIndex": 500,
+				"offsets": [
+					1329,
+					429
+				],
+				"loopFrame": 29
+			}
+		],
+		"great": [
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsGREAT/gf",
+				"scale": 0.93,
+				"delay": 0.25,
+				"offsets": [
+					802,
+					331
+				],
+				"zIndex": 499,
+				"loopFrame": 9,
+				"scroll": 0.73
+			},
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsGREAT/bf",
+				"scale": 0.93,
+				"zIndex": 500,
+				"offsets": [
+					929,
+					363
+				],
+				"loopFrame": 15
+			}
+		],
+		"good": [
+			{
+				"renderType": "sparrow",
+				"assetPath": "resultsGOOD/resultBoyfriendGOOD",
+				"zIndex": 501,
+				"offsets": [
+					662,
+					-222
+				],
+				"loopFrame": 14
+			},
+			{
+				"renderType": "sparrow",
+				"assetPath": "resultsGOOD/resultGirlfriendGOOD",
+				"zIndex": 500,
+				"delay": 0.91,
+				"offsets": [
+					629,
+					323
+				],
+				"loopFrame": 9,
+				"scroll": 0.8
+			}
+		],
+		"loss": [
+			{
+				"renderType": "animateatlas",
+				"assetPath": "resultsSHIT",
+				"zIndex": 500,
+				"offsets": [
+					0,
+					20
+				],
+				"loopFrame": 149
+			}
+		]
+	}
+}

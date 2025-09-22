@@ -1,0 +1,16 @@
+<!DOCTYPE codename-engine-character>
+<character x="-75" y="100" sprite="secret/josie" camy="125" color="#FF3366" gameOverChar="die/josie-dead" isGF="false">
+	<anim name="idle" anim="idle0"/>
+	<anim name="singLEFT" anim="left0" x="29" y="-18"/>
+	<anim name="singDOWN" anim="down0" x="-18" y="-41"/>
+	<anim name="singUP" anim="up0" x="3" y="-7"/>
+	<anim name="singRIGHT" anim="right0" x="-32" y="-1"/>
+	<anim name="singLEFT-alt" anim="left-alt" x="45" y="-6"/>
+	<anim name="singDOWN-alt" anim="down-alt" x="5" y="-92"/>
+	<anim name="singUP-alt" anim="up-alt" x="22" y="15"/>
+	<anim name="singRIGHT-alt" anim="right-alt" x="-51" y="3"/>
+	<anim name="im-fucking-dying-hepl" anim="im-fucking-dying-hepl" x="97" y="1"/>
+	<anim name="lets-take-a-look" anim="lets-take-a-look" x="332"/>
+	<anim name="down-interrupt" anim="down-interrupt" x="-18" y="-41"/>
+	<anim name="right-interrupt" anim="right-interrup" x="123" y="1"/>
+</character>

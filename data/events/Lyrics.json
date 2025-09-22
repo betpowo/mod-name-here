@@ -1,0 +1,19 @@
+{
+    "params": [
+        {
+            "name": "Text",
+            "type": "String",
+            "defaultValue": ""
+        },
+        {
+            "name": "Size",
+            "type": "Int(0, 1280, 32)",
+            "defaultValue": 32
+        },
+        {
+            "name": "Color",
+            "type": "ColorWheel",
+            "defaultValue": "#FFFFFF"
+        }
+    ]
+}
