@@ -16,10 +16,13 @@ var camFollow:FlxObject = new FlxObject(0, 0, 0, 0);
 var cam = new FlxCamera();
 var beep = FlxG.sound.load(FlxAssets.getSound('flixel/sounds/beep'));
 
+var backText = '?:/';
+
 function create() {
 	FlxG.cameras.add(cam, false);
 	camera = cam;
 	mods = ModsFolder.getModsList();
+	if (mobile) mods.push(backText);
 	mods.push(null);
 
 	var bg = new FlxSprite(0, 0).makeSolid(FlxG.width, FlxG.height, 0xFF000000);
@@ -29,6 +32,7 @@ function create() {
 
 	for (i => v in mods) {
 		var targetText:String = v ?? '[ disable. ]';
+		if (v == backText) targetText = '[ back to the fun! ]';
 		var t = setupText(targetText);
 		t.alpha = 0.2;
 		t.setPosition(50, 50 + (50 * i));
@@ -97,7 +101,7 @@ function update(elapsed) {
 		changeSelection(-1);
 	if (controls.ACCEPT) {
 		canSelect = false;
-		if (mods[selected] != false) {
+		if (mods[selected] != backText) {
 			doStatic(0.6, () -> {
 				FlxG.camera.visible = false;
 				ModsFolder.switchMod(mods[selected]);
