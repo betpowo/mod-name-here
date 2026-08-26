@@ -9,7 +9,6 @@ import flixel.math.FlxAngle;
 var bc = new FlxCamera();
 var backdrop = new FlxBackdrop(Paths.image('stages/wonder-bg'));
 var fuckShader = new FunkinShader('
-    #version 130
     #pragma header
     uniform float factor;
     void main() {

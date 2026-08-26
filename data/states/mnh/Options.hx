@@ -556,7 +556,6 @@ function create() {
 
 	menuGroup.cameras = [awesomeCam];
 	var fuckShader = new FunkinShader('
-		#version 130
 		#pragma header
 
 		void main() {
