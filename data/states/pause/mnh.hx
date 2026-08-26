@@ -1,281 +1,320 @@
-import openfl.display.BlendMode;
-import funkin.ui.FunkinText;
-import flixel.text.FlxText;
-import flixel.text.FlxTextBorderStyle;
-import flixel.util.FlxAxes;
-var pixelScript:Script;
-var pauseCam = new FlxCamera();
-var bg:FlxSprite;
-var paper = [new FlxSprite(), new FlxSprite()];
-var texts:Array<FlxText> = [];
-var songColor = CoolUtil.getColorFromDynamic(PlayState.SONG.meta.color ?? '#717171');
-var whiteColor = 0xffffff;
-var blackColor = 0x000000;
+import funkin.menus.ui.effects.WaveEffect;
+import flixel.addons.display.FlxBackdrop;
 
-function red(col) {
-	return (col >> 16) & 0xff;
-}
+final quotes = CoolUtil.coolTextFile(Paths.file('interfaces/mnh-pause-quotes.txt'));
 
-function green(col) {
-	return (col >> 8) & 0xff;
-}
+final effect = new WaveEffect(2, 4, 3);
+effect.speed = 0;
 
-function blue(col) {
-	return (col & 0xff);
-}
+final pauseCam = new FlxCamera();
 
-function col232(col) {
-	return (col & 0xffffff) + 0xff000000;
-}
-
-var col = songColor;
-var luminance = (0.2126 * (red(col) / 255) + 0.7152 * (green(col) / 255) + 0.0722 * (blue(col) / 255));
-var brightestLuminance:Float = 2 / 3;
-var dark = luminance >= brightestLuminance;
-
-function create(event) {
-	// cancel default pause menu!!
-	event.cancel();
-	event.music = 'breakfast-mnh';
-
-	whiteColor = FlxColor.interpolate(songColor, FlxColor.WHITE, 0.9);
-	blackColor = FlxColor.interpolate(songColor, FlxColor.BLACK, 0.75);
-	blackColor = FlxColor.fromRGB(Std.int(red(blackColor) * (7 / 3)), Std.int(green(blackColor) * (5 / 3)), Std.int(blue(blackColor) * (9 / 3)), 255);
-
-	cameras = [];
-
-	// pixelScript = game.scripts.getByName("pixel.hx");
-	// pixelScript.call("pixelCam", [pauseCam]);
-
-	FlxG.cameras.add(pauseCam, false);
-	pauseCam.bgColor = 0;
-
-	bg = new FlxSprite().makeSolid(pauseCam.width, pauseCam.height, getInverted(FlxColor.interpolate(songColor, 0xff443344, 2 / 3)));
-	bg.cameras = [pauseCam];
-	bg.blend = BlendMode.SUBTRACT;
-	add(bg);
-
-	for (a => b in ['bottom', 'top']) {
-		var pap = paper[a];
-		add(pap);
-		pap.frames = Paths.getSparrowAtlas('ui/mnh/pause');
-		pap.animation.addByPrefix('idle', b, 3, true);
-		pap.animation.play('idle', true);
-		pap.updateHitbox();
-		pap.setPosition(0, FlxG.height - pap.height);
-		pap.color = FlxColor.interpolate(dark ? blackColor : whiteColor, songColor, 0.3);
-	}
-
-	var i = 0;
-	for (e in menuItems) {
-		text = new FlxText(0, (FlxG.height - 50 - (menuItems.length * 60)) + (i * 60), 0, ' ' + e.toLowerCase(), 50, false);
-		confText(text);
-		add(text);
-		texts.push(text);
-		text.angle = 3;
-		text.ID = i;
-		if (mobile) {
-			text.angle = 0;
-			text.size *= 1.5;
-			text.borderSize *= 1.5;
-			text.y = (FlxG.height - 80 - (menuItems.length * 72)) + (i * 72);
-			text.updateHitbox();
-			text.origin.x = 0;
-		}
-		i++;
-	}
-	songText = new FlxText(0, 7, -1, PlayState.SONG.meta.displayName.toLowerCase(), 80, false);
-	confText(songText);
-	songText.alignment = 'right';
-	add(songText);
-	songText.color = songColor;
-
-	var composer = 'Unknown';
-	if (PlayState.SONG.meta.customValues != null && PlayState.SONG.meta.customValues.composer != null) {
-		composer = PlayState.SONG.meta.customValues.composer;
-	}
-
-	compText = new FlxText(0, 40, -1, composer.toLowerCase(), 30, false);
-	confText(compText);
-	compText.alignment = 'right';
-	add(compText);
-	compText.color = dark ? whiteColor : blackColor;
-
-	deathText = new FlxText(0, 100, -1, '(' + PlayState.deathCounter + ' fails)', 30, false);
-	confText(deathText);
-	deathText.alignment = 'right';
-	add(deathText);
-	deathText.color = 0xff3366;
-
-	for (i in [songText, compText, deathText]) {
-		i.borderColor = dark ? blackColor : whiteColor;
-		i.x = FlxG.width - i.width - 50;
-	}
-	compText.x -= songText.width + 10;
-	paper[1].x = compText.x - 50;
-	paper[1].y = 0;
-
-	cameras = [pauseCam];
-	changeSelection(0);
-
-	enterAnim();
-}
-
-function confText(text) {
-	text.font = Paths.font('sillyfont.ttf');
-	text.updateHitbox();
-	text.x = 30;
-	text.borderSize = 3.5;
-	text.borderStyle = FlxTextBorderStyle.OUTLINE;
-	text.color = songColor;
-	text.borderColor = dark ? blackColor : whiteColor;
-	text.origin.x = 0;
-	text.antialiasing = true;
-}
-
-function destroy() {
-	if (FlxG.cameras.list.contains(pauseCam))
-		FlxG.cameras.remove(pauseCam);
-}
-
-var canDoShit = true;
-var time:Float = 0;
-
-function update(elapsed) {
-	// pixelScript.call("postUpdate", [elapsed]);
-
-	time += elapsed;
-
-	if (!canDoShit)
-		return;
-	var oldSec = curSelected;
-	if (controls.DOWN_P)
-		changeSelection(1);
-	if (controls.UP_P)
-		changeSelection(-1);
-
-	if (mobile) {
-		var overlapping = false;
-		var screen = FlxG.mouse.getScreenPosition(pauseCam);
-		if (screen.y >= texts[0].y && screen.x <= FlxG.width * 0.5) {
-			overlapping = true;
-			var target = Math.min(texts.length - 1, Math.floor((screen.y - texts[0].y + 10) / (texts[0].size)));
-			if (curSelected != target) {
-				curSelected = 0;
-				changeSelection(target);
-			}
-		}
-		screen.put();
-		/*for (i in texts) {
-			if (FlxG.mouse.overlaps(i, pauseCam)) {
-				curSelected = 0;
-				changeSelection(i.ID);
-				overlapping = true;
-				break;
-			}
-		}*/
-		if (!overlapping && curSelected != -1) {
-			curSelected = -1;
-		}
-	}
-
-	if (oldSec != curSelected && curSelected != -1) {
-		CoolUtil.playMenuSFX();
-	}
-
-	if (controls.ACCEPT || (mobile && (curSelected != -1 && FlxG.mouse.justReleased))) {
-		canDoShit = false;
-		FlxG.sound.play(Paths.sound('pixel/clickText'));
-		var option = menuItems[curSelected];
-		if (option == 'Change Controls') {
-			selectOption();
-			canDoShit = true;
-			return;
-		}
-		new FlxTimer().start(exitAnim(), (_) -> selectOption());
-	}
-}
-
-var curText:FlxText;
-
-function changeSelection(change) {
-	curSelected += change;
-
-	if (curSelected < 0)
-		curSelected = menuItems.length - 1;
-	if (curSelected >= menuItems.length)
-		curSelected = 0;
-
-	if (curText != null) {
-		FlxTween.cancelTweensOf(curText.scale);
-		FlxTween.tween(curText.scale, {x: 1, y: 1}, 0.5, {ease: FlxEase.elasticOut});
-	}
-	swap();
-	curText = texts[curSelected];
-	swap();
-	if (curText != null) {
-		FlxTween.cancelTweensOf(curText.scale);
-		FlxTween.tween(curText.scale, {x: 1.2, y: 1.2}, 0.4, {ease: FlxEase.elasticOut});
-	}
-}
-
-function swap() {
-	if (curText != null) {
-		var col = curText.color;
-		curText.color = curText.borderColor;
-		curText.borderColor = (col & 0xffffff) + 0xff000000; // preserve alpha value
-	}
-}
+final bg = new FunkinSprite().makeSolid(FlxG.width, FlxG.width, -1);
+final bgSwirl = new FunkinSprite().makeSolid(FlxG.width, FlxG.width, -1);
+final songColor = CoolUtil.getColorFromDynamic(PlayState.SONG.meta.color ?? '#717171');
+var whiteColor = FlxColor.interpolate(songColor, FlxColor.WHITE, 0.9);
+var blackColor = FlxColor.interpolate(songColor, FlxColor.BLACK, 0.75);
+var split = getRGBArray(blackColor);
+blackColor = FlxColor.fromRGB(
+	Std.int(Math.max(0.1, Math.min(split[0] * 2 * 0.8, 1)) * 255),
+	Std.int(Math.max(0.1, Math.min(split[1] * 2 * 0.5, 1)) * 255),
+	Std.int(Math.max(0.1, Math.min(split[2] * 2 * 1.0, 1)) * 255)
+, 255);
 
 function getInverted(inp) {
 	var out = ((FlxColor.WHITE - inp) & 0xffffff) + (inp & 0xff000000);
 	return out;
 }
+var increaseTime = 4;
+var texts = [];
+var itemHeight = 80;
+var stupidTween;
 
-function stepped(st = 5) {
-	var steps = st;
-	return (t) -> {
-		return Math.floor(t * steps) / steps;
+var gmSong = new CustomShader('gradientMap');
+var gmShadow = new CustomShader('gradientMap');
+var gmDeselect = new CustomShader('gradientMap');
+var gmSelect = new CustomShader('gradientMap');
+gmDeselect.mult = 1;
+gmSelect.mult = 1;
+gmSong.mult = 1;
+gmShadow.mult = 1;
+
+gmDeselect.white = getRGBArray(getLuminance(blackColor) < 0.34 ? blackColor : getInverted(blackColor));
+gmDeselect.black = getRGBArray(getLuminance(blackColor) < 0.34 ? 0xff000000 : getInverted(whiteColor));
+
+gmShadow.white = gmShadow.black = getRGBArray(getInverted(blackColor));
+
+gmSelect.white = getRGBArray(songColor);
+gmSelect.black = getRGBArray(getLuminance(songColor) > 0.7 ? blackColor : whiteColor);
+
+gmSong.white = getRGBArray(blackColor);
+gmSong.black = getRGBArray(getLuminance(songColor) < 0.2 ? whiteColor : songColor);
+
+var shadowText = new Alphabet(-999, -999, '', 'silly');
+var ____empty = []; var wiggleEffect = [effect];
+var backdrops = [];
+
+// this fucking stinks
+var songText = new Alphabet(-999, -999, PlayState.SONG.meta.displayName, 'silly');
+var songTextShadow = new Alphabet(-999, -999, PlayState.SONG.meta.displayName, 'silly');
+songText.shader = gmSong;
+songTextShadow.shader = gmShadow;
+
+var blueballsIcon = new FunkinSprite(0, 0, Paths.image('ui/mnh/blueballs-icon'));
+var blueballsText = new FunkinText(0, 0, -1, PlayState.deathCounter, 28);
+blueballsText.borderSize = 2.5;
+blueballsText.borderColor = 0xff6666cc;
+blueballsText.color = 0x99ccff;
+blueballsText.font = Paths.font('sillyfont.ttf');
+
+var composerText = new FunkinText(0, 0, -1, (PlayState.SONG.meta?.customValues?.composer ?? '???').toLowerCase(), 28);
+composerText.borderSize = 2.5;
+composerText.borderColor = getLuminance(songColor) > 0.7 ? whiteColor : songColor;
+composerText.color = getLuminance(songColor) > 0.7 ? blackColor : whiteColor;
+composerText.font = Paths.font('sillyfont.ttf');
+
+var doEndFlash = true;
+final flashers = ['Resume', 'Resume Cutscene', 'Skip Cutscene'];
+
+function create(event) {
+	event.cancel();
+	event.music = 'breakfast-mnh';
+
+	FlxG.cameras.add(pauseCam, false);
+	pauseCam.bgColor = 0;
+	cameras = [pauseCam];
+
+	bg.zoomFactor = 0;
+	bg.scrollFactor.set();
+	bg.screenCenter();
+	bg.blend = BlendMode.SUBTRACT;
+	bg.color = getInverted(blackColor);
+	add(bg);
+
+	var offsetX = 0;
+	if (!PlayState.coopMode && !FlxG.save.data.middleScroll) {
+		offsetX = -0.25 * (PlayState.opponentMode ? -1 : 1);
 	}
-}
 
-function enterAnim() {
-	for (i in [songText, compText, deathText, paper[1]]) {
-		var ogx = i.x;
-		i.x += songText.width + compText.width + 110;
-		FlxTween.tween(i, {x: ogx}, 0.25, {ease: stepped(8), startDelay: 0.2});
+	bgSwirl.shader = new CustomShader('mainBGSwirl');
+	bgSwirl.antialiasing = true;
+	bgSwirl.shader.iTime = -increaseTime;
+	bgSwirl.shader.offset = [0, 0];
+	bgSwirl.zoomFactor = 0;
+	bgSwirl.scrollFactor.set();
+	bgSwirl.screenCenter();
+	bgSwirl.blend = BlendMode.SCREEN;
+	bgSwirl.color = blackColor;
+	add(bgSwirl);
+
+	var dumpTxt = new FunkinText();
+	dumpTxt.font = Paths.font('sillyfont.ttf');
+	dumpTxt.borderSize = 0;
+	dumpTxt.borderColor = 0x0;
+	dumpTxt.size = 40;
+	dumpTxt.text = StringTools.replace(FlxG.random.getObject(quotes), '\\n', '\n');
+	dumpTxt.drawFrame(true);
+
+	for (i in 0...2) {
+		var txt = new FlxBackdrop().makeGraphic(dumpTxt.width, dumpTxt.height, FlxColor.TRANSPARENT);
+		txt.y = dumpTxt.height * 1.15 * i;
+		txt.spacing.y = dumpTxt.height * 1.3;
+		txt.spacing.x = 100;
+		txt.stamp(dumpTxt);
+		txt.antialiasing = true;
+		txt.rotation = offsetX * 20;
+		txt.velocity.x = (0.5 - i) * 200;
+		txt.alpha = 0;
+		txt.blend = BlendMode.SCREEN;
+		txt.color = blackColor;
+		backdrops.push(txt);
+		add(txt);
 	}
 
-	for (i in texts) {
-		var ogx = i.x;
-		i.x -= FlxG.width / 2;
-		FlxTween.tween(i, {x: ogx}, 0.25, {ease: stepped(8)});
-	}
-
-	var bottom = paper[0];
-	bottom.x -= FlxG.width / 2;
-	FlxTween.tween(bottom, {x: 0}, 0.25, {ease: stepped(8)});
+	dumpTxt.destroy();
 
 	bg.alpha = 0;
-	FlxTween.tween(bg, {alpha: 1}, 0.1, {ease: stepped(9), startDelay: 0.15});
+	bgSwirl.alpha = 0;
+
+	FlxTween.tween(bg, {alpha: 1}, 0.3, {startDelay: 0.1});
+	FlxTween.tween(bgSwirl, {alpha: 0.6}, 0.45);
+	stupidTween = FlxTween.num(0, offsetX, 8, {ease: (t) -> { return FlxEase.expoOut(FlxEase.expoOut(t)); }}, (num) -> {
+		bgSwirl.shader.offset[0] = num;
+	});
+
+	shadowText.shader = gmShadow;
+	shadowText.blend = BlendMode.SUBTRACT;
+	shadowText.effects = wiggleEffect;
+	add(shadowText);
+	var startY = (FlxG.height - (itemHeight * menuItems.length)) * 0.5;
+	for (i => v in menuItems) {
+		var t = new Alphabet(0, 0, translate('pause.'+TranslationUtil.raw2Id(v)).toLowerCase(), 'silly');
+		t.scale.set(0.8, 0.8);
+		t.updateHitbox();
+		t.x = t.textWidth * t.scale.x * -1.3;
+		t.y = startY + itemHeight * i;
+		texts.push(t);
+		t.shader = gmDeselect;
+		t.blend = getLuminance(blackColor) < 0.34 ? BlendMode.SCREEN : BlendMode.SUBTRACT;
+		add(t);
+	}
+
+	songTextShadow.blend = BlendMode.SUBTRACT;
+	songTextShadow.effects = wiggleEffect;
+	add(songTextShadow);
+	add(songText);
+	songText.scale.x = songText.scale.y = Math.min(1, 900 / songText.textWidth);
+	songText.updateHitbox();
+	songTextShadow.scale.copyFrom(songText.scale);
+	songTextShadow.updateHitbox();
+	songText.x = FlxG.width - songText.width - 60;
+	blueballsText.x = FlxG.width - blueballsText.width - 60;
+	blueballsIcon.x = blueballsText.x - blueballsIcon.width - 12;
+	composerText.x = blueballsIcon.x - composerText.width - 12;
+
+	composerText.antialiasing = blueballsText.antialiasing = true;
+
+	add(blueballsText);
+	add(blueballsIcon);
+	add(composerText);
+
+	changeSelection(0);
+	FlxG.sound.play(Paths.sound('quick-panel/open-tab-click'), Options.volumeSFX);
 }
 
-function exitAnim() {
-	for (i in [songText, compText, deathText, paper[1]]) {
-		FlxTween.cancelTweensOf(i, ['x']);
-		FlxTween.tween(i, {x: (i.x + songText.width + compText.width + 110)}, 0.1, {ease: stepped(6)});
+var effectTimer = 0;
+var fps = 1 / 3;
+var timer = 0;
+
+// just so scrolling extremely fast with mouse doesnt hurt the ears
+var stupidTimer = 0;
+
+function update(elapsed) {
+	bgSwirl.shader.iTime += elapsed * increaseTime;
+	increaseTime = Math.max(increaseTime - elapsed, 1);
+
+	stupidTimer = Math.max(stupidTimer - elapsed * 2, 0);
+
+	if (mobile) {
+		// todo
+	} else {
+		if (controls.DOWN_P)
+			changeSelection(1);
+		if (controls.UP_P)
+			changeSelection(-1);
+
+		if (FlxG.mouse.wheel != 0) {
+			changeSelection(-FlxG.mouse.wheel);
+		}
 	}
 
-	for (i in texts) {
-		FlxTween.cancelTweensOf(i, ['x']);
-		FlxTween.tween(i, {x: (i.x - FlxG.width)}, 0.1, {ease: stepped(6), startDelay: 0.2});
+	if (!mobile && FlxG.mouse.justPressedRight) {
+		close();
+		FlxG.sound.play(Paths.sound('quick-panel/close-tab-click'), Options.volumeSFX).persist = true;
+	}
+	if ((!mobile && controls.ACCEPT || FlxG.mouse.justPressed) || (mobile && (curSelected != -1 && FlxG.mouse.justReleased))) {
+		doEndFlash = flashers.contains(menuItems[curSelected]);
+		selectOption();
+		FlxG.sound.play(Paths.sound('quick-panel/close-tab-click'), Options.volumeSFX).persist = true;
 	}
 
-	FlxTween.cancelTweensOf(paper[0], ['x']);
-	FlxTween.tween(paper[0], {x: (paper[0].x - FlxG.width)}, 0.25, {ease: stepped(6), startDelay: 0.2});
+	timer += elapsed;
+	effectTimer += elapsed;
+	if (effectTimer > fps) {
+		effectTimer = 0;
+		effect.intensityX = FlxG.random.float(1, 2);
+		effect.intensityY = FlxG.random.float(2, 3);
+		effect.period = FlxG.random.float(1, 3);
+		effect.effectTime += fps;
+	}
 
-	FlxTween.cancelTweensOf(bg, ['alpha']);
-	FlxTween.tween(bg, {alpha: 0}, 0.2, {ease: stepped(9), startDelay: 0.15});
+	for (i in backdrops) {
+		i.velocity.x = lerp(i.velocity.x, 5 * FlxMath.signOf(i.velocity.x), 0.03);
+		i.alpha = lerp(i.alpha, 0.6, 0.05);
+	}
 
-	return 0.4;
+	songText.y = lerp(songText.y, 50 + Math.pow(Math.max(0, 1 - (timer * 1.5)), 2) * 240, 0.1);
+	songTextShadow.setPosition(songText.x + Math.cos(timer * 4) * 3, songText.y + 8 + Math.sin(timer * 4) * 3);
+	for (i in [blueballsText, blueballsIcon, composerText]) {
+		i.y = songText.y + songText.height + 35 - Std.int(i.height * 0.5);
+	}
+
+	var startY = (FlxG.height - (itemHeight * menuItems.length)) * 0.5;
+	for (i => t in texts) {
+		var diff = i - curSelected;
+		t.updateHitbox();
+		t.x = lerp(t.x, 60 + (diff == 0 ? (20 + Math.cos(timer * 2) * 3) : 0) + Math.pow(Math.max(0, 1 - (timer * 2)), 2) * 150, 0.15);
+		t.y = lerp(t.y, (
+			(diff == 0) ? (Math.sin(timer * 2) * 3) : 0
+		) + startY + (itemHeight * i) + (itemHeight - t.height) * 0.5, 0.2);
+	}
+	if (curText != null) {
+		if (shadowText.text != curText.text) {
+			shadowText.text = curText.text;
+		}
+		shadowText.setPosition(curText.x + 5, curText.y + 9);
+		shadowText.scale.set(curText.scale.x, curText.scale.y);
+		shadowText.updateHitbox();
+	}
+}
+
+var curText:Alphabet;
+var scrollSound = FlxG.sound.load(Paths.sound('quick-panel/menu-scroll'), Options.volumeSFX);
+function changeSelection(change) {
+	curSelected = FlxMath.wrap(curSelected + change, 0, menuItems.length - 1);
+
+	if (curText != null) {
+		FlxTween.cancelTweensOf(curText.scale);
+		FlxTween.tween(curText.scale, {x: 0.8, y: 0.8}, 0.6, {ease: FlxEase.elasticOut});
+		curText.shader = gmDeselect;
+		curText.blend = getLuminance(blackColor) < 0.34 ? BlendMode.SCREEN : BlendMode.SUBTRACT;
+		curText.effects = ____empty;
+	}
+	curText = texts[curSelected];
+	if (curText != null) {
+		remove(curText, true);
+		FlxTween.cancelTweensOf(curText.scale);
+		FlxTween.tween(curText.scale, {x: 0.9, y: 0.9}, 0.4, {ease: FlxEase.elasticOut});
+		curText.shader = gmSelect;
+		curText.blend = BlendMode.NORMAL;
+		curText.effects = wiggleEffect;
+		add(curText);
+	}
+
+	if (change != 0) {
+		scrollSound.pitch = FlxG.random.float(0.95, 1.05);
+		scrollSound.play(true, Math.floor(stupidTimer * 18));
+		scrollSound.volume = 0.85 * Options.volumeSFX + Math.min(stupidTimer * 0.7, 0.3);
+		stupidTimer = Math.min(stupidTimer + 0.4, 1);
+	}
+}
+
+function destroy() {
+	stupidTween.cancel();
+	if (doEndFlash) {
+		var fadeSprite = new FunkinSprite();
+		fadeSprite.zoomFactor = 0;
+		fadeSprite.scrollFactor.set();
+		fadeSprite.makeSolid(FlxG.width, FlxG.height, -1, true);
+		fadeSprite.updateHitbox();
+		fadeSprite.blend = BlendMode.SUBTRACT;
+		fadeSprite.color = getInverted(blackColor);
+		fadeSprite.alpha = bg.alpha;
+		PlayState.instance.add(fadeSprite);
+		forceTween().tween(fadeSprite, {alpha: 0}, 0.15, {
+			// crazy
+			onUpdate: (_) -> {
+				if (PlayState.instance.members[PlayState.instance.members.length - 1] != fadeSprite) {
+					PlayState.instance.remove(fadeSprite, true);
+					PlayState.instance.add(fadeSprite);
+					//trace('hi guys');
+				}
+			},
+			onComplete: (_) -> {
+				_.cancel();
+				
+				PlayState.instance.remove(fadeSprite, true);
+				fadeSprite.destroy();
+			}
+		});
+	}
 }

@@ -1,7 +1,8 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.8" name="hidden" startCamPosY="600" startCamPosX="1000">
+<stage zoom="0.8" name="hidden" startCamPosY="600" startCamPosX="1000" bgColor="#330033">
 	<ext script="parody" folder="interfaces/" />
 	<ext script="parody-cam" folder="data/scripts/" />
+	<ext script="parody-gameplay" folder="data/scripts/" />
 
 	<high-memory>
 		<sprite name="bg" sprite="stages/cave/bg" x="-300" y="-450" scale="2" updateHitbox="true" antialiasing="false" scroll="0.5"/>

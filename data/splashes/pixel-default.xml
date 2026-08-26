@@ -1,6 +1,6 @@
 <!DOCTYPE codename-engine-splashes>
 <!--Pixel Splashes by APurples!!-->
-<splashes sprite="stages/school/ui/pixel-splashes" alpha="1" antialiasing="false" scale="6">
+<splashes sprite="stages/school/ui/pixel-splashes" alpha="1" antialiasing="false" scale="4">
 	<strum id="0">		<!-- LEFT -->
 		<anim name="splashleft1" anim="splash 1" fps="24" x="0.5" y="0.5" />
 		<anim name="splashleft2" anim="splash 2" fps="24" x="0.5" y="0.5" />

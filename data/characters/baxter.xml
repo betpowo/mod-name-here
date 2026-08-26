@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character y="350" flipX="true" camx="-100" camy="37" isPlayer="true" icon="baxter" color="#2EAEAC" gameOverChar="baxter" isGF="false">
+<character y="350" flipX="true" camx="-100" camy="51" isPlayer="true" icon="baxter" color="#2EAEAC" gameOverChar="die/baxter-dead" isGF="false">
 	<anim name="idle" anim="idle"/>
 	<anim name="singLEFT" anim="left" x="45" y="-15"/>
 	<anim name="singDOWN" anim="down" x="10" y="-43"/>
@@ -11,9 +11,6 @@
 	<anim name="singRIGHTmiss" anim="miss" x="-3" y="26" fps="8" indices="3"/>
 	<anim name="hey" anim="hey" x="-19" y="6"/>
 	<anim name="scream" anim="scream" x="194" y="100" loop="true"/>
-	<anim name="firstDeath" anim="die" x="-18" y="-5" loop="true"/>
-	<anim name="deathLoop" anim="die" x="-18" y="-5" loop="true"/>
-	<anim name="deathConfirm" anim="die" x="-18" y="-5" loop="true"/>
 	<anim name="troll" anim="troll" x="-23" y="-9" loop="true"/>
 	<anim name="point" anim="point" x="50" y="9"/>
 	<anim name="breathe-in" anim="breathe-in" x="-18" y="6"/>

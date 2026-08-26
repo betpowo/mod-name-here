@@ -1,0 +1,34 @@
+{
+	"params": [
+		{
+			"name": "Reversed?",
+			"type": "Bool",
+			"defaultValue": false
+		},
+		{
+			"name": "Color",
+			"type": "ColorWheel",
+			"defaultValue": "#FFFFFF"
+		},
+		{
+			"name": "Time (Steps)",
+			"type": "Float(0, 9999, 0.25, 2)",
+			"defaultValue": 4
+		},
+		{
+			"name": "Camera",
+			"type": "DropDown('camGame', 'camHUD')",
+			"defaultValue": "camHUD"
+		},
+		{
+			"name": "Persist on Screen? (If Reversed)",
+			"type": "Bool",
+			"defaultValue": false
+		},
+		{
+			"name": "Blend Mode",
+			"type": "DropDown('NORMAL', 'ADD', 'SUBTRACT', 'MULTIPLY', 'DARKEN', 'LIGHTEN', 'OVERLAY', 'SCREEN', 'HARDLIGHT', 'SOFTLIGHT', 'COLORBURN', 'COLORDODGE', 'DIFFERENCE', 'EXCLUSION', 'INVERT', 'HUE', 'SATURATION', 'COLOR', 'LUMINOSITY')",
+			"defaultValue": "NORMAL"
+		}
+	]
+}

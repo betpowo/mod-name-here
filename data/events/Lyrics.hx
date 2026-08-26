@@ -1,9 +1,11 @@
+ 
+
 var text = new FunkinText();
 var textBG = new FunkinSprite();
 
 function postCreate() {
 	textBG.makeSolid(1, 1, 0xffffffff);
-	textBG.blend = 14;
+	textBG.blend = BlendMode.SUBTRACT;
 	textBG.alpha = 0.6;
 
 	text.size = 32;
@@ -17,7 +19,8 @@ function postCreate() {
 }
 
 function onEvent(e) {
-	if (e.event.name != 'Lyrics' || !FlxG.save.data.enableSubs) return;
+	if (e.event.name != 'Lyrics' || !FlxG.save.data.enableSubs)
+		return;
 	var p = e.event.params;
 	var sub = p[0] ?? '';
 	var maxWidth = FlxG.width * 0.9;

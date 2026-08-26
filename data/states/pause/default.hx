@@ -12,8 +12,7 @@ function create(e) {
 function postCreate() {
 	if (deathCounter == null)
 		return;
-	deathCounter.text = PlayState.deathCounter + ' Blue Balls';
-	levelDifficulty.text = 'by ' + (PlayState.SONG.meta?.customValues?.composer ?? 'Unknown');
+	levelDifficulty.text = translate('mnh.pause.by', [(PlayState.SONG.meta?.customValues?.composer ?? 'Unknown')]);
 	for (label in [deathCounter, levelDifficulty]) {
 		label.x = FlxG.width - (label.width + 20);
 	}

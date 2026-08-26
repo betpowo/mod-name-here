@@ -1,5 +1,6 @@
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
+ 
 
 function create() {
 	FlxG.camera.bgColor = 0xFF3f0048;
@@ -34,7 +35,7 @@ function create() {
 		}
 		s.offset.degrees = deg;
 	}
-	logo2.blend = 0;
+	logo2.blend = BlendMode.ADD;
 	logo2.alpha = 0.75;
 
 	enter = new FunkinSprite(0, 0, Paths.image('ui/mnh/titleEnter' + (mobile ? 'M' : '')));
@@ -54,7 +55,7 @@ function create() {
 	shit.screenCenter();
 	shit.scrollFactor.set(0.4, 0.4);
 	shit.velocity.y = 16;
-	shit.blend = 0;
+	shit.blend = BlendMode.ADD;
 	shit.alpha = 0.1;
 	insert(0, shit);
 
@@ -66,7 +67,7 @@ function create() {
 	shit2.screenCenter();
 	shit2.scrollFactor.set(0.2, 0.2);
 	shit2.velocity.y = 16;
-	shit2.blend = 0;
+	shit2.blend = BlendMode.ADD;
 	shit2.alpha = 0.1;
 	shit2.animation.add('idle', [for (i in 0...84) i], 24, true);
 	shit2.animation.play('idle', true);
@@ -107,11 +108,9 @@ function makeTextBackdrop(text) {
 	dumpTxt.color = 0xff333333;
 	dumpTxt.size = 32;
 	dumpTxt.text = text;
-
-	// thank you rozebud
 	dumpTxt.drawFrame(true);
-	var txt = new FlxBackdrop(dumpTxt.pixels);
-
+	var txt = new FlxBackdrop().makeGraphic(dumpTxt.width, dumpTxt.height, FlxColor.TRANSPARENT);
+	txt.stamp(dumpTxt);
 	dumpTxt.destroy();
 	return txt;
 }

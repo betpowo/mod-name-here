@@ -49,21 +49,23 @@ function postUpdate(elapsed) {
 	}
 	var maxWidth = FlxG.width * 0.9;
 	var curText = '';
-	if (event != null && event.params[0] != '') {
-		amazingText.alpha = FlxG.sound.music.playing ? 1 : 0.33;
-		amazingText.fieldWidth = -1;
-		curText = event.params[0];
-		if (amazingText.width > maxWidth) {
+	var curSize = -1;
+	if (event != null) {
+		if (event.params[0] != '') {
+			amazingText.alpha = FlxG.sound.music.playing ? 1 : 0.33;
+			curText = event.params[0];
+			curSize = event.params[1] ?? 32;
 			amazingText.fieldWidth = maxWidth;
+			if (amazingText.text != curText)
+				amazingText.text = curText;
+			if (amazingText.size != curSize)
+				amazingText.size = curSize;
+			amazingText.color = event.params[2] ?? 0xffffff;
+			amazingText.updateHitbox();
+			amazingText.screenCenter();
+			amazingText.y = FlxG.height - 50 - amazingText.height;
+			amazingText.x = Std.int(amazingText.x);
 		}
-		amazingText.size = event.params[1] ?? 32;
-		amazingText.color = event.params[2] ?? 0xffffff;
-	}
-	if (amazingText.text != curText) {
-		amazingText.text = curText;
-		amazingText.updateHitbox();
-		amazingText.screenCenter();
-		amazingText.y = FlxG.height - 50 - amazingText.height;
-		amazingText.x = Std.int(amazingText.x);
+		amazingText.visible = event.params[0] != '';
 	}
 }

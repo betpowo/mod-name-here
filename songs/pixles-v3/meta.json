@@ -1,0 +1,18 @@
+{
+	"customValues": {
+		"composer": "hifish",
+		"stars": "9"
+	},
+	"color": "#CC4C3A",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"normal"
+	],
+	"icon": "real",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "pixles v3",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 119
+}

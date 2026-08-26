@@ -1,0 +1,336 @@
+<!DOCTYPE codename-engine-alphabet-font>
+<alphabetFont fps="6" advance="40" lineGap="80" forceCasing="lower" colorMode="tint" antialiasing="true">
+	<spritesheet>
+		menus/alphabet-silly
+	</spritesheet>
+	<defaultAnim>
+		chr-LETTER0
+	</defaultAnim>
+	<anim char="a" advance="53">
+		chr-a0
+	</anim>
+	<anim char="b" advance="52" x="-3" y="0">
+		chr-b
+	</anim>
+	<anim char="c" advance="49">
+		chr-c
+	</anim>
+	<anim char="d" advance="53">
+		chr-d
+	</anim>
+	<anim char="e" advance="50">
+		chr-e0
+	</anim>
+	<anim char="f" advance="36" x="0" y="-15">
+		chr-f
+	</anim>
+	<anim char="g" advance="54" x="0" y="-17">
+		chr-g
+	</anim>
+	<anim char="h" advance="52">
+		chr-h
+	</anim>
+	<composite char="i" advance="34">
+		<component anim="chr-i"/>
+		<component anim="dia-f-bigdot" x="7" y="56" hasOutline="true" outline="dia-o-bigdot"/>
+	</composite>
+	<composite char="j" advance="43">
+		<component anim="chr-j" x="0" y="-16"/>
+		<component anim="dia-f-bigdot" x="25" y="56" hasOutline="true" outline="dia-o-bigdot"/>
+	</composite>
+	<anim char="k" advance="47">
+		chr-k
+	</anim>
+	<anim char="l" advance="38" x="-5" y="0">
+		chr-l
+	</anim>
+	<anim char="m" advance="71">
+		chr-m
+	</anim>
+	<anim char="n" advance="54">
+		chr-n
+	</anim>
+	<anim char="o" advance="51">
+		chr-o
+	</anim>
+	<anim char="p" advance="54" x="0" y="-22">
+		chr-p
+	</anim>
+	<anim char="q" advance="50" x="0" y="-21">
+		chr-q
+	</anim>
+	<anim char="r" advance="50">
+		chr-r
+	</anim>
+	<anim char="s" advance="46">
+		chr-s
+	</anim>
+	<anim char="t" advance="39" y="-2">
+		chr-t
+	</anim>
+	<anim char="u" advance="49">
+		chr-u
+	</anim>
+	<anim char="v" advance="50">
+		chr-v
+	</anim>
+	<anim char="w" advance="70">
+		chr-w
+	</anim>
+	<anim char="x" advance="51">
+		chr-x
+	</anim>
+	<anim char="y" advance="49" x="0" y="-23">
+		chr-y
+	</anim>
+	<anim char="z" advance="51">
+		chr-z
+	</anim>
+	<anim char="æ" advance="69">
+		chr-ash
+	</anim>
+	<anim char="œ" advance="69">
+		chr-ethel
+	</anim>
+	<anim char="0" advance="56">
+		num-0
+	</anim>
+	<anim char="1" advance="56">
+		num-1
+	</anim>
+	<anim char="2" advance="56">
+		num-2
+	</anim>
+	<anim char="3" advance="56">
+		num-3
+	</anim>
+	<anim char="4" advance="56">
+		num-4
+	</anim>
+	<anim char="5" advance="56">
+		num-5
+	</anim>
+	<anim char="6" advance="56">
+		num-6
+	</anim>
+	<anim char="7" advance="56">
+		num-7
+	</anim>
+	<anim char="8" advance="56">
+		num-8
+	</anim>
+	<anim char="9" advance="56">
+		num-9
+	</anim>
+	<anim char="¡" advance="24" x="0" y="-15" angle="180">
+		sym-exclamation
+	</anim>
+	<anim char="!" advance="24">
+		sym-exclamation
+	</anim>
+	<anim char="¿" advance="61" x="0" y="-15" angle="180">
+		sym-question
+	</anim>
+	<anim char="?" advance="61">
+		sym-question
+	</anim>
+	<anim char="&quot;" advance="45" x="0" y="48">
+		sym-doublequote
+	</anim>
+	<anim char="&#039;" advance="23" x="0" y="50">
+		sym-singlequote
+	</anim>
+	<anim char="#" advance="69">
+		sym-hashtag
+	</anim>
+	<anim char="$">
+		sym-dollar
+	</anim>
+	<anim char="/" advance="64">
+		sym-slash
+	</anim>
+	<anim char="\" advance="64" flipX="true" flipY="false">
+		sym-slash
+	</anim>
+	<anim char="@" advance="69">
+		sym-at
+	</anim>
+	<composite char="%">
+		<component anim="sym-slash" angle="8"/>
+		<component anim="dia-f-bigring" x="-4" y="46" hasOutline="true" outline="dia-o-bigring"/>
+		<component anim="dia-f-bigring" x="38" y="8" hasOutline="true" outline="dia-o-bigring"/>
+	</composite>
+	<anim char="&amp;" advance="67">
+		sym-ampersand
+	</anim>
+	<anim char="(" advance="33">
+		sym-parenthesis
+	</anim>
+	<anim char=")" advance="33" flipX="true" flipY="false">
+		sym-parenthesis
+	</anim>
+	<anim char="[" advance="33">
+		sym-squarebr
+	</anim>
+	<anim char="]" advance="33" flipX="true" flipY="false">
+		sym-squarebr
+	</anim>
+	<anim char="{" advance="33">
+		sym-curlybr
+	</anim>
+	<anim char="}" advance="33" flipX="true" flipY="false">
+		sym-curlybr
+	</anim>
+	<anim char="`" x="0" y="53" flipX="true" flipY="false" angle="-40">
+		sym-comma
+	</anim>
+	<anim char="." advance="20" x="0" y="2">
+		sym-period
+	</anim>
+	<anim char="," advance="20" x="0" y="-9">
+		sym-comma
+	</anim>
+	<composite char=":" advance="20">
+		<component anim="sym-period" x="0" y="33"/>
+		<component anim="sym-period" x="0" y="11"/>
+	</composite>
+	<composite char=";" advance="20">
+		<component anim="sym-period" x="0" y="33"/>
+		<component anim="sym-comma" x="-2" y="1"/>
+	</composite>
+	<anim char="*" x="0" y="47">
+		sym-asterisk
+	</anim>
+	<anim char="~" x="0" y="24">
+		sym-tilde
+	</anim>
+	<anim char="^" x="0" y="57">
+		sym-caret
+	</anim>
+	<anim char="_" advance="64" x="0" y="-7">
+		sym-underscore
+	</anim>
+	<anim char="=" advance="50" x="0" y="17">
+		sym-equal
+	</anim>
+	<anim char="×" advance="50" x="0" y="12" flipX="true" flipY="false" angle="45">
+		sym-plus
+	</anim>
+	<anim char="-" advance="50" x="0" y="27">
+		sym-hyphen
+	</anim>
+	<anim char="+" advance="50" x="0" y="15">
+		sym-plus
+	</anim>
+	<anim char="&lt;" x="0" y="14" flipX="true" flipY="false">
+		sym-gt
+	</anim>
+	<anim char="&gt;" x="0" y="14">
+		sym-gt
+	</anim>
+	<anim char="←" advance="69" x="0" y="10" angle="-90">
+		sym-arrow
+	</anim>
+	<anim char="↓" advance="69" x="0" y="10" angle="180">
+		sym-arrow
+	</anim>
+	<anim char="↑" advance="69" x="0" y="10">
+		sym-arrow
+	</anim>
+	<anim char="→" advance="69" x="0" y="10" angle="90">
+		sym-arrow
+	</anim>
+	<anim char="❤" advance="69" x="0" y="10">
+		sym-heart
+	</anim>
+	<anim char="�" advance="69" x="0" y="7">
+		sym-angryfaic
+	</anim>
+	<composite char="ñ" advance="54">
+		<component anim="chr-n"/>
+		<component anim="dia-f-tilde" x="4" y="57" hasOutline="true" outline="dia-o-tilde"/>
+	</composite>
+	<composite char="á" advance="53">
+		<component anim="chr-a0"/>
+		<component anim="dia-f-acute" x="23" y="56" hasOutline="true" outline="dia-o-acute"/>
+	</composite>
+	<composite char="é" advance="50">
+		<component anim="chr-e0"/>
+		<component anim="dia-f-acute" x="20" y="54" hasOutline="true" outline="dia-o-acute"/>
+	</composite>
+	<composite char="í" advance="34">
+		<component anim="chr-i"/>
+		<component anim="dia-f-acute" x="7" y="56" hasOutline="true" outline="dia-o-acute"/>
+	</composite>
+	<composite char="ó" advance="51">
+		<component anim="chr-o"/>
+		<component anim="dia-f-acute" x="20" y="55" hasOutline="true" outline="dia-o-acute"/>
+	</composite>
+	<composite char="ú" advance="49">
+		<component anim="chr-u"/>
+		<component anim="dia-f-acute" x="20.3" y="56.2" hasOutline="true" outline="dia-o-acute"/>
+	</composite>
+	<composite char="ç" advance="49">
+		<component anim="chr-c"/>
+		<component anim="dia-f-cedilla" x="15" y="-6" hasOutline="true" outline="dia-o-cedilla"/>
+	</composite>
+	<composite char="ć" advance="49">
+		<component anim="chr-c"/>
+		<component anim="dia-f-acute" x="18" y="53" hasOutline="true" outline="dia-o-acute"/>
+	</composite>
+	<composite char="ł" advance="38">
+		<component anim="chr-l" x="-5" y="0"/>
+		<component anim="fill-line-s" x="10" y="20" angle="83" hasOutline="true" outline="out-line-s"/>
+	</composite>
+	<composite char="ń" advance="54">
+		<component anim="chr-n"/>
+		<component anim="dia-f-acute" x="20" y="56" hasOutline="true" outline="dia-o-acute"/>
+	</composite>
+	<composite char="ś" advance="46">
+		<component anim="chr-s"/>
+		<component anim="dia-f-acute" x="17" y="57" hasOutline="true" outline="dia-o-acute"/>
+	</composite>
+	<composite char="ź" advance="51">
+		<component anim="chr-z"/>
+		<component anim="dia-f-acute" x="21" y="55" hasOutline="true" outline="dia-o-acute"/>
+	</composite>
+	<composite char="ż" advance="51">
+		<component anim="chr-z"/>
+		<component anim="dia-f-dot" x="25" y="54" hasOutline="true" outline="dia-o-dot"/>
+	</composite>
+	<composite char="ä" advance="53">
+		<component anim="chr-a0"/>
+		<component anim="dia-f-dot" x="14" y="54" hasOutline="true" outline="dia-o-dot"/>
+		<component anim="dia-f-dot" x="35" y="54" hasOutline="true" outline="dia-o-dot"/>
+	</composite>
+	<composite char="ë" advance="50">
+		<component anim="chr-e0"/>
+		<component anim="dia-f-dot" x="11" y="54" hasOutline="true" outline="dia-o-dot"/>
+		<component anim="dia-f-dot" x="35" y="54" hasOutline="true" outline="dia-o-dot"/>
+	</composite>
+	<composite char="ï" advance="34">
+		<component anim="chr-i"/>
+		<component anim="dia-f-dot" x="0" y="54" hasOutline="true" outline="dia-o-dot"/>
+		<component anim="dia-f-dot" x="17" y="54" hasOutline="true" outline="dia-o-dot"/>
+	</composite>
+	<composite char="ö" advance="51">
+		<component anim="chr-o"/>
+		<component anim="dia-f-dot" x="33" y="54" hasOutline="true" outline="dia-o-dot"/>
+		<component anim="dia-f-dot" x="12" y="54" hasOutline="true" outline="dia-o-dot"/>
+	</composite>
+	<composite char="ü" advance="49">
+		<component anim="chr-u"/>
+		<component anim="dia-f-dot" x="35" y="54" hasOutline="true" outline="dia-o-dot"/>
+		<component anim="dia-f-dot" x="8" y="54" hasOutline="true" outline="dia-o-dot"/>
+	</composite>
+	<composite char="ÿ" advance="49">
+		<component anim="chr-y" x="0" y="-23"/>
+		<component anim="dia-f-dot" x="37" y="54" hasOutline="true" outline="dia-o-dot"/>
+		<component anim="dia-f-dot" x="10" y="54" hasOutline="true" outline="dia-o-dot"/>
+	</composite>
+	<composite char="␣" advance="64" x="0" y="-7">
+		<component anim="sym-underscore" x="0" y="0"/>
+		<component anim="dia-f-vertical-line" x="50" y="10" angle="180" hasOutline="true" outline="dia-o-vertical-line"/>
+		<component anim="dia-f-vertical-line" x="6" y="10" angle="180" hasOutline="true" outline="dia-o-vertical-line"/>
+	</composite>
+</alphabetFont>

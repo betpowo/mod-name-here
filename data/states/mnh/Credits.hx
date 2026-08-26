@@ -5,9 +5,9 @@ import openfl.ui.Mouse;
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 import hxvlc.flixel.FlxVideoSprite;
+ 
 import Xml;
 import Sys;
-
 var creds = [
 	{
 		name: 'fallback credit',
@@ -24,20 +24,45 @@ var creds = [
 	}
 ];
 
+// the same thing but without lines
+var guests = [
+	{
+		name: 'fallback credit',
+		desc: 'what have you done bruh',
+		icon: '_default',
+		color: '#ffffcc',
+		url: 'https://betpowo.github.io/'
+	}
+];
+
 var curSelected = 0;
+var curSelectedGuest = 0;
 var curLines = [];
-var music = FlxG.sound.load(Paths.music('misc/wacky'));
+
+function parseGuests(node) {
+	guests.shift(); // remove fallback
+	for (l in node.elementsNamed('credit')) {
+		guests.push({
+			name: l.get('name') ?? '???',
+			desc: StringTools.replace(l.get('desc') ?? 'nothing?', '\\n', '\n'),
+			icon: l.get('icon') ?? '_default',
+			color: l.get('color') ?? '#717171',
+			url: l.get('url') ?? 'https://betpowo.github.io/'
+		});
+	}
+}
+
+var guestGroup = new FlxSpriteGroup();
 
 function create() {
 	FlxG.camera.bgColor = 0;
-	CoolUtil.playMenuSong();
 	shit = new FlxBackdrop(FlxGridOverlay.createGrid(1, 1, 2, 2, true, 0, 0xFF030600));
 	shit.scale.set(60, 60);
 	shit.updateHitbox();
 	shit.screenCenter();
 	shit.scrollFactor.set(0.4, 0.4);
 	shit.velocity.y = 16;
-	shit.blend = 14;
+	shit.blend = BlendMode.SUBTRACT;
 	add(shit);
 
 	var xmlPath = Paths.xml('config/credits');
@@ -47,6 +72,10 @@ function create() {
 		xml = Xml.parse(Assets.getText(xmlPath)).firstElement();
 
 		for (node in xml.elements()) {
+			if (node.nodeName == 'menu') {
+				parseGuests(node);
+				continue;
+			}
 			var lines = [];
 			for (l in node.elementsNamed('line')) {
 				lines.push({
@@ -87,15 +116,16 @@ function create() {
 	} catch (e:Dynamic) {
 		trace('Error while parsing credits.xml: ' + Std.string(e));
 	}
+	creds.push(guests);
 
-	nameTxt = new FunkinText(0, 0, -1, 'a', 48);
+	nameTxt = new FunkinText(0, 0, FlxG.width, 'a', 48);
 	nameTxt.font = Paths.font('sillyfont.ttf');
 	nameTxt.borderSize = 0;
 	nameTxt.color = 0x660033;
 	nameTxt.borderColor = 0x00010057;
 	add(nameTxt);
 
-	descTxt = new FunkinText(0, 0, -1, 'a', 24);
+	descTxt = new FunkinText(0, 0, 350, 'a', 24);
 	descTxt.font = Paths.font('sillyfont.ttf');
 	descTxt.borderSize = 0;
 	descTxt.color = 0x660033;
@@ -119,9 +149,10 @@ function create() {
 	brah.updateHitbox();
 	add(brah);
 	brah.setPosition(FlxG.width - brah.width - 30, 30);
+	var leg = creds.length;
 	brah.onDraw = (b) -> {
-		brah.x -= (brah.width + 10) * creds.length;
-		for (i in 0...creds.length) {
+		brah.x -= (brah.width + 10) * leg;
+		for (i in 0...leg) {
 			brah.x += brah.width + 10;
 			brah.alpha = (i == curSelected) ? 1 : 0.4;
 			b.draw();
@@ -174,9 +205,56 @@ function create() {
 
 	ohmygodbruh = new FunkinSprite();
 	ohmygodbruh.loadSprite(Paths.image('credits/controls' + (mobile ? '-mobile' : '')));
-	ohmygodbruh.blend = 14;
+	ohmygodbruh.blend = BlendMode.SUBTRACT;
 	ohmygodbruh.color = 0x4d7f3a;
 	ohmygodbruh.antialiasing = true;
+
+	guestTitle = new Alphabet(FlxG.width * 0.5 - 100, 75, translate('mnh.misc.guestTitle'), 'silly');
+	guestTitle.scale.set(0.8, 0.8);
+	guestTitle.updateHitbox();
+	add(guestTitle);
+	guestTitle.visible = false;
+
+	import funkin.menus.ui.effects.WaveEffect;
+	var effect = new WaveEffect(0, 4, 7);
+	effect.speed = 4;
+	guestTitle.effects.push(effect);
+
+	import funkin.menus.ui.effects.ColorWaveEffect;
+
+	var effect = new ColorWaveEffect(0xcccccc, 0xffffff, 3);
+	effect.speed = 4;
+	guestTitle.effects.push(effect);
+	var gm = new CustomShader('gradientMap');
+	gm.black = [0, 0, 0, 1];
+	gm.white = [1, 1, 1, 1];
+	gm.mult = 1;
+	guestTitle.shader = gm;
+
+	add(guestGroup);
+
+	for (x => i in guests) {
+		var nameContainer = new FlxSpriteGroup();
+		guestGroup.add(nameContainer);
+
+		var name = new Alphabet(0, 0, i.name, 'silly');
+		name.scale.set(0.7, 0.7);
+		name.updateHitbox();
+		nameContainer.add(name);
+
+		var size = 90;
+		var icon = new FunkinSprite();
+		icon.loadSprite(Paths.image('credits/' + i.icon));
+		icon.antialiasing = true;
+		CoolUtil.setUnstretchedGraphicSize(icon, size, size);
+		icon.x = (icon.width * -1) - 12;
+		icon.y = ((name.textHeight * name.scale.y) - icon.height) * 0.5;
+		nameContainer.add(icon);
+
+		nameContainer.x = FlxG.width * 0.5;
+		nameContainer.y = 160 + x * 70;
+		nameContainer.ID = x;
+	}
 
 	changeSelection(0);
 	var data = creds[curSelected];
@@ -185,39 +263,64 @@ function create() {
 	}
 
 	remove(ohmygodbruh);
-	insert(members.indexOf(bubble)+1, ohmygodbruh);
+	insert(members.indexOf(bubble) + 1, ohmygodbruh);
 	ohmygodbruh.x = bubble.x + bubble.width - ohmygodbruh.width - 50;
 	ohmygodbruh.y = bubble.y + bubble.height - ohmygodbruh.height - 50;
 
-	FlxG.mouse.visible = true;
-	music.volume = 0;
-	music.looped = true;
-	music.play();
-	music.fadeIn(0.2, 0, 0.6);
-	FlxG.sound.music.fadeOut(0.2);
-	music.time = FlxG.random.int(0, music.length);
+	CoolUtil.playMusic(Paths.music('misc/wacky'));
+	FlxG.sound.music.volume = 0;
+	FlxG.sound.music.fadeIn(0.2, 0, 0.6);
+	FlxG.sound.music.pitch = 1; // ???
 }
 
 var canDoShit = true;
+var deltaX:Float = 0;
+var deltaY:Float = 0;
 
 function update(elapsed) {
 	if (!canDoShit)
 		return;
 
-	if (controls.UP_P || controls.LEFT_P || flickingUp(elapsed)) {
+	deltaX = FlxG.mouse.deltaX;
+	deltaY = FlxG.mouse.deltaY;
+
+	// trace(deltaX);
+	// trace(deltaY);
+
+	if ((controls.UP_P && !inGuests) || controls.LEFT_P || flickingLeft(elapsed)) {
 		change(-1);
 	}
-	if (controls.DOWN_P || controls.RIGHT_P || flickingDown(elapsed)) {
+	if ((controls.DOWN_P && !inGuests) || controls.RIGHT_P || flickingRight(elapsed)) {
 		change(1);
+	}
+	if (inGuests) {
+		changeSelectionGuest(controls.DOWN_P ? 1 : (controls.UP_P ? -1 : 0));
+		var col = dump.color;
+		guestTitle.shader.black = [
+			((col >> 16 & 0xff) / 2) / 255,
+			((col >> 8 & 0xff) / 3) / 255,
+			((col >> 0 & 0xff) / 2) / 255,
+			1
+		];
+		if (guestGroup.exists) {
+			for (k => v in guestGroup.members) {
+				var neg = Conductor.curBeat % 2 == 0 ? -1 : 1;
+				v.members[1].angle = lerp(v.members[1].angle,
+					k == curSelectedGuest ? FlxMath.lerp(-neg, neg, FlxEase.elasticOut(Conductor.curBeatFloat - Conductor.curBeat)) * 5 : 0, 0.3);
+			}
+		}
 	}
 	var intendedCursor = FlxG.mouse.overlaps(buttonHitbox) ? 'button' : 'arrow';
 	if (Mouse.cursor != intendedCursor)
 		Mouse.cursor = intendedCursor;
 
 	var mousePressed = FlxG.mouse.justReleased; // trolled
-	if (flickingUp(elapsed) || flickingDown(elapsed)) mousePressed = false;
+	if (flickingLeft(elapsed) || flickingDown(elapsed) || flickingUp(elapsed) || flickingRight(elapsed))
+		mousePressed = false;
 	if (FlxG.keys.justPressed.Z || FlxG.mouse.overlaps(buttonHitbox) && mousePressed) {
 		var data = creds[curSelected];
+		if (inGuests)
+			data = data[curSelectedGuest];
 		if (data != null) {
 			if (data.url != null) {
 				CoolUtil.openURL(data.url);
@@ -226,7 +329,7 @@ function update(elapsed) {
 		}
 	}
 	FlxG.camera.bgColor = (dump.color & 0xffffff) + 0xff000000;
-	if (controls.ACCEPT || mousePressed) {
+	if ((controls.ACCEPT || mousePressed) && !inGuests) {
 		advance();
 	}
 	if (image.animation.name == 'open' && image.animation.finished) {
@@ -236,36 +339,53 @@ function update(elapsed) {
 		Mouse.cursor = 'arrow';
 		persistentUpdate = true;
 		canDoShit = false;
-		FlxTween.tween(music, {pitch: 0}, 0.1, {
-			onComplete: (_) -> {
-				FlxG.switchState(new MainMenuState());
-			}
-		});
+		CoolUtil.playMenuSFX(2).persist = true;
+		FlxG.sound.music.stop();
+		FlxG.switchState(new MainMenuState());
 	}
-
 	/*if (controls.LEFT)
 			scrollTxt.angle -= elapsed * 36;
 		if (controls.RIGHT)
 			scrollTxt.angle += elapsed * 36;
 		nameTxt.text = 'angle: ' + scrollTxt.angle; */
 }
+
+// yanderedev moment
 var mouseThreshold = 5000;
-function flickingDown(elapsed) {
-	return !FlxG.mouse.justPressed && FlxG.mouse.pressed && FlxG.mouse.deltaY < -mouseThreshold * elapsed;
+
+function flickingLeft(elapsed) {
+	return !FlxG.mouse.justPressed && FlxG.mouse.pressed && deltaX > mouseThreshold * elapsed;
 }
+
+function flickingDown(elapsed) {
+	return !FlxG.mouse.justPressed && FlxG.mouse.pressed && deltaY < -mouseThreshold * elapsed;
+}
+
 function flickingUp(elapsed) {
-	return !FlxG.mouse.justPressed && FlxG.mouse.pressed && FlxG.mouse.deltaY > mouseThreshold * elapsed;
+	return !FlxG.mouse.justPressed && FlxG.mouse.pressed && deltaY > mouseThreshold * elapsed;
+}
+
+function flickingRight(elapsed) {
+	return !FlxG.mouse.justPressed && FlxG.mouse.pressed && deltaX < -mouseThreshold * elapsed;
 }
 
 var closing = false;
 var dump = new FunkinSprite();
-function change(ch) {
+
+function change(ch, ?guestMode) {
+	guestMode ??= false;
 	if (reading || closing)
 		return;
 
+	var lastSel = curSelected;
+	var lastGuests = inGuests;
 	curSelected = FlxMath.wrap(curSelected + ch, 0, creds.length - 1);
+	inGuests = curSelected == creds.length - 1;
+
+	if (inGuests && (lastSel == curSelected))
+		changeSelectionGuest(0, true);
 	CoolUtil.playMenuSFX(0, 0.7);
-	var data = creds[curSelected];
+	var data = inGuests ? creds[curSelected][curSelectedGuest] : creds[curSelected];
 	if (data.color != null) {
 		FlxTween.cancelTweensOf(dump);
 		FlxTween.color(dump, 0.4, dump.color, FlxColor.fromString(data.color));
@@ -284,9 +404,48 @@ function change(ch) {
 	}
 }
 
-function changeSelection(change) {
-	closing = false;
+var inGuests = false;
 
+function changeSelectionGuest(ch, ?force) {
+	force ??= false;
+	if (!guestGroup.exists || (ch == 0 && !force))
+		return;
+	curSelectedGuest = FlxMath.wrap(curSelectedGuest + ch, 0, creds[creds.length - 1].length - 1);
+	var data = creds[curSelected][curSelectedGuest];
+	CoolUtil.playMenuSFX(0, 0.7);
+	if (data.color != null) {
+		FlxTween.cancelTweensOf(dump);
+		FlxTween.color(dump, 0.4, dump.color, FlxColor.fromString(data.color));
+	}
+	guestGroup.forEach((g) -> {
+		g.alpha = curSelectedGuest == g.ID ? 1 : 0.6;
+	});
+	nameTxt.text = data.name;
+	descTxt.text = data.desc;
+	var textWidth = nameTxt.textField.textWidth;
+
+	var factor = Math.min(1, 325 / textWidth);
+	nameTxt.scale.set(factor, factor);
+	nameTxt.updateHitbox();
+
+	descTxt.y = Std.int(nameTxt.y + nameTxt.height - 15);
+}
+
+function changeSelection(cha) {
+	closing = false;
+	guestGroup.exists = guestTitle.visible = inGuests;
+
+	if (inGuests) {
+		curSelectedGuest = -1;
+		changeSelectionGuest(1);
+		image.visible = bubble.visible = ohmygodbruh.visible = text.visible = spkTxt.visible = false;
+		nameTxt.text = creds[curSelected][curSelectedGuest].name;
+		descTxt.text = creds[curSelected][curSelectedGuest].desc;
+		return;
+	} else {
+		image.visible = bubble.visible = ohmygodbruh.visible = text.visible = spkTxt.visible = true;
+		curSelectedGuest = 0;
+	}
 	var padding = 30;
 	var data = creds[curSelected];
 	var speaker = (data.speaker ?? 'betty');
@@ -300,27 +459,22 @@ function changeSelection(change) {
 	image.x += data.x;
 	image.y += data.y;
 	image.antialiasing = true;
-	nameTxt.fieldWidth = -1;
-	descTxt.fieldWidth = -1;
 
 	nameTxt.text = data.name ?? 'unknown';
 	descTxt.text = data.desc ?? 'no description provided';
-	var max = 350;
-	if (nameTxt.width > max)
-		nameTxt.fieldWidth = max;
-	if (descTxt.width > max)
-		descTxt.fieldWidth = max;
-	nameTxt.updateHitbox();
-	descTxt.updateHitbox();
-
 	spkTxt.text = data.speakerName;
-
+	var textWidth = nameTxt.textField.textWidth;
+	
+	var factor = Math.min(1, 325 / textWidth);
+	nameTxt.scale.set(factor, factor);
+	nameTxt.updateHitbox();
+	
 	curLines = data.lines.copy();
 	firstLine = true;
 	reading = false;
 	advance();
 
-	descTxt.y = nameTxt.y + nameTxt.height - 15;
+	descTxt.y = Std.int(nameTxt.y + nameTxt.height - 15);
 
 	image.animation.play('open', true);
 }

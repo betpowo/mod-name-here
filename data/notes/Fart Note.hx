@@ -1,37 +1,4 @@
 final _type = 'Fart Note';
-
-// backend helpers for rgb
-
-function red(col) {
-	return (col >> 16) & 0xff;
-}
-
-function green(col) {
-	return (col >> 8) & 0xff;
-}
-
-function blue(col) {
-	return col & 0xff;
-}
-
-function redf(col) {
-	return red(col) / 255;
-}
-
-function greenf(col) {
-	return green(col) / 255;
-}
-
-function bluef(col) {
-	return blue(col) / 255;
-}
-
-function convert(col) {
-	return [redf(col), greenf(col), bluef(col)];
-}
-
-// general graphics
-
 var follower = new FunkinSprite().loadGraphic(Paths.image('game/notes/overlays/fartOverlay'));
 var rgbShader:CustomShader;
 var sound:FlxSound;
@@ -43,16 +10,16 @@ function create() {
 
 	rgbShader = new CustomShader('rgbPalette');
 	rgbShader.mult = 1;
-	rgbShader.r = convert(0xbbaa66);
-	rgbShader.g = convert(-1);
-	rgbShader.b = convert(0x445555);
+	rgbShader.r = getRGBArray(0xbbaa66);
+	rgbShader.g = getRGBArray(-1);
+	rgbShader.b = getRGBArray(0x445555);
 
 	sound = FlxG.sound.load(Paths.sound('fart'));
 }
 
 function onPostNoteCreation(e) {
 	if (e.noteType == _type) {
-		e.note.shader = null;
+		e.note.extra['noBreakShader'] = true;
 		e.note.shader = rgbShader;
 		e.note.avoid = true;
 		e.note.latePressWindow = e.note.earlyPressWindow = 0.3;
@@ -60,9 +27,6 @@ function onPostNoteCreation(e) {
 }
 
 function postCreate() {
-	strumLines.forEach((s) -> {
-		s.onNoteUpdate.add(onNoteUpdate);
-	});
 	insert(members.indexOf(strumLines) + 1, follower);
 	follower.onDraw = (f) -> {
 		for (j in strumLines.members) {

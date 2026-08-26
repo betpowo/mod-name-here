@@ -49,6 +49,7 @@ function postCreate() {
 		FlxTween.cancelTweensOf(i);
 		i.alpha = 1;
 	}
+	strums.notes.limit = 500; // makes them appear inside of the car
 
 	camGame.addShader(ballsShader);
 	ballsShader.coolMix = 0;
@@ -64,7 +65,7 @@ function postCreate() {
 function postUpdate() {
 	if (!yeeted) {
 		for (i in strums.members) {
-			i.setPosition(car.x + car.globalOffset.x + (Note.swagWidth * i.ID * strums.strumScale) - 70, car.y + car.globalOffset.y - 100);
+			i.setPosition(car.x + car.globalOffset.x + (Note.swagWidth * i.ID * strums.strumScale) + 310, car.y + car.globalOffset.y + 70);
 		}
 	} else {
 		if (ballsShader.coolMix > 0) {

@@ -11,6 +11,7 @@ import openfl.display.BitmapData;
 import funkin.savedata.FunkinSave;
 import funkin.backend.system.Flags;
 import funkin.backend.system.Control;
+ 
 
 var camFollow = new FlxObject(0, 0, 0, 0);
 
@@ -61,38 +62,22 @@ if (mobile) {
 var buttons = [];
 var bg = new FunkinSprite();
 var devModeWarning = new FunkinText();
+
 function create() {
 	FlxG.camera.bgColor = 0xFF003366;
-	CoolUtil.playMenuSong();
 	FlxG.mouse.visible = true;
 
 	bg.makeSolid(FlxG.camera.width, FlxG.camera.width, 0xffffff);
 	add(bg);
 
-	// https://www.shadertoy.com/view/4st3WX ; comment by coyote on 2016-01-15
-	bg.shader = new FunkinShader('
-	#pragma header
-	uniform float iTime;
-	void main()
-	{
-		vec2 uv = openfl_TextureCoordv;
-		vec2 U = uv;
-		vec4 f = openfl_TextureSize.xyxy;
-		f = length(U += U - f.xy) / f;
-		f = vec4(sin(6.0 / f + atan(U.x, U.y) * 4.0 - iTime).w < 0.0);
-		f *= sin(2.0 * length(U) - 0.1);
-
-		float col = f.r / f.a;
-		gl_FragColor = applyFlixelEffects(vec4(col, col, col, 1.0) * f.a);
-	}
-	');
+	bg.shader = new CustomShader('mainBGSwirl');
 	bg.antialiasing = true;
 	bg.shader.iTime = 0;
+	bg.shader.offset = [0, 0];
 	bg.zoomFactor = 0;
 	bg.scrollFactor.set();
-	bg.shader.whRemap = [bg.width, bg.height];
 	bg.screenCenter();
-	bg.blend = 0;
+	bg.blend = BlendMode.ADD;
 
 	var meme = new FunkinSprite();
 	meme.loadSprite(FlxG.random.getObject(Paths.getFolderContent('images/menus/mainmenu/memes/', true)));
@@ -104,12 +89,12 @@ function create() {
 	add(meme);
 	var ver = new FunkinText();
 	ver.size = 18;
-	ver.text = [
-		'mnh v' + version,
-		'codename v' + Flags.VERSION,
-		'[' + controls.getKeyName(Control.SWITCHMOD).toLowerCase() + '] to switch mods,',
-		'but why would you?'
-	].join('\n');
+	ver.text = translate('mnh.main.bottomText', [
+		version,
+		Flags.VERSION,
+		Flags.COMMIT_HASH,
+		controls.getKeyName(Control.SWITCHMOD).toLowerCase()
+	]);
 	ver.font = Paths.font('sillyfont.ttf');
 	ver._defaultFormat.leading = -4;
 	ver.updateDefaultFormat();
@@ -124,7 +109,7 @@ function create() {
 	camera.follow(camFollow, null, 0.04);
 
 	var col = FlxG.camera.bgColor;
-	var whiteColor = [red(col) / 255, green(col) / 255, blue(col) / 255];
+	var whiteColor = getRGBArray(col & 0xffffff);
 	var blackColor = whiteColor.copy();
 
 	for (w in 0...whiteColor.length) {
@@ -142,7 +127,7 @@ function create() {
 	blackColor.push(1);
 
 	for (i => b in [
-		FunkinSave.getWeekHighscore('weekidk', 'normal').score > 0, // week idk beaten
+		FunkinSave.getWeekHighscore('your-new-week', 'normal').score > 0, // week idk beaten
 		false, // all story mode beaten (no other weeks yet so make it false for now lol!!)
 		false, // all extra songs (same reason as above, but for extra songs instead)
 		false // true ending . you can already see why its false
@@ -171,8 +156,8 @@ function create() {
 
 		test.x += i.x ?? 0;
 		test.y += i.y ?? 0;
-		test.bgShader.top = [red(i.colors[0]) / 255, green(i.colors[0]) / 255, blue(i.colors[0]) / 255, 1];
-		test.bgShader.bottom = [red(i.colors[1]) / 255, green(i.colors[1]) / 255, blue(i.colors[1]) / 255, 1];
+		test.bgShader.top = getRGBArray(i.colors[0] + 0xFF000000);
+		test.bgShader.bottom = getRGBArray(i.colors[1] + 0xFF000000);
 
 		test.titleSprite.x = test.x + (test.width - test.titleSprite.width) * 0.5;
 		test.titleSprite.y = test.y + 20;
@@ -209,18 +194,9 @@ function create() {
 	devModeWarning.borderSize = 4;
 	devModeWarning.borderColor = 0xff3f0048;
 	add(devModeWarning);
-}
 
-public function red(col) {
-	return (col >> 16) & 0xff;
-}
-
-public function green(col) {
-	return (col >> 8) & 0xff;
-}
-
-public function blue(col) {
-	return (col & 0xff);
+	CoolUtil.playMenuSong();
+	FlxG.sound.music.pitch = 1; // ???
 }
 
 var chosen = false;
@@ -234,7 +210,9 @@ function getDevAccessKeys() {
 	}
 	return res;
 }
+
 var devModeCount:Int = 0;
+
 function update(elapsed) {
 	FlxG.sound.music.volume = Math.min(FlxG.sound.music.volume + (elapsed), 1);
 
@@ -268,24 +246,6 @@ function update(elapsed) {
 	}
 
 	bg.shader.iTime += elapsed;
-}
-
-function changeSelection(ch) {
-	unselectedFormat(texts[curSelected]);
-	curSelected = FlxMath.wrap(curSelected + ch, 0, options.length - 1);
-	selectedFormat(texts[curSelected]);
-
-	CoolUtil.playMenuSFX(0, 0.7);
-}
-
-function unselectedFormat(t) {
-	t.color = 0xffffff;
-	t.shadowOffset.set(0, 0);
-}
-
-function selectedFormat(t) {
-	t.color = 0xffff00;
-	t.shadowOffset.set(t.size / 8, t.size / 8);
 }
 
 function selectItem(i) {
@@ -332,14 +292,13 @@ function selectItem(i) {
 	}
 
 	switch (choice) {
-		case 'story':
-			FlxTween.tween(FlxG.sound.music, {pitch: 0}, 0.4, {ease: FlxEase.expoOut});
+		case 'story' | 'credits':
+			FlxTween.tween(FlxG.sound.music, {pitch: 0}, 0.3);
 	}
-
 	new FlxTimer().start(1.3, (_) -> {
 		switch (choice) {
 			case 'story':
-				var week = Week.loadWeek('weekidk', false);
+				var week = Week.loadWeek('your-new-week', false);
 				PlayState.loadWeek(week, 'normal');
 				FlxG.switchState(new PlayState());
 			case 'freeplay':
@@ -352,7 +311,7 @@ function selectItem(i) {
 	});
 }
 
-class MNHMenuItem extends funkin.backend.FunkinSprite {
+class MNHMenuItem extends flixel.FlxSprite {
 	public var titleSprite:FunkinSprite;
 	public var bg:FunkinSprite;
 
@@ -371,10 +330,10 @@ class MNHMenuItem extends funkin.backend.FunkinSprite {
 		var asset = Paths.image('menus/mainmenu/assets');
 		antialiasing = true;
 
-		loadSprite(asset);
-		addAnim('off', sprite + '0', 12, true, true, [0]);
-		addAnim('on', sprite + '0', 12, true, true, [2]);
-		playAnim('off');
+		frames = Paths.getFrames('menus/mainmenu/assets');
+		animation.addByIndices('off', sprite + '0', [0], '', 12, true);
+		animation.addByIndices('on', sprite + '0', [2], '', 12, true);
+		animation.play('off');
 
 		updateHitbox();
 		_updateHitbox();
@@ -496,12 +455,12 @@ class MNHMenuItem extends funkin.backend.FunkinSprite {
 
 	public function updateToggle() {
 		var ani = overlapped ? 'on' : 'off';
-		playAnim(ani);
+		animation.play(ani);
 		titleSprite.playAnim(ani);
 		gm.mult = overlapped ? 0 : 1;
 
 		if (overlapped) {
-			CoolUtil.playMenuSFX(0, 0.7);
+			CoolUtil.playMenuSFX(0, 0.7).pitch = FlxG.random.float(0.95, 1.05);
 		}
 	}
 
@@ -511,7 +470,7 @@ class MNHMenuItem extends funkin.backend.FunkinSprite {
 		var oganim = animation.name;
 		var ogalpha = alpha;
 
-		playAnim('off');
+		animation.play('off');
 		offset.set(extraOffsets.x, extraOffsets.y);
 		colorTransform.color = FlxColor.fromHSB(elapsedTime * 180, 0.3, 1);
 		super.draw();
@@ -520,7 +479,7 @@ class MNHMenuItem extends funkin.backend.FunkinSprite {
 		if (overlapped)
 			bg.draw();
 
-		playAnim(oganim);
+		animation.play(oganim);
 		setColorTransform();
 		alpha = ogalpha;
 		super.draw();

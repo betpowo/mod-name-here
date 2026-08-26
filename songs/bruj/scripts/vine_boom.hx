@@ -1,5 +1,5 @@
 import hxvlc.flixel.FlxVideoSprite;
-import openfl.display.BlendMode;
+ 
 
 if (PlayState.difficulty != 'pico') {
 	disableScript();
@@ -28,7 +28,6 @@ function postCreate() {
 	video.bitmap.onEndReached.add(() -> {
 		endSong();
 	});
-	video.autoVolumeHandle = false;
 	video.camera = camHUD;
 }
 

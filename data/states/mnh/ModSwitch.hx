@@ -3,6 +3,7 @@ import flixel.FlxObject;
 import flixel.text.FlxTextBorderStyle;
 import funkin.backend.assets.ModsFolder;
 import openfl.filters.BlurFilter;
+ 
 
 var mods = [];
 var texts = [];
@@ -15,14 +16,14 @@ var stxSound = FlxG.sound.load(Paths.sound('static'));
 var camFollow:FlxObject = new FlxObject(0, 0, 0, 0);
 var cam = new FlxCamera();
 var beep = FlxG.sound.load(FlxAssets.getSound('flixel/sounds/beep'));
-
 var backText = '?:/';
 
 function create() {
 	FlxG.cameras.add(cam, false);
 	camera = cam;
 	mods = ModsFolder.getModsList();
-	if (mobile) mods.push(backText);
+	if (mobile)
+		mods.push(backText);
 	mods.push(null);
 
 	var bg = new FlxSprite(0, 0).makeSolid(FlxG.width, FlxG.height, 0xFF000000);
@@ -31,9 +32,15 @@ function create() {
 	add(bg);
 
 	for (i => v in mods) {
-		var targetText:String = v ?? '[ disable. ]';
-		if (v == backText) targetText = '[ back to the fun! ]';
+		var targetText:String = v ?? translate('mods.disableMods');
+		if (v == backText)
+			targetText = translate('mods.backButton');
 		var t = setupText(targetText);
+		if (v == null) {
+			t.color = 0xff3366;
+		} else if (v == backText || v == ModsFolder.currentModFolder) {
+			t.color = 0x33ff66;
+		}
 		t.alpha = 0.2;
 		t.setPosition(50, 50 + (50 * i));
 		texts.push(t);
@@ -42,8 +49,6 @@ function create() {
 
 	selector = setupText('>');
 	add(selector);
-
-	changeSelection(mods.indexOf(ModsFolder.currentModFolder));
 
 	add(statix);
 	statix.visible = false;
@@ -64,6 +69,9 @@ function create() {
 	camera.follow(camFollow, null, 0.4);
 	var margin = 50;
 	camera.deadzone.set(0, margin, camera.width, camera.height - (margin * 2.5));
+
+	changeSelection(mods.indexOf(ModsFolder.currentModFolder));
+	camera.snapToTarget();
 }
 
 function setupText(v) {
@@ -76,7 +84,7 @@ function setupText(v) {
 		i.borderColor = 0x000000;
 		i.borderSize = 0;
 		i.text = v;
-		i.blend = 0;
+		i.blend = BlendMode.ADD;
 	}
 
 	b.textField.filters = [new BlurFilter(5, 5, 1)];
@@ -118,6 +126,7 @@ function update(elapsed) {
 
 	for (i in blurs) {
 		i.text.setPosition(i.tracker.x, i.tracker.y);
+		i.text.color = i.tracker.color;
 		i.text.alpha = i.tracker.alpha * FlxG.random.float(0.7, 1);
 	}
 }
@@ -141,6 +150,7 @@ function changeSelection(ch) {
 	t.alpha = 1;
 
 	selector.setPosition(t.x - 30, t.y - 4);
+	selector.color = t.color;
 	camFollow.y = t.y;
 
 	beep.play(true);

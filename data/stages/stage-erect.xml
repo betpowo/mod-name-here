@@ -8,18 +8,10 @@
 	</sprite>
 
 	<!-- LIGHTS -->
-	<sprite name="brightLightSmall" x="967" y="-103" sprite="brightLightSmall" scroll="1.2">
-		<property name="blend" type="float" value="0" />
-	</sprite>
-	<sprite name="orangeLight" x="189" y="-195" sprite="orangeLight">
-		<property name="blend" type="float" value="0" />
-	</sprite>
-	<sprite name="lightgreen" x="-171" y="242" sprite="lightgreen">
-		<property name="blend" type="float" value="0" />
-	</sprite>
-	<sprite name="lightred" x="-101" y="560" sprite="lightred">
-		<property name="blend" type="float" value="0" />
-	</sprite>
+	<sprite blend="add" name="brightLightSmall" x="967" y="-103" sprite="brightLightSmall" scroll="1.2"/>
+	<sprite blend="add" name="orangeLight" x="189" y="-195" sprite="orangeLight"/>
+	<sprite blend="add" name="lightgreen" x="-171" y="242" sprite="lightgreen"/>
+	<sprite blend="add" name="lightred" x="-101" y="560" sprite="lightred"/>
 
 	<sprite name="bg" x="-603" y="-187" sprite="bg" />
 	<sprite name="server" x="-361" y="205" sprite="server" />
@@ -30,7 +22,5 @@
 
 	<!-- MORE LIGHTS -->
 	<sprite name="lights" x="-601" y="-147" sprite="lights" scroll="1.2" />
-	<sprite name="lightAbove" x="804" y="117" sprite="lightAbove">
-		<property name="blend" type="float" value="0" />
-	</sprite>
+	<sprite blend="add" name="lightAbove" x="804" y="117" sprite="lightAbove"/>
 </stage>

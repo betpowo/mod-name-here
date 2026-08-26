@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.8" name="white" startCamPosY="-600" startCamPosX="500">
+<stage zoom="0.8" name="white" startCamPosY="-600" startCamPosX="500" bgColor="#ffffff">
 	<ext script="forceFPSshadow" folder="data/scripts/" />
 	<girlfriend x="600" y="145"/>
 	<dad />

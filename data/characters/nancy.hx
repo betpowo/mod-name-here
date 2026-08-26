@@ -11,8 +11,6 @@ var vizShader = new FunkinShader('
 	uniform sampler2D vizBitmap;
 	uniform sampler2D vizColor;
 	uniform float vizColorWidth;
-	uniform float widthRatio;
-	uniform float vizOffset;
 
 	vec4 getAmpColor(float val) {
 		vec4 res = vec4(0.0, 0.0, 0.0, clamp(val * vizColorWidth, 0.0, 1.0));
@@ -29,13 +27,13 @@ var vizShader = new FunkinShader('
         vec4 color = ogColor;
 
 		float o = abs(uv.x - 0.5) * 2.0;
-		float burp = (mix(((uv.x-0.5)*0.9)+0.5, uv.x, o*o) + vizOffset) * widthRatio;
+		float burp = (mix(((uv.x-0.5)*0.9)+0.5, uv.x, o*o));
 		float uvy = uv.y;
-		float __uvy = uvy;
+		float uvy2 = uvy;
 		uvy -= 0.5;
 		uvy *= 1.1;
 		uvy += 0.5;
-		uvy = mix(__uvy, uvy, o * o * o);
+		uvy = mix(uvy2, uvy, o * o * o);
 		if (burp != clamp(burp, 0.0, 1.0)) {
 			gl_FragColor = vec4(0.0);
 			return;
@@ -82,7 +80,7 @@ function postCreate() {
 	viz.antialiasing = self.antialiasing;
 	viz.updateHitbox();
 
-	vizShader.widthRatio = vizWidth / vizSprite.width;
+	vizShader.widthRatio = 1;
 
 	var vizb = Assets.getBitmapData(Paths.image('characters/abot-viz-map'));
 	vizShader.data.vizBitmap.input = vizSprite.pixels;
@@ -180,8 +178,4 @@ function updateViz(time) {
 		var sc = FlxMath.lerp(1, 1.1, PlayState.instance.inst.amplitude ?? 0);
 		i.scale.set(sc, sc);
 	}
-
-	var o = 1 / PlayState.instance.inst.length;
-	vizShader.vizOffset = ((1 / vizShader.widthRatio) * (Conductor.songPosition / PlayState.instance.inst.length)) - 1;
-	vizShader.vizOffset = Math.floor(vizShader.vizOffset * vizWidth) / vizWidth;
 }

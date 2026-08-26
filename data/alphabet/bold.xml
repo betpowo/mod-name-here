@@ -164,7 +164,7 @@
 		<component anim="character-o0"/>
 		<component anim="diacritic-acute-fill" x="20" y="70" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
 	</composite>
-	<composite char="ú" advance="53">
+	<composite char="ú" advance="45">
 		<component anim="character-u0"/>
 		<component anim="diacritic-acute-fill" x="18" y="70" hasOutline="true" outline="diacritic-acute-outline" outlineX="-1" outlineY="0"/>
 	</composite>

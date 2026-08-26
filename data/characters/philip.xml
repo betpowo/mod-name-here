@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character y="325" flipX="true" camx="-100" camy="68" isPlayer="true" icon="philip" color="#CEFA71" gameOverChar="philip-dead" isGF="false">
+<character y="325" flipX="true" camx="-100" camy="68" isPlayer="true" icon="philip" color="#CEFA71" gameOverChar="die/philip-dead" isGF="false">
 	<anim name="idle" anim="idle"/>
 	<anim name="singLEFT" anim="left" x="93" y="5"/>
 	<anim name="singDOWN" anim="down" x="25" y="-47"/>

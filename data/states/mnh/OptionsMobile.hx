@@ -1,5 +1,8 @@
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
+ 
+
+var time = 0;
 
 function create() {
 	var bg = new FunkinSprite();
@@ -42,7 +45,7 @@ function create() {
 		i.scrollFactor.set();
 		i.screenCenter();
 		i.x = (i.width * -0.5) + 150;
-		i.blend = 0;
+		i.blend = BlendMode.ADD;
 	}
 
 	for (i in [leftArrowBG, rightArrowBG]) {
@@ -52,7 +55,7 @@ function create() {
 		i.screenCenter();
 		i.spacing.y = i.height * -0.33;
 		i.x = (i.width * -0.5) + 150;
-		i.blend = 0;
+		i.blend = BlendMode.ADD;
 		i.alpha = 0.6;
 	}
 	rightArrowBG.velocity.y *= -1;
@@ -68,6 +71,7 @@ function create() {
 	add(makeText(0, 40, 'tap = accept/select', 64));
 	add(makeText(0, 200, 'swipe → = go back a menu', 32));
 }
+
 function makeTextBackdrop(text, ?s, ?l) {
 	s ?? 32;
 	l ?? -2;
@@ -82,7 +86,6 @@ function makeTextBackdrop(text, ?s, ?l) {
 	dumpTxt.updateDefaultFormat();
 	dumpTxt.text = text;
 
-
 	// thank you rozebud
 	dumpTxt.drawFrame(true);
 	var txt = new FlxBackdrop(dumpTxt.pixels);
@@ -90,6 +93,7 @@ function makeTextBackdrop(text, ?s, ?l) {
 	dumpTxt.destroy();
 	return txt;
 }
+
 function makeText(x, y, t, s) {
 	var text = new FunkinText();
 	text.font = Paths.font('sillyfont.ttf');
@@ -101,12 +105,17 @@ function makeText(x, y, t, s) {
 	text.size = s;
 	text.antialiasing = true;
 	text.screenCenter();
-	text.x += x; text.y += y;
+	text.x += x;
+	text.y += y;
 	text.updateHitbox();
 	text.moves = false;
 	return text;
 }
+
 function update(elapsed) {
+	time += elapsed;
+	if (time < 1)
+		return;
 	var pressedEnter:Bool = controls.ACCEPT;
 
 	if (mobile) {

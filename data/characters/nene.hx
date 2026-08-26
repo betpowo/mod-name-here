@@ -348,7 +348,7 @@ function destroy() {
 	abotViz.destroy();
 }
 
-function onJPEGSetup() {
+function onJPEGSetup(e) {
 	for (i in [abot, stereoBG, eyeWhites, pupil]) {
 		i.shader = new CustomShader('jpeg');
 	}

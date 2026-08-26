@@ -72,7 +72,10 @@ function new() {
 }
 
 function postCreate() {
-	zoomOffsets[0] = camGame.zoom - defaultCamZoom;
+	camHUD.zoom = defaultHudZoom;
+	FlxTween.num(camGame.zoom - defaultCamZoom, 0,
+	Math.min(4 * (Conductor.stepCrochet * 0.001), 0.75), {ease: FlxEase.expoOut}, 
+	(num) -> {zoomOffsets[0] = num;});
 }
 
 function onNoteHit(e) {

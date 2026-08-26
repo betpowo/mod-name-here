@@ -17,15 +17,20 @@
 			"GOOD": "pico/resultsNORMAL-pico",
 			"LOSS": "pico/resultsSHIT-pico"
 		},
+		"extraMusicDelay": {
+			"PERFECT_GOLD": 0.18,
+			"PERFECT": 0.18
+		},
 		"perfect_gold": [
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsPERFECT",
+				"anim": "pico perfect rank",
 				"zIndex": 500,
 				"scale": 0.88,
 				"offsets": [
-					385,
-					82
+					145,
+					-20
 				],
 				"loopFrame": 91
 			}
@@ -34,11 +39,12 @@
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsPERFECT",
+				"anim": "pico perfect rank",
 				"zIndex": 500,
 				"scale": 0.88,
 				"offsets": [
-					385,
-					82
+					145,
+					-20
 				],
 				"loopFrame": 91
 			}
@@ -47,13 +53,13 @@
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsGREAT",
+				"anim": "pico great rank",
 				"zIndex": 500,
 				"scale": 1.25,
 				"offsets": [
-					555,
-					225
+					700,
+					220
 				],
-				"looped": true,
 				"loopFrame": 32
 			}
 		],
@@ -61,13 +67,13 @@
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsGREAT",
+				"anim": "pico great rank",
 				"zIndex": 500,
 				"scale": 1.25,
 				"offsets": [
-					555,
-					225
+					700,
+					220
 				],
-				"looped": true,
 				"loopFrame": 32
 			}
 		],
@@ -75,22 +81,25 @@
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsGOOD",
+				"anim": "pico good placeholder",
 				"zIndex": 500,
 				"scale": 1.25,
 				"offsets": [
-					360,
-					125
+					620,
+					200
 				],
-				"loopFrame": 41
+				"loopFrame": 41,
+				"loopEndFrame": 216
 			}
 		],
 		"loss": [
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsSHIT",
+				"anim": "pico loss rank",
 				"zIndex": 500,
 				"offsets": [
-					-185,
+					-235,
 					-125
 				],
 				"loopFrame": 0

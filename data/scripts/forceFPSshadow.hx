@@ -19,7 +19,7 @@ function draw() {
 	fpsBG.y = Framerate.instance.bgSprite.y;
 	fpsBG.scaleX = Framerate.instance.bgSprite.scaleX;
 	fpsBG.scaleY = Framerate.instance.bgSprite.scaleY;
-	fpsBG.alpha = (1 - Framerate.instance.debugAlpha) * 0.5;
+	fpsBG.alpha = 0.5 - Framerate.instance.bgSprite.alpha;
 }
 
 function update() {

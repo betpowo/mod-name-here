@@ -2,6 +2,7 @@ import Xml;
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 import funkin.savedata.HighscoreChange;
+ 
 
 var pauseCam = new FlxCamera();
 var conchetumadre = [];
@@ -42,7 +43,7 @@ function create() {
 		shit.scale.set(60, 60);
 		shit.updateHitbox();
 		shit.screenCenter();
-		shit.blend = 0;
+		shit.blend = BlendMode.ADD;
 		shit.scrollFactor.set(0.4, 0.4);
 		shit.velocity.y = 46;
 		add(shit);
@@ -53,6 +54,8 @@ function create() {
 	bar.updateHitbox();
 	bar.screenCenter(0x01);
 	bar.color = 0x3f0048;
+
+	add(new FunkinSprite((FlxG.width * 0.5) - 4, bar.height - 5).makeSolid(8, FlxG.height, -1)).color = 0xf1f7ff;
 
 	pauseCam.bgColor = 0x33000000;
 
@@ -128,15 +131,23 @@ function create() {
 
 	updateSelected(FlxG.save.data.coopselection);
 
-	FlxG.sound.music.volume = 0.5;
+	FlxG.sound.music.volume = 0.75;
 }
 
 var accepted = false;
 var firstFrame = true;
+
 function update(elapsed) {
 	if (firstFrame != (firstFrame = false)) {
 		return;
 	}
+
+	if (controls.BACK) {
+		CoolUtil.playMenuSFX(2);
+		close();
+		return;
+	}
+
 	var screen = FlxG.mouse.getScreenPosition(pauseCam);
 	if (!accepted) {
 		if (has(HighscoreChange.COpponentMode)) {
@@ -157,7 +168,7 @@ function update(elapsed) {
 			}
 		}
 	}
-	if (controls.BACK || controls.ACCEPT || mobile // todo: make this better
+	if (controls.ACCEPT || mobile // todo: make this better
 		&& screen.y < bar.y && FlxG.mouse.justReleased) {
 		conchetumadre[selected].animation.play('win');
 		conchetumadre[1 - selected].animation.play(inCoop ? 'win' : 'idle');
@@ -165,7 +176,7 @@ function update(elapsed) {
 		bgs[1 - selected].color = FlxColor.interpolate(conchetumadre[1 - selected].extra.get('color'), inCoop ? 0xf1e7ff : 0x3f0048, inCoop ? 0.9 : 0.5);
 		bgs[selected].color = FlxColor.interpolate(conchetumadre[selected].extra.get('color'), 0xf1e7ff, 0.9);
 
-		CoolUtil.playMenuSFX(1, 0.6);
+		CoolUtil.playMenuSFX(1, 0.9);
 
 		new FlxTimer().start(1.5, function(_) {
 			FlxG.sound.music.volume = 1;
@@ -184,7 +195,8 @@ function update(elapsed) {
 }
 
 function destroy() {
-	if (FlxG.cameras.list.indexOf(pauseCam) != -1) FlxG.cameras.remove(pauseCam);
+	if (FlxG.cameras.list.indexOf(pauseCam) != -1)
+		FlxG.cameras.remove(pauseCam);
 }
 
 function test() {
@@ -192,12 +204,22 @@ function test() {
 	FlxG.sound.play(Paths.sound('pixel/ANGRY_TEXT_BOX'));
 }
 
-function fuckingIdiot(char = 'face') {
+function fuckingIdiot(?char = 'face') {
+	char ??= 'face';
 	var spr = new FunkinSprite();
-	spr.frames = Paths.getSparrowAtlas('freeplay/charsel/' + char ?? {
+	var frames = Paths.getSparrowAtlas('freeplay/charsel/face');
+	var die = Assets.exists('images/freeplay/charsel/' + char + '.xml');
+	// trace(die);
+	// trace(Paths.file('images/freeplay/charsel/' + char + '.xml'));
+	// no point in loading face again
+
+	// THE WORST CODE IVE EVER WRITTEn
+	if ((char != 'face') && die) {
+		frames = Paths.getSparrowAtlas('freeplay/charsel/' + char);
+	} else {
 		char = 'face';
-		Paths.getSparrowAtlas('freeplay/charsel/face');
-	});
+	}
+	spr.frames = frames;
 	if (spr.animation.exists('idle')) {
 		spr.animation.remove('idle');
 		spr.animation.remove('select');

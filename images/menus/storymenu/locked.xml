@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="locked.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="locked_icon0000" x="137" y="2" width="133" height="119" frameX="0" frameY="-2" frameWidth="133" frameHeight="123"/>
+	<SubTexture name="locked_icon0001" x="2" y="2" width="133" height="123"/>
+	<SubTexture name="locked_icon0002" x="137" y="123" width="124" height="119" frameX="-6" frameY="-3" frameWidth="133" frameHeight="123"/>
+</TextureAtlas>

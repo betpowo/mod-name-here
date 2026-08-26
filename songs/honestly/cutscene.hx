@@ -5,7 +5,7 @@ function create() {
 	if (a) {
 		game.camGame.visible = true;
 		game.camHUD.visible = false;
-		game.camGame.zoom *= 1.3;
+		game.camGame.zoom = game.defaultCamZoom * 1.3;
 		forceDisableZoomUpdate = true;
 	}
 	startDialogue(Paths.file('songs/honestly/dialogue' + (PlayState.difficulty == 'normal' ? '' : '-' + PlayState.difficulty) + '.xml'), () -> {

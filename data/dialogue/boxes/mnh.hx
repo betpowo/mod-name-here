@@ -1,11 +1,16 @@
+import funkin.backend.utils.IniUtil;
+
 final game = PlayState.instance;
 var speakerText = new FunkinText();
 
 // var skipText = new FunkinText();
+var lastLetterTyped = '';
 var lastChar = -1;
 var curChar = 0;
 var isFirstLine = true;
 var cutscene = game.subState;
+
+// trace(SOUND_SHIT['Global']);
 
 function postResetText() {
 	setupBubble(curChar);
@@ -16,17 +21,12 @@ function postResetText() {
 	speakerText.alignment = flipX ? 'right' : 'left';
 }
 
-function postUpdate(e) {
-	text.updateHitbox();
-	text.origin.set(0, 0);
-}
-
-function popupChar(e) {
-	e.cancel();
-
-	var pos = positions[cutscene.curLine.char.positionName];
+function changeChar() {
+	if (cutscene.curLine == null)
+		return;
 	curChar = Std.int(cutscene.curLine.char);
-	flipX = !game.strumLines.members[curChar].opponentSide;
+	if (curChar >= 0)
+		flipX = !game.strumLines.members[curChar].opponentSide;
 	moveCam(curChar);
 
 	if (isFirstLine) {
@@ -35,12 +35,31 @@ function popupChar(e) {
 			game.camGame.snapToTarget();
 	}
 
-	if (lastChar != curChar) {
+	if (cutscene.curLine.changeDefAnim != null) {
+		forEachChar(curChar, (c) -> {
+			c.playAnim(cutscene.curLine.changeDefAnim, true, 'LOCK');
+		});
+	}
+
+	/*if (lastChar != curChar && isLA) {
 		FlxTween.cancelTweensOf(game.camGame.scroll);
 		FlxTween.tween(game.camGame.scroll, {
 			x: game.camFollow.x - (game.camGame.width / 2),
 			y: game.camFollow.y - (game.camGame.height / 2)
 		}, 2, {ease: FlxEase.expoOut});
+	}*/
+}
+
+function popupChar(e) {
+	e.cancel();
+}
+
+function forEachChar(s, f) {
+	if (game.strumLines.members[s] == null)
+		return;
+	for (i in game.strumLines.members[s].characters) {
+		if (i != null)
+			f(i);
 	}
 }
 
@@ -76,7 +95,13 @@ function postCreate() {
 	gm.mult = 1;
 	shader = gm;
 
+	game.camGame.paused = false;
+	game.persistentUpdate = true;
 	/*skipText.camera = FlxG.cameras.list[FlxG.cameras.list.length - 1];*/
+
+	text.completeCallback = () -> {
+		//blips.pause();
+	}
 }
 
 function structureLoaded(e) {
@@ -84,6 +109,8 @@ function structureLoaded(e) {
 }
 
 var added:Bool = false;
+var __cachedText = '';
+//var blips = FlxG.sound.load(Paths.sound('dialogue/_'));
 
 function update(elapsed) {
 	if (!added) {
@@ -103,27 +130,40 @@ function update(elapsed) {
 	/*var scrX = lerp()
 		game.camera.scroll.setPosition(scrX, scrY); */
 	game.camGame.updateScroll();
+	//text.sounds = null;
 
-	/*if (game.controls.BACK) {
-		cutscene.canProceed = false;
-		isLastLine = true;
-		// i use this so it doesnt use this scripts already defined playBubbleAnim func
-		this.playBubbleAnim('normal', '-close', '');
-		this.animation.finishCallback = () -> {
-			FlxTween.cancelTweensOf(game.camGame.scroll);
-			cutscene.close();
-		};
-	}*/
+	if (__cachedText != text.text) {
+		__cachedText = text.text;
+		lastLetterTyped = text.text.charAt(text.text.length - 1);
+		// var index = getSoundIndexOf(lastLetterTyped);
+
+		/*if (index >= 0 && 'aehilmpstv'.split('').indexOf(lastLetterTyped.toLowerCase()) != -1) {
+			blips.loadEmbedded(Paths.sound('dialogue/test/' + lastLetterTyped.toLowerCase(), null, 'wav'));
+			blips.play(true);
+			blips.pitch = 1 + FlxG.random.float(-0.1, 0.3);
+			// blips.play(true);
+			trace('DUDE', blips.time);
+		}*/
+	}
+	// trace(blips.time);
+}
+
+function postUpdate(elapsed) {
+	text.updateHitbox();
+	text.origin.set(0, 0);
 }
 
 function playBubbleAnim(e) {
+	changeChar();
+
 	if (e.suffix != '-close') {
 		e.suffix = '';
 		e.setTextAfter = false;
+
 		if (lastChar != curChar) {
 			lastChar = curChar;
-			e.suffix = '-open';
-			e.setTextAfter = true;
+			e.suffix = ((curChar == -1) ? '-close' : '-open');
+			e.setTextAfter = (curChar != -1);
 		}
 	}
 }
@@ -134,15 +174,20 @@ function postPlayBubbleAnim(e) {
 	if (isLastLine) {
 		cutscene.remove(speakerText);
 		if (cutscene.curMusic != null) {
-			FlxTween.tween(cutscene.curMusic, {pitch: 0}, 3 / 12);
+			FlxTween.tween(cutscene.curMusic, {pitch: 0}, 0.25);
 		}
-		// FlxTween.cancelTweensOf(skipText, ['alpha']);
-		// FlxTween.tween(skipText, {alpha: 0}, 2 / 12, {ease: FlxEase.expoIn});
+		for (i in 0...game.strumLines.members.length) {
+			forEachChar(i, (c) -> {
+				c.lastAnimContext = null;
+			});
+		}
 	}
 	isLastLine = cutscene.dialogueLines.length == 0;
 }
 
 function moveCam(a) {
+	if (game.strumLines.members[a] == null)
+		return;
 	var pos = FlxPoint.get();
 	var r = 0;
 	var w = 0;
@@ -192,29 +237,34 @@ function moveCam(a) {
 }
 
 function setupBubble(c) {
-	var char = game.strumLines.members[c].characters[0];
-	var col = char.iconColor ?? 0x717171;
+	var isNull = game.strumLines.members[c] == null;
+	var char = isNull ? null : game.strumLines.members[c].characters[0];
 
-	var white = FlxColor.interpolate(col, FlxColor.WHITE, 0.9);
-	var w_ = getColorRGB(white);
-	for (i in 0...w_.length) {
-		w_[i] = Math.min(w_[i] * 2, 255);
+	if (!isNull) {
+		var col = char.iconColor ?? 0x717171;
+		var white = FlxColor.interpolate(col, FlxColor.WHITE, 0.9);
+		var w_ = getColorRGB(white);
+		for (i in 0...w_.length) {
+			w_[i] = Math.min(w_[i] * 2, 255);
+		}
+		white = FlxColor.fromRGB(w_[0] / 255, w_[1] / 255, w_[2] / 255);
+
+		var black = col;
+		var b_ = getColorRGB(black);
+		for (i in 0...b_.length) {
+			b_[i] = Math.max(b_[i] - 128, 0) / 255;
+			gm.black[i] = b_[i];
+			gm.white[i] = w_[i] / 255;
+		}
+		black = FlxColor.fromRGB(b_[0] * 255, b_[1] * 255, b_[2] * 255);
+
+		speakerText.color = (col & 0xffffff) + 0xff000000;
+		text.color = speakerText.borderColor = (black & 0xffffff) + 0xff000000;
+
+		speakerText.text = ' ' + char.curCharacter + ' ';
+	} else {
+		speakerText.text = ' ';
 	}
-	white = FlxColor.fromRGB(w_[0] / 255, w_[1] / 255, w_[2] / 255);
-
-	var black = col;
-	var b_ = getColorRGB(black);
-	for (i in 0...b_.length) {
-		b_[i] = Math.max(b_[i] - 128, 0) / 255;
-		gm.black[i] = b_[i];
-		gm.white[i] = w_[i] / 255;
-	}
-	black = FlxColor.fromRGB(b_[0] * 255, b_[1] * 255, b_[2] * 255);
-
-	speakerText.color = (col & 0xffffff) + 0xff000000;
-	text.color = speakerText.borderColor = (black & 0xffffff) + 0xff000000;
-
-	speakerText.text = ' ' + char.curCharacter + ' ';
 }
 
 function getColorRGB(col) {

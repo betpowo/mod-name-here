@@ -1,10 +1,5 @@
 <!DOCTYPE codename-engine-dialogue>
 <dialogue box="mnh">
-	<!-- All characters -->
-	<char name="0" char="blank" position="left" />
-	<char name="1" char="blank" position="right" />
-	<char name="2" char="blank" position="middle" />
-
 	<!-- Lines -->
 	<line char="1">
 		brah
@@ -25,28 +20,28 @@
 		you don't know me??
 	</line>
 	<line char="1">
-		i'm <format color="#2eaeac">baxter</format>, world famous rapper and home invader
+		name's <format color="#2eaeac">baxter</format>, world famous rapper and home invader and... uhhh...... yea
 	</line>
 	<line char="1">
-		now can you leave me alone... i need to break in... for the funny
+		now can you leave me alone... i need to break in... for the funny... for the vine
 	</line>
 	<line char="0">
 		no bro
 	</line>
 	<line char="0">
-		that's MY house... me... <format color="#ff6633">betpo</format>'s house... i only let people in when i want to
-	</line>
-	<line char="0">
-		and i Don't want you To
+		home invasion isn't cool
 	</line>
 	<line char="1">
-		you're LAMEEE
+		lameee
 	</line>
-	<line char="0" musicVolume="0" speed="0.1">
-		kill yourself bruj
+	<line char="1">
+		what are you even hiding in there bro...? bodies??? why are you not letting me in....
+	</line>
+	<line char="0">
+		kys
 	</line>
 	<line char="1" musicVolume="0.8">
-		Don't <format color="#b20069" italic="true" bold="true" font="Times New Roman">Fucking.</format> say that...
+		Don't <format color="#b20069" italic="true" bold="true" font="Times New Roman">Fucking.</format> say that
 	</line>
 	<line char="1">
 		You do Not realize who you're Messing with    ...
@@ -55,13 +50,10 @@
 		:(
 	</line>
 	<line char="1" musicVolume="0.8">
-		see... even my baby agrees...
-	</line>
-	<line char="1">
-		she doesn't talk but she still agrees with me right.....
+		see... even my baby agrees... she doesn't talk but she still agrees with me right.....
 	</line>
 	<line char="2" musicVolume="0.5">
-		<format size="18">(i don't...)</format>
+		:/
 	</line>
 	<line char="1" musicVolume="0.8">
 		..so pleaseee let me in

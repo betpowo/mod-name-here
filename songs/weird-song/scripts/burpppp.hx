@@ -21,6 +21,8 @@ var fuckAssCam = new FlxCamera();
 function postCreate() {
 	forceComboXmlPos = true;
 	add(fuckAssCutscene);
+	fuckAssCutscene.addAnim('bruh', 'bruhhhh bruhh', 24, false);
+	fuckAssCutscene.playAnim('bruh', true);
 	fuckAssCutscene.zoomFactor = 0;
 	fuckAssCutscene.scrollFactor.set();
 	fuckAssCutscene.antialiasing = true;
@@ -34,12 +36,15 @@ function postCreate() {
 
 function startTheThingy() {
 	fuckAssCutscene.visible = true;
-	fuckAssCutscene.playAnim('');
+	fuckAssCutscene.playAnim('bruh', true);
 }
 
 function endTheThingy() {
 	FlxG.cameras.remove(fuckAssCam, true);
 	fuckAssCutscene.destroy();
+
+	camHUD.alpha = 0;
+	FlxTween.tween(camHUD, {alpha: 1}, 2, {startDelay: 2, ease: FlxEase.sineOut});
 }
 
 function onPostNoteCreation(e) {
@@ -88,7 +93,6 @@ function onNoteHit(e) {
 		e.cancelStrumGlow();
 		if (FlxG.save.data.holdCovers) {
 			e.note.strumLine.members[e.note.strumID].extra.get('cover').health = 0;
-			e.note.strumLine.members[e.note.strumID].extra.get('cover').visible = false;
 		}
 	}
 }

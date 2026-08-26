@@ -1,0 +1,33 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="mnh">
+  <!-- Lines -->
+  <line char="1">
+		hola putos de mierda los odio hijos de su pinche puta madre
+  </line>
+  <line char="1">
+		eeeeeeeehhhhhhhhh que digo ehhh
+  </line>
+  <line char="1" changeMusic="misc/wacky">
+		hola
+  </line>
+  <line char="0">
+		muere
+  </line>
+  <line char="1">
+		no
+  </line>
+  <line char="0">
+		como que no
+  </line>
+  <line char="1">
+		me voy a volver malvado
+  </line>
+  <line char="1" changeDefAnim="singDOWN">
+		hhhhhhhhhggggggggggggggggggggggggggggggggggggggg
+  </line>
+  <line char="-1" callback="evil" changeMusic="">
+  </line>
+  <line char="1" changeDefAnim="idle">
+    <format color="#ff0000" italic="true" font="Times New Roman">hola putos de mierda los odio hijos de su pinche puta madre</format>
+  </line>
+</dialogue>

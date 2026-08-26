@@ -1,3 +1,6 @@
+import funkin.editors.charter.Charter;
+ 
+
 // flixel camera color thing breaks when the last sprite in members has a different blend mode.
 // it copies it    . and i    i Dont want that
 
@@ -32,18 +35,30 @@ function onEvent(e) {
 			var fade = fadeSprite; // not typing all that
 			var event = e.event;
 			var camera = event.params[3] == "camHUD" ? camHUD : camGame;
+			var persist = event.params[4] ?? false;
 			fade.cameras = [camera];
 
 			var reversed = event.params[0];
 			var from = reversed ? 0 : 1; var to = reversed ? 1 : 0;
-
+			fade.blend = BlendMode.fromString((event.params[5] ?? 'NORMAL').toLowerCase());
 			FlxTween.cancelTweensOf(fade, ['alpha']);
 			fade.alpha = from;
 			fade.color = event.params[1];
-			FlxTween.tween(fade, {alpha: to}, (Conductor.stepCrochet / 1000) * event.params[2], {
-				onComplete: (_) -> {
-					fade.alpha = 0;
+
+			if (event.params[2] > 0) {
+				FlxTween.tween(fade, {alpha: to}, (Conductor.stepCrochet / 1000) * event.params[2], {
+					onComplete: (_) -> {
+						if (!persist) fade.alpha = 0;
+					}
+				});
+			} else {
+				fade.alpha = to;
+			}
+
+			if (PlayState.chartingMode && Charter.startHere) {
+				if (e.event.time < Charter.startTime) {
+					FlxTween.completeTweensOf(fade, ['alpha']);
 				}
-			});
+			}
 	}
 }

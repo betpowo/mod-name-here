@@ -5,7 +5,7 @@ function create() {
 	forceDisableZoomUpdate = true;
 	startVideo(Paths.file('songs/bruj/start-cutscene.mp4'), () -> {
 		game.camGame.visible = true;
-		game.camGame.zoom *= 1.3;
+		game.camGame.zoom = game.defaultCamZoom * 1.3;
 		startDialogue(Paths.file('songs/bruj/dialogue' + (PlayState.difficulty == 'normal' ? '' : '-' + PlayState.difficulty) + '.xml'), () -> {
 			close();
 			game.camHUD.visible = true;

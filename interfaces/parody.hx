@@ -4,7 +4,15 @@ var daPixelZoom = 4;
 
 function create() {
 	PauseSubState.script = 'data/states/pause/parody';
-
+	for (i => j in [
+		[0xff00ff, 0xff7fff],
+		[0x0000ff, 0x7f7fff],
+		[0xffff00, 0xffff7f],
+		[0xff0000, 0xff7f7f]
+	]) {
+		noteColors[i][0] = j[0];
+		noteColors[i][2] = j[1];
+	}
 	currentUI = 'parody';
 }
 
@@ -168,16 +176,6 @@ function postCreate() {
 	meterBG.setPosition(FlxG.width - 525, FlxG.height - meterBG.height);
 	meterBG.camera = meter.camera = camHUD;
 
-	var shads = scripts.getByName('NoteHandler.hx').get('shaderMap');
-	shads.get(0).r = getFUCKINGcolor(0xFF00FF);
-	shads.get(0).b = getFUCKINGcolor(0xff7fff);
-	shads.get(1).r = getFUCKINGcolor(0x0000ff);
-	shads.get(1).b = getFUCKINGcolor(0x7f7fff);
-	shads.get(2).r = getFUCKINGcolor(0xffff00);
-	shads.get(2).b = getFUCKINGcolor(0xffff7f);
-	shads.get(3).r = getFUCKINGcolor(0xFF0000);
-	shads.get(3).b = getFUCKINGcolor(0xff7f7f);
-
 	if (FlxG.save.data.compact) {
 		for (i in [missesTxt, accuracyTxt, rankTxt]) {
 			i.visible = i.exists = i.alive = i.active = false;
@@ -186,12 +184,19 @@ function postCreate() {
 	}
 
 	doIconBop = false;
+
+	TEXT_GAME_SCORE = TranslationUtil.getRaw("mnh.ui.parody.score");
+	TEXT_GAME_MISSES = TranslationUtil.getRaw("mnh.ui.parody.misses");
+	TEXT_GAME_COMBOBREAKS = TranslationUtil.getRaw("mnh.ui.parody.comboBreaks");
+	TEXT_GAME_ACCURACY = TranslationUtil.getRaw("mnh.ui.parody.accuracy");
+	TEXT_GAME_RANK = TranslationUtil.getRaw("mnh.ui.parody.rank");
+
 	updateRatingStuff = function() {
-		scoreTxt.text = 'points          ' + songScore;
-		missesTxt.text = 'misses          ' + misses;
-		accuracyTxt.text = 'amount of cool' + (accuracy < 0 ? '???' : CoolUtil.quantize(accuracy * 100, 100));
+		scoreTxt.text = TEXT_GAME_SCORE.format([songScore]);
+		missesTxt.text = (comboBreaks ? TEXT_GAME_COMBOBREAKS : TEXT_GAME_MISSES).format([misses]);
+		accuracyTxt.text = TEXT_GAME_ACCURACY.format([(accuracy < 0 ? '???' : CoolUtil.quantize(accuracy * 100, 100))]);
 		rankTxt.text = 'i am here to fix the bug where '; // going from perfect (gold) to perfect (pink) wouldnt change the color because the text data was the same
-		rankTxt.text = 'GAMER RANK ' + curRating.rating;
+		rankTxt.text = TEXT_GAME_RANK.format([curRating.rating]);
 		for (i => frmtRange in rankTxt._formatRanges)
 			if (frmtRange.format == accFormat) {
 				rankTxt._formatRanges[i].range.start = rankTxt.text.length - curRating.rating.length;
@@ -206,34 +211,6 @@ function draw(e) {
 	meterBG.flipY = downscroll;
 }
 
-function red(col) {
-	return (col >> 16) & 0xff;
-}
-
-function green(col) {
-	return (col >> 8) & 0xff;
-}
-
-function blue(col) {
-	return col & 0xff;
-}
-
-function redf(col) {
-	return red(col) / 255;
-}
-
-function greenf(col) {
-	return green(col) / 255;
-}
-
-function bluef(col) {
-	return blue(col) / 255;
-}
-
-function getFUCKINGcolor(col) {
-	return [redf(col), greenf(col), bluef(col)];
-}
-
 function onChangeCharacter(e) {
 	if (!e.event.params[3])
 		return;
@@ -241,8 +218,8 @@ function onChangeCharacter(e) {
 	if (e.memberIndex == 0) {
 		if (e.strumIndex >= 2)
 			return;
-		var opp = (e.strumIndex == 0);
-		var opp = (e.strumIndex == 0);
+		final opp = (e.strumIndex == 0);
+		final opp = (e.strumIndex == 0);
 		var icon = opp ? iconP2 : iconP1;
 		icon.setIcon(e?.character?.getIcon() ?? 'face');
 
@@ -256,4 +233,25 @@ function onLyricSetup(e) {
 	e.text.updateHitbox();
 	e.text.screenCenter();
 	e.text.y = FlxG.height - 150 - e.text.height;
+}
+
+function onNoteHit(e) {
+	if (e.note.isSustainNote || !(e.showRating || (e.showRating == null && e.player)))
+		return;
+	comboGroup.forEachAlive((a) -> {
+		a.kill();
+	});
+}
+
+final sharedJPEGShader = new CustomShader('jpeg');
+
+function onRatingsShown(e) {
+	e.acceleration = 0;
+	e.velocity.set(0, 160);
+	e.playTween = false;
+}
+
+function onPostRatingsShown(e) {
+	final sprite = e.ratingSprite ?? e.numberSprite ?? e.comboSprite;
+	sprite.shader = sharedJPEGShader;
 }

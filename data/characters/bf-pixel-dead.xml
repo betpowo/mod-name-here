@@ -1,4 +1,5 @@
 <!DOCTYPE codename-engine-character>
+<!-- this one stays in root characters to override the assets/ one -->
 <character icon="bf-pixel-dead" x="200" y="570" scale="6" flipX="true" isPlayer="true" antialiasing="false" sprite="bf-pixel-dead" color="#7BD6F6">
 	<anim x="0" loop="false" y="0" fps="24" anim="BF Dies pixel" name="firstDeath"/>
 	<anim x="-5" loop="true" y="-2" fps="24" anim="Retry Loop" name="deathLoop"/>

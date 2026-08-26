@@ -8,23 +8,23 @@ import funkin.backend.system.FunkinSprite;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.FlxObject;
 import hxvlc.flixel.FlxVideoSprite;
-import flxanimate.data.Loop;
 import funkin.backend.MusicBeatTransition;
 import flixel.tweens.FlxTweenManager;
 import flixel.tweens.misc.VarTween;
+import funkin.savedata.FunkinSave;
+import funkin.backend.utils.NativeAPI;
+import FlxSoundFilter;
 
-var camFront = new FlxCamera();
 var scoreGroup = new FlxSpriteGroup();
 var rank = 'shit';
 var targetNum = 0;
 var camFollow = new FlxObject(0, 0, 1, 1);
 
 function getRankTrueName() {
-	if (rank == 'shit')
-		return 'LOSS';
+	var targetRank = rank;
 	if (rank == 'perfect' && targetNum == 99)
-		return 'PERFECT?';
-	return rank.toUpperCase();
+		targetRank = 'aperfect';
+	return translate('mnh.results.ranks.' + targetRank);
 }
 
 // fnf dev ass function
@@ -133,43 +133,32 @@ function getBGColors() {
 }
 
 var percentTween;
+final STUPID_ANGLE = -3.8;
+final SONG_NAME_X = 550;
+final SONG_NAME_Y = 130;
 
 function postCreate() {
 	FlxG.camera.bgColor = getBGColors().bg;
-	FlxG.camera.width *= 1.5;
-	FlxG.camera.height *= 1.5;
-	FlxG.camera.setPosition((FlxG.width - FlxG.camera.width) * 0.5, (FlxG.height - FlxG.camera.height) * 0.5);
-	FlxG.camera.scroll.x = FlxG.camera.x;
-
-	// backdrops and bitmap texts will not rotate with camera angle
-	// for some reason so we have to go back to the caveman era
-	FlxG.camera.rotateSprite = true;
-
-	FlxG.camera.angle = -3.8;
-	FlxG.cameras.add(camFront, false);
 
 	camFollow.screenCenter();
-	for (bleh in [FlxG.camera, camFront]) {
-		bleh.follow(camFollow, 0, 0.04);
-	}
+	FlxG.camera.follow(camFollow, 0, 0.04);
 	FlxG.camera.snapToTarget();
-	camFront.bgColor = 0x00000000;
 	FlxG.sound.music?.stop();
 
 	scrollers = [];
 
 	var dumpTxt = new FunkinText();
-	dumpTxt.font = Paths.font('5by7_bold.ttf');
-	dumpTxt.borderSize = dumpTxt.borderColor = 0;
-	dumpTxt.color = getBGColors().text;
+	dumpTxt.font = Paths.font('5by7.ttf');
+	dumpTxt.borderColor = dumpTxt.color = getBGColors().text;
+	dumpTxt.borderColor = dumpTxt.borderColor + 0xff000000;
+	dumpTxt.borderSize = 0.5;
 	dumpTxt.size = 64;
 	dumpTxt.text = getRankTrueName();
-	// dumpTxt.text = 'FUCKING KILL YOURSELF';
 	dumpTxt.drawFrame(true);
 
 	for (idx => i in [-1, 1]) {
-		var img = dumpTxt.pixels;
-		var shit = new FlxBackdrop(img);
+		var shit = new FlxBackdrop().makeGraphic(dumpTxt.width, dumpTxt.height, FlxColor.TRANSPARENT);
+		shit.stamp(dumpTxt);
 		var pad = shit.height * 1.75;
 		if (i == 1)
 			shit.y = FlxMath.lerp(shit.height, pad, 0.5);
@@ -179,35 +168,38 @@ function postCreate() {
 		shit.visible = false;
 		shit.antialiasing = true;
 		shit.scrollFactor.set(0.3, 0.3);
+		shit.rotation = STUPID_ANGLE;
 		add(shit);
 		scrollers[idx] = shit;
 	}
 
 	var fontLetters:String = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz:1234567890!?,.()-Ññ&\"'+[]/#_|;{}><❤";
-	songName = new FlxBitmapText(567, -100, 'bleh',
+	songName = new FlxBitmapText(SONG_NAME_X, -100, 'bleh',
 		FlxBitmapFont.fromMonospace(Paths.image('results/base/tardlingSpritesheet'), fontLetters, FlxPoint.get(49, 62)));
-	songName.text = 'coño e su madre';
+	songName.text = 'Skibidi Sigma Pomni Digital Fortnite Chamba Free Gigachad Rizz OMG Flow xxxTentacion Hotmail Lionel Ronaldo Jr. Mewing III Chiki Ibai Xocas Ete Sech Golden Toy Puppet Ohio Ruben Tuesta YouTube Pro Insano Globo de Texto 51 Decadencia 777';
 	songName.letterSpacing = -15;
 	songName.antialiasing = true;
 	songName.scrollFactor.set(1, 1);
-	add(songName);
-	FlxTween.tween(songName, {y: 125}, 0.5, {ease: FlxEase.quartOut, startDelay: 0.9});
-
-	songName.text = 'Skibidi Sigma Pomni Digital Fortnite Chamba Free Gigachad Rizz OMG Flow xxxTentacion Hotmail Lionel Ronaldo Jr. Mewing III Chiki Ibai Xocas Ete Sech Golden Toy Puppet Ohio Ruben-tuesta YouTube Pro Insano Globo de Texto 51 Decadencia 777';
+	songName.offset.y = 100;
 
 	if (PlayState.SONG != null) {
-		songName.text = (PlayState.SONG.meta.displayName ?? 'Unknown') + ' by ' + (PlayState.SONG.meta.customValues?.composer ?? 'Unknown');
+		songName.text = translate('mnh.results.songByArtist', [
+			(PlayState.SONG.meta.displayName ?? PlayState.SONG.meta.name),
+			(PlayState.SONG.meta.customValues?.composer ?? '[Missing Composer Field]')
+		]);
 		if (PlayState.isStoryMode && PlayState.storyWeek != null) {
-			songName.text = PlayState.storyWeek.name;
+			songName.text = translate('story.names.' + PlayState.storyWeek.id, null, PlayState.storyWeek.name);
 		}
 	}
+	songName.updateHitbox();
+	songName.origin.set();
+	songName.angle = STUPID_ANGLE;
 
 	clearBig = new ClearPercentCounter(800, 300);
-	Reflect.setProperty(clearBig, 'cameras', [camFront]);
-	add(clearBig);
 	clearBig.number = 0;
 	clearBig.alpha = 0.001;
 	clearBig.scrollFactor.set(0.5, 0.5);
+	add(clearBig);
 
 	var fuckkk = FlxG.sound.load(Paths.sound('menu/scroll'));
 	fuckkk.pitch = 0.9;
@@ -222,7 +214,7 @@ function postCreate() {
 				}
 			}, function(num) {
 				if (clearBig.number != (clearBig.number = Std.int(Math.max(0, num)))) {
-					fuckkk.play(true, 38);
+					fuckkk.play(true);
 					fuckkk.pitch += 0.004;
 
 					if (twn != null)
@@ -240,11 +232,13 @@ function postCreate() {
 		}
 	});
 
-	clearSmall = new ClearPercentCounter(567, 125);
+	clearSmall = new ClearPercentCounter(SONG_NAME_X, SONG_NAME_Y);
+	clearSmall.frameOffset.y = Math.sin(STUPID_ANGLE * (Math.PI / 180));
 	clearSmall.big = false;
-	add(clearSmall);
 	clearSmall.number = Std.int(targetNum);
 	clearSmall.alpha = 0.001;
+
+	FlxTween.tween(songName, {y: SONG_NAME_Y}, 0.5, {ease: FlxEase.quartOut, startDelay: 0.9});
 
 	var chosen = Json.parse(Assets.getText(Paths.json('states/_results-chars/bf')));
 	for (i in Paths.getFolderContent('data/states/_results-chars')) {
@@ -260,10 +254,15 @@ function postCreate() {
 	var blehh = new FunkinSprite(-50).makeSolid(FlxG.width * 2, 400);
 	blehh.color = 0;
 	blehh.y = -490;
-	blehh.angle = FlxG.camera.angle;
+	blehh.angle = STUPID_ANGLE;
 	blehh.antialiasing = true;
-	blehh.cameras = [camFront];
 	FlxTween.tween(blehh, {y: -333}, 7 / 24, {ease: FlxEase.quartOut, startDelay: 3 / 24});
+	blehh.shader = new FunkinShader('
+	#pragma header
+	void main() {
+		gl_FragColor = flixel_texture2D(bitmap, openfl_TextureCoordv) * (1.0 - pow(openfl_TextureCoordv.y, 400.0));
+	}
+	');
 
 	resultsAnim = new FlxSprite(-200, -10);
 	resultsAnim.frames = Paths.getFrames('results/base/results');
@@ -274,7 +273,30 @@ function postCreate() {
 		resultsAnim.animation.play("result");
 	});
 	resultsAnim.antialiasing = true;
-	resultsAnim.cameras = [camFront];
+
+	dumpTxt.font = Paths.font('5by7_bold.ttf');
+	dumpTxt.text = ' ' + getRankTrueName() + ' ';
+	dumpTxt.size = 78;
+	dumpTxt.fieldWidth = Std.int(dumpTxt.size * 0.75);
+	dumpTxt._defaultFormat.leading = 15;
+	dumpTxt.updateDefaultFormat();
+	dumpTxt.borderSize = 2.5;
+	dumpTxt.borderColor = dumpTxt.color = 0xffffffff;
+	dumpTxt.drawFrame(true);
+
+	grahh = new FlxBackdrop(null, 0x10, 0, 30).makeGraphic(dumpTxt.width, dumpTxt.height, FlxColor.TRANSPARENT);
+	grahh.stamp(dumpTxt);
+	add(grahh);
+	grahh.antialiasing = true;
+	grahh.x = FlxG.width - grahh.width - 3;
+	grahh.y += 20;
+	grahh.scrollFactor.set(0, 0);
+	grahh.visible = false;
+	grahh.spacing.y = dumpTxt.size * -1.3;
+	add(clearSmall);
+	add(songName);
+
+	dumpTxt.destroy();
 
 	soundSystem = new FlxSprite(-15, -180);
 	soundSystem.frames = Paths.getFrames('results/base/soundSystem');
@@ -286,7 +308,6 @@ function postCreate() {
 	});
 	add(soundSystem);
 	soundSystem.antialiasing = true;
-	soundSystem.cameras = [camFront];
 
 	ratingsPopin = new FlxSprite(-135, 135);
 	ratingsPopin.frames = Paths.getFrames('results/base/ratingsPopin');
@@ -298,7 +319,6 @@ function postCreate() {
 	});
 	add(ratingsPopin);
 	ratingsPopin.antialiasing = true;
-	ratingsPopin.cameras = [camFront];
 
 	scorePopin = new FlxSprite(-180, 515);
 	scorePopin.frames = Paths.getFrames('results/base/scorePopin');
@@ -310,10 +330,8 @@ function postCreate() {
 	});
 	add(scorePopin);
 	scorePopin.antialiasing = true;
-	scorePopin.cameras = [camFront];
 
 	add(scoreGroup);
-	scoreGroup.cameras = [camFront];
 
 	for (i in 0...10) {
 		var bleh = new ScoreGuy(i * 61, 0);
@@ -345,7 +363,6 @@ function postCreate() {
 		];
 
 		var tal = new TallyCounter(i[0], i[1]);
-		Reflect.setProperty(tal, 'cameras', [camFront]);
 		add(tal);
 		tal.number = 0;
 		tal.color = i[2];
@@ -385,55 +402,34 @@ function postCreate() {
 		}
 	});
 
-	dumpTxt.text = getRankTrueName();
-	dumpTxt.size = 78;
-	dumpTxt.fieldWidth = Std.int(dumpTxt.size * 0.75);
-	dumpTxt._defaultFormat.leading = 20;
-	dumpTxt.updateDefaultFormat();
-	dumpTxt.borderSize = 4.5;
-	dumpTxt.borderColor = dumpTxt.color = 0xffffffff;
-	dumpTxt.drawFrame(true);
-
-	grahh = new FlxBackdrop(dumpTxt.pixels, 0x10, 0, 30);
-	add(grahh);
-	grahh.antialiasing = true;
-	Reflect.setProperty(grahh, 'cameras', [camFront]);
-	grahh.x = FlxG.width - grahh.width - 5;
-	grahh.scrollFactor.set(0, 0);
-	grahh.visible = false;
-
 	add(blehh);
 	add(resultsAnim);
 
-	var grah = forceLossSprites ? 'resultsSHIT' : Reflect.field(chosen.results.music, getRankDataName());
-	playMusicWithIntro('results/' + grah, getRankMiscData().musicDelay);
+	var grah = Reflect.field(chosen.results.music, getRankDataName());
+	playMusicWithIntro('results/' + grah, getRankMiscData().musicDelay + (Reflect.field(chosen.results?.extraMusicDelay, getRankDataName()) ?? 0));
 }
 
 function playMusicWithIntro(_path, delay) {
 	var path = Paths.music(_path);
 	var introPath = StringTools.replace(path, '.ogg', '-intro.ogg');
 	var doIntro = Assets.exists(introPath);
-	var offPitch = 0.965;
-	if (forceLossSprites)
-		offPitch = 1;
 
 	FlxG.sound.load(path);
-
 	if (doIntro)
 		FlxG.sound.load(introPath);
 
 	new FlxTimer().start(delay, (_) -> {
 		FlxG.sound.playMusic(doIntro ? introPath : path, 1, !doIntro);
+		filter = new FlxSoundFilter(FlxG.sound.music);
+    	filter.filterType = FlxSoundFilterType.BANDPASS;
+    	filter.gainHF = 1.0;
+    	add(filter); //add so the filter will be destroyed automatically by the state (or destroy manually when not needed)
 		if (doIntro) {
 			FlxG.sound.music.onComplete = () -> {
 				FlxG.sound.playMusic(path);
 				FlxG.sound.music.onComplete = null;
-				if (targetNum == 99)
-					FlxG.sound.music.pitch = offPitch;
 			};
 		}
-		if (targetNum == 99)
-			FlxG.sound.music.pitch = offPitch;
 	});
 }
 
@@ -451,7 +447,7 @@ function makefuckingidiot(_params) {
 		}
 	];
 
-	var params = Reflect.field(_params, forceLossSprites ? 'loss' : getRankDataName().toLowerCase());
+	var params = Reflect.field(_params, getRankDataName().toLowerCase());
 	if (params == null) {
 		_params.folder = 'results/base/results-bf/';
 		params = defaultParams;
@@ -470,31 +466,16 @@ function makefuckingidiot(_params) {
 			Reflect.setField(i, 'loopFrame', 0);
 
 		var bf = new FunkinSprite(i.offsets[0], i.offsets[1]);
-		bf.cameras = [camFront];
 		bf.antialiasing = true;
 		bf.loadSprite(Paths.image(_params.folder + i.assetPath));
-		if (i.renderType == 'sparrow') {
-			bf.animation.addByPrefix('idle', '', 24, false);
-			bf.animation.play('idle', true);
-			bf.updateHitbox();
-			bf.animation.finishCallback = (_name:String) -> {
-				bf.animation.play('idle', true);
-				bf.animation.curAnim.curFrame = i.loopFrame;
-			};
-		} else if (i.renderType == 'animateatlas') {
-			var an = bf.animateAtlas.anim;
-			an.play();
-			an.curInstance.symbol.loop = Loop.PlayOnce;
-		}
-		// trace(i);
+		bf.addAnim('idle', i.anim ?? '', 24, false);
+		bf.playAnim('idle', true);
+		bf.updateHitbox();
+		bf.applyStageMatrix = true;
 		bf.visible = bf.active = false;
 		bf.scrollFactor.set(0.94, 0.94);
 		if (i.scale != null) {
 			bf.scale.set(i.scale, i.scale);
-		}
-		if (i.scroll != null) {
-			bf.scrollFactor.x *= i.scroll;
-			bf.scrollFactor.y *= i.scroll;
 		}
 		cache.push({sprite: bf, data: i});
 		add(bf);
@@ -534,7 +515,10 @@ function makefuckingidiot(_params) {
 		if (percentTween != null)
 			percentTween.finish();
 
-		FlxTween.tween(songName.offset, {x: (clearSmall.graphWidth * -1) - 40}, 2, {ease: FlxEase.expoOut});
+		FlxTween.tween(songName.offset, {
+			x: Math.cos(STUPID_ANGLE * (Math.PI / 180)) * ((clearSmall.graphWidth * -1) - 40),
+			y: Math.sin(STUPID_ANGLE * (Math.PI / 180)) * ((clearSmall.graphWidth * -1) - 40)
+		}, 2, {ease: FlxEase.expoOut});
 		clearSmall.alpha = 1;
 		clearBig.number = clearSmall.number;
 
@@ -545,14 +529,20 @@ function makefuckingidiot(_params) {
 var _timeUntilScroll = 5;
 var _timeUntilNextScroll = 5;
 var canPress = true;
+var moveVelocity = 0;
+var filter;
+var showStupidMessage = false;
 
 function postUpdate(elapsed) {
+	var fsc = FlxMath.fastSinCos(STUPID_ANGLE * (Math.PI / 180));
 	if (_timeUntilScroll < 0) {
 		_timeUntilScroll = 0;
 	} else if (_timeUntilScroll == 0) {
 		var max = 125;
-		songName.velocity.x = FlxMath.bound(songName.velocity.x + (elapsed * max * -1), max * -1, 0);
+		moveVelocity = FlxMath.bound(moveVelocity + (elapsed * max * -1), max * -1, 0);
+		songName.velocity.set(fsc.cos * moveVelocity, fsc.sin * moveVelocity);
 		clearSmall.x = songName.x;
+		clearSmall.y = songName.y;
 
 		if (songName.x - songName.offset.x + songName.width <= 500) {
 			if (_timeUntilNextScroll < 0) {
@@ -560,11 +550,12 @@ function postUpdate(elapsed) {
 			} else {
 				_timeUntilScroll = 5;
 				_timeUntilNextScroll = 5;
-				songName.setPosition(567, -100);
-				clearSmall.setPosition(songName.x, -100);
-				songName.velocity.x = 0;
-				FlxTween.tween(clearSmall, {y: 125}, 0.5, {ease: FlxEase.quartOut, startDelay: 0.75});
-				FlxTween.tween(songName, {y: 125}, 0.5, {ease: FlxEase.quartOut, startDelay: 0.9});
+				songName.setPosition(SONG_NAME_X, -100);
+				songName.velocity.set();
+				clearSmall.setPosition(SONG_NAME_X, -100);
+				moveVelocity = 0;
+				FlxTween.tween(clearSmall, {y: SONG_NAME_Y}, 0.5, {ease: FlxEase.quartOut, startDelay: 0.75});
+				FlxTween.tween(songName, {y: SONG_NAME_Y}, 0.5, {ease: FlxEase.quartOut, startDelay: 0.9});
 			}
 		}
 	} else {
@@ -576,29 +567,28 @@ function postUpdate(elapsed) {
 	}*/
 
 	for (i in cache) {
-		if (i.data.renderType == 'animateatlas') {
-			var an = i.sprite.animateAtlas.anim;
-			if (an.finished) {
-				an.curFrame = i.data.loopFrame;
-				an.isPlaying = true;
-			}
+		if (i.sprite.isAnimAtEnd() || // one day im going to support the easter egg anims for pico
+			((i.data.loopEndFrame) != null && i.sprite.globalCurFrame >= i.data.loopEndFrame)) {
+			i.sprite.globalCurFrame = i.data.loopFrame;
+			// an.isPlaying = true;
 		}
 	}
 
-	camFollow.x = FlxMath.bound(camFollow.x, FlxG.width * 0.5, FlxG.width * 1.5);
+	camFollow.x = FlxMath.bound(camFollow.x, FlxG.width * 0.5, FlxG.width * 2.5);
 	var vel = 700;
 	if (controls.LEFT)
 		camFollow.x -= elapsed * vel;
 	if (controls.RIGHT)
 		camFollow.x += elapsed * vel;
-
-	FlxG.camera.targetOffset.y = ((FlxG.width * 0.5) - camFollow.x) * Math.sin(FlxG.camera.angle * (Math.PI / 180));
+	if (filter != null) {
+		filter.gainHF = FlxMath.bound(Math.pow(1.5 - ((camFollow.x - FlxG.width * 0.5) / FlxG.width), 3), 0.0, 1.0);
+	}
 
 	// trace(FlxG.plugins.list);
 
 	var pressedEnter:Bool = controls.ACCEPT || controls.BACK;
 
-	if (mobile) {
+	if (FlxG.onMobile) {
 		for (touch in FlxG.touches.list) {
 			if (touch.justPressed) {
 				pressedEnter = true;

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="note_keys.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="blue0000" x="329" y="2" width="158" height="155"/>
+	<SubTexture name="green0000" x="2" y="314" width="158" height="155"/>
+	<SubTexture name="navy0000" x="319" y="159" width="155" height="157"/>
+	<SubTexture name="orange0000" x="2" y="157" width="158" height="155"/>
+	<SubTexture name="purple0000" x="319" y="318" width="154" height="158"/>
+	<SubTexture name="red0000" x="162" y="319" width="155" height="158"/>
+	<SubTexture name="violet0000" x="169" y="2" width="158" height="155"/>
+	<SubTexture name="white0000" x="2" y="2" width="165" height="153"/>
+	<SubTexture name="yellow0000" x="162" y="159" width="155" height="158"/>
+</TextureAtlas>

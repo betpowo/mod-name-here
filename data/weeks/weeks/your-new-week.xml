@@ -1,0 +1,40 @@
+<!DOCTYPE codename-engine-week>
+<week name="Your New Week" chars="none,bf,none" sprite="week1" difficulties="normal" icon="betpo" x="700" y="50" bgColor="#ff6633">
+	<song chars="betpo,baxter">
+		bruj
+	</song>
+
+	<song chars="betpo,baxter">
+		honestly
+	</song>
+
+	<song chars="betpo,baxter">
+		tu-madre
+	</song>
+
+	<sprites>
+		<sprite sprite="bg" scale="3" x="-130" y="260" color="#ffffcc"/>
+		<sprite sprite="tree" x="430" y="-170"/>
+		<sprite sprite="road2" x="-370" y="590"/>
+		<sprite sprite="road" x="-180" y="100"/>
+		<sprite sprite="houses" x="30" y="-60"/>
+		<sprite sprite="congregation" x="-530" y="-50"/>
+		<sprite sprite="tree" x="-430" y="170"/>
+
+		<hitbox x="-500" y="240" width="90" height="90" angle="45"/>
+		<hitbox x="20" y="50" width="20" height="340"/>
+		<hitbox x="-570" y="-130" width="80" height="160" angle="15"/>
+		<hitbox x="-260" y="-50" width="300" height="20" angle="30"/>
+
+		<hitbox x="-600" y="-450" width="20" height="941" angle="15"/>
+		<hitbox x="-240" y="-450" width="20" height="340"/>
+
+		<hitbox x="-360" y="500" width="400" height="20" angle="-25"/>
+		<exec>
+			var _x = bg.x; var _y = bg.y;
+			this.remove(bg, true);
+			FlxG.state.insert(0, bg);
+			bg.setPosition(_x + level.x, _y + level.y);
+		</exec>
+	</sprites>
+</week>

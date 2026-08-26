@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-stage>
-<stage startCamPosX="1000" startCamPosY="600" folder="stages/man/" zoom="0.8" name="man">
+<stage startCamPosX="1000" startCamPosY="600" folder="stages/man/" zoom="0.8" name="man" bgColor="#ffcc66">
 	<ext script="mnh" folder="interfaces/"/>
 	<ext script="forceFPSshadow" folder="data/scripts/" />
 
@@ -14,8 +14,6 @@
 	<boyfriend x="1300" y="150"/>
 	<sprite x="-333" scroll="0.96" sprite="bed" y="423" name="bed"/>
 	<high-memory>
-		<sprite x="-772" scrollx="0.95" scrolly="0.92" zoomfactor="0.9" sprite="lights" y="-350" name="lights">
-			<property name="blend" type="float" value="0" />
-		</sprite>
+		<sprite blend="add" x="-772" scrollx="0.95" scrolly="0.92" zoomfactor="0.9" sprite="lights" y="-350" name="lights"/>
 	</high-memory>
 </stage>

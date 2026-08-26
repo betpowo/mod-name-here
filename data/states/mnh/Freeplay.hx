@@ -10,8 +10,13 @@ import funkin.savedata.FunkinSave;
 import funkin.savedata.HighscoreChange;
 import Xml;
 import Reflect;
-import openfl.display.BlendMode;
+ 
+import funkin.backend.utils.AudioAnalyzer;
+import funkin.backend.assets.ModsFolder;
 
+var analyzer:AudioAnalyzer;
+var analyzerLevelsCache:Array<Float>;
+var analyzerTimeCache:Float;
 var songs = [];
 var extrasDown = false;
 var songGroup = new FlxSpriteGroup();
@@ -20,7 +25,7 @@ var miscGroup = new FlxSpriteGroup();
 var songMetadata = {
 	size: 240,
 	separator: 20,
-	maxPerRow: 4
+	maxPerRow: 3
 }
 
 var cameraTracker:FlxObject = new FlxObject(0, 0, 0, 0);
@@ -42,9 +47,26 @@ var curVariation = 0;
 var variation = 'normal';
 var metas = ['normal' => new StringMap()];
 var help = new FunkinSprite();
+var whiteSquare = new FunkinSprite();
+var accepted = false;
+var vizbars:FlxSpriteGroup = new FlxSpriteGroup();
+
+function col2rgba(col) {
+	return [
+		((col >> 16) & 0xff) / 255,
+		((col >> 8) & 0xff) / 255,
+		((col >> 0) & 0xff) / 255,
+		1
+	];
+}
+
+var bars = {
+	amount: 24,
+	padding: 14,
+	height: 250
+};
 
 function create() {
-	CoolUtil.playMenuSong();
 	FlxG.mouse.visible = true;
 	FlxG.cameras.add(camOverlay, false);
 	camOverlay.bgColor = 0x00000000;
@@ -77,49 +99,51 @@ function create() {
 	shit.scale.set(60, 60);
 	shit.updateHitbox();
 	shit.screenCenter();
-	shit.blend = 0;
+	shit.blend = BlendMode.ADD;
 	shit.scrollFactor.set(0.4, 0.4);
 	shit.velocity.y = 16;
 	add(shit);
 
-	var dumpTxt = new FunkinText();
-	dumpTxt.font = Paths.font('sillyfont.ttf');
-	dumpTxt.borderSize = 3;
-	dumpTxt.borderColor = 0xffcccccc;
-	dumpTxt.color = 0xff333333;
-	dumpTxt.size = 72;
-	dumpTxt.text = ' freeplay ';
+	add(vizbars);
+	for (i in 0...bars.amount) {
+		var bar = new FunkinSprite().makeSolid(((((songMetadata.size + songMetadata.separator) * songMetadata.maxPerRow)) / (bars.amount - 1)) - bars.padding, 1, -1);
+		vizbars.add(bar);
 
-	// thank you rozebud
-	dumpTxt.drawFrame(true);
-	var scrollTxt = new FlxBackdrop(dumpTxt.pixels);
-	scrollTxt.antialiasing = true;
-	scrollTxt.velocity.set(-150, 0);
-	scrollTxt.repeatAxes = 0x01;
-	scrollTxt.updateHitbox();
-	scrollTxt.blend = BlendMode.ADD;
-	scrollTxt.y = 50;
-	scrollTxt.spacing.x = -15;
-	add(scrollTxt);
+		bar.origin.y = 1;
+		bar.x = i * (bar.width + bars.padding);
+	}
+	vizbars.screenCenter(0x01);
+	fuck = new Alphabet(50, 50, translate('mnh.fp.title'), 'silly');
+	add(fuck);
 
-	var dumpTxt = new FunkinText();
-	dumpTxt.font = Paths.font('sillyfont.ttf');
-	dumpTxt.borderSize = 3;
-	dumpTxt.borderColor = 0xff333333;
-	dumpTxt.color = 0xff999999;
-	dumpTxt.size = 32;
-	dumpTxt.text = (mobile ? 'tap this text' : 'press [F1]') + ' for navigation help - ';
+	import funkin.menus.ui.effects.WaveEffect;
 
-	// thank you rozebud
-	dumpTxt.drawFrame(true);
-	var scrollTxt = new FlxBackdrop(dumpTxt.pixels);
-	scrollTxt.antialiasing = true;
-	scrollTxt.velocity.set(150, 0);
-	scrollTxt.repeatAxes = 0x01;
-	scrollTxt.updateHitbox();
-	scrollTxt.blend = BlendMode.ADD;
-	scrollTxt.y = 150;
-	add(scrollTxt);
+	var effect = new WaveEffect(0, 4, 7);
+	effect.speed = 4;
+	fuck.effects.push(effect);
+
+	var effect = new WaveEffect(10, 2, 1.01);
+	effect.speed = 0.3;
+	fuck.effects.push(effect);
+
+	fuck2 = new Alphabet(FlxG.width - 50, 50, translate('mnh.fp.help' + (mobile ? '-mobile' : ''), ['F1']), 'silly');
+	fuck2.alignment = 2;
+	fuck2.scale.set(0.5, 0.5);
+	fuck2.updateHitbox();
+	fuck2.x -= fuck2.width;
+	add(fuck2);
+
+	for (i in [fuck, fuck2]) {
+		var gm = new CustomShader('gradientMap');
+		gm.black = [0, 0, 0, 1];
+		gm.white = [1, 1, 1, 1];
+		gm.mult = 1;
+		i.shader = gm;
+	}
+
+	songOBG = new FlxSprite().makeGraphic(1, 1, -1);
+	songOBG.color = 0xffffff;
+	add(songOBG);
 
 	songBG = new FlxSprite().makeGraphic(1, 1, -1);
 	songBG.color = 0x0;
@@ -127,6 +151,11 @@ function create() {
 
 	resizeSongBG(xtraIndex == 0 ? songs.length : xtraIndex + 1);
 	songBG.updateHitbox();
+	songOBG.updateHitbox();
+
+	whiteSquare.makeSolid(songMetadata.size + (songMetadata.separator * 0.5), songMetadata.size + (songMetadata.separator * 0.5), -1);
+	whiteSquare.alpha = 0;
+	add(whiteSquare);
 
 	add(songGroup);
 
@@ -207,8 +236,8 @@ function create() {
 			a.forEach((b) -> {
 				b.antialiasing = true;
 			});
-		}
-		else a.antialiasing = true;
+		} else
+			a.antialiasing = true;
 	});
 
 	/*var modeLabelSpr = new FlxSprite();
@@ -266,7 +295,7 @@ function create() {
 					CoolUtil.playMenuSFX(2, 0.7);
 				} else {
 					var mode = FlxG.save.data.coopselection;
-					if (Assets.exists('songs/' + data.name + '/charts/' + variation + '.json')) {
+					if (data.difficulties.indexOf(variation) != -1 && !accepted) {
 						Mouse.cursor = 'arrow';
 						PlayState.loadSong(data.name, variation, null /* for now we dont have variations */, (mode == 0) || (mode == 2), mode > 1);
 						PlayState.SONG.meta = metas.get(variation).get(data.name); // Bruhhh
@@ -284,6 +313,7 @@ function create() {
 								FlxG.switchState(new PlayState());
 							}
 						});
+						accepted = true;
 					}
 				}
 			};
@@ -293,6 +323,9 @@ function create() {
 					return;
 				if (bleh.name != '--extras') {
 					hoveringSong = square.ID;
+					if (whiteSquare.alpha <= 0) {
+						whiteSquare.setPosition(square.x - 5, square.y - 5);
+					}
 					var mode = FlxG.save.data.coopselection;
 					var changes = [];
 					if ((mode == 0) || (mode == 2))
@@ -313,11 +346,13 @@ function create() {
 				} else {
 					hoveringSong = -2;
 				}
+				Mouse.cursor = 'button';
 				square.shakeAmount += 1.3;
-				CoolUtil.playMenuSFX(0, square.locked ? 0.1 : 0.7);
+				CoolUtil.playMenuSFX(0, square.locked ? 0.1 : 0.7).pitch = FlxG.random.float(0.95, 1.05);
 			};
 			square.onExit = function() {
 				hoveringSong = -1;
+				Mouse.cursor = 'arrow';
 			};
 
 			if (xtraIndex != 0) {
@@ -333,26 +368,9 @@ function create() {
 	songGroup.screenCenter();
 	songGroup.y = (FlxG.height - songMetadata.size) / 2;
 	songBG.setPosition(songGroup.x - songMetadata.separator, songGroup.y - songMetadata.separator);
+	songOBG.setPosition(songBG.x - 7, songBG.y - 7);
 
 	var square = songGroup.members[xtraIndex];
-	if (mobile) {
-		backSquare = songsquare({
-			name: '--back',
-			color: 0xff0033
-		});
-		insert(members.indexOf(songGroup) + 1, backSquare);
-
-		backSquare.onClick = function() {
-			FlxG.switchState(new MainMenuState());
-			persistentUpdate = false;
-			Mouse.cursor = 'arrow';
-		};
-		backSquare.onOverlap = function() {
-			backSquare.shakeAmount += 1.3;
-			CoolUtil.playMenuSFX(0, 0.7);
-		};
-		backSquare.playSprite.flipX = true;
-	}
 
 	// square.setColor(0x2eaeac);
 	if (square != null) {
@@ -369,8 +387,6 @@ function create() {
 					square.visible = extrasDown;
 				}
 				square.shakeAmount = 5;
-				if (mobile)
-					backSquare.shakeAmount = 5;
 			});
 
 			resizeSongBG(xtraIndex + 1 + (mobile ? 1 : 0));
@@ -388,6 +404,11 @@ function create() {
 	help.camera = camOverlay;
 	add(help);
 	FlxG.save.data.coopselection = 1; // 0: opp, 1: solo, 2: co-op, 3: co-op (switch)
+
+	CoolUtil.playMenuSong();
+	FlxG.sound.music.pitch = 1; // ???
+
+	analyzer = new AudioAnalyzer(FlxG.sound.music, 1024);
 }
 
 function destroy() {
@@ -398,6 +419,9 @@ function resizeSongBG(num) {
 	songBG.scale.set(Math.min(num, songMetadata.maxPerRow) * (songMetadata.size + songMetadata.separator) + songMetadata.separator,
 		((songMetadata.size + songMetadata.separator) * (num == 0 ? 1 : Math.ceil(num / songMetadata.maxPerRow))) + songMetadata.separator);
 	songBG.updateHitbox();
+
+	songOBG.scale.set(songBG.scale.x + 14, songBG.scale.y + 14);
+	songOBG.updateHitbox();
 }
 
 function updateExtrasColor(dix) {
@@ -436,7 +460,7 @@ function loadThemSongs() {
 	try {
 		var bleh = CoolUtil.coolTextFile(Paths.txt('weeks/weeks'));
 		bleh.push('extras');
-			
+
 		sogs.shift();
 
 		for (i in bleh) {
@@ -447,13 +471,29 @@ function loadThemSongs() {
 					locked: false
 				});
 				xtraIndex = sogs.length - 1;
+
+				var contents = getAddonFileContents(Paths.xml('weeks/weeks/extras'));
+				for (i in contents) {
+					var xml = Xml.parse(i).firstElement();
+
+					for (node in xml.elementsNamed('song')) {
+						if (!shouldDo(node, 'hide')) {
+							sogs.push({
+								name: StringTools.trim(node.firstChild().nodeValue),
+								locked: shouldDo(node, 'locked'),
+								chars: node.get('chars')?.split(',') ?? ['face', 'bf']
+							});
+						}
+					}
+				}
+				continue;
 			}
 
-			var path = Paths.xml('weeks/weeks/' + i);
+			var path = Paths.xml('weeks/weeks/' + i + '/LIB_' + ModsFolder.currentModFolder);
 			if (Assets.exists(path)) {
 				var xml = Xml.parse(Assets.getText(path)).firstElement();
 
-				for (node in xml.elements()) {
+				for (node in xml.elementsNamed('song')) {
 					if (!shouldDo(node, 'hide')) {
 						sogs.push({
 							name: StringTools.trim(node.firstChild().nodeValue),
@@ -474,7 +514,8 @@ function loadThemSongs() {
 function perfectAll() {
 	var blacklisted = ['--extras', '--back', 'skibidi-sigma-pomni'];
 	for (i in songs) {
-		if (blacklisted.indexOf(i.name) != -1) continue;
+		if (blacklisted.indexOf(i.name) != -1)
+			continue;
 		if (FunkinSave.getSongHighscore(i.name, 'normal', null, []).accuracy < 1) {
 			return false;
 			break;
@@ -486,27 +527,82 @@ function perfectAll() {
 var scrollSpeed = 600;
 var charsToUse = ['face', 'bf'];
 var time = 0.0;
-
-if (mobile) {
-	var prevY = null;
-	var diff = 0;
-	var offsetY = null;
-	var overlappingSquare = false;
-}
+var prevY = null;
+var diff = 0;
+var offsetY = null;
+var overlappingSquare = false;
+var trackedHelpActive = false;
+var oob = false;
 
 function getChangesAvailable(s) {
 	var song = metas.get(variation).get(songs[s].name);
 	var res = [];
-	if (song.opponentModeAllowed) res.push(HighscoreChange.COpponentMode);
-	if (song.coopAllowed) res.push(HighscoreChange.CCoopMode);
+	if (song.opponentModeAllowed)
+		res.push(HighscoreChange.COpponentMode);
+	if (song.coopAllowed)
+		res.push(HighscoreChange.CCoopMode);
 	return res;
+}
+
+// hi jaye
+function doSwipeBullshit(touch) {
+	if (!(touch.pressed || touch.justReleased))
+		return;
+	var pos = touchPos(touch);
+	if (touch.justPressed) {
+		prevY = pos.y;
+		if (offsetY != null)
+			offsetY = camera.scroll.y + (camera.height * 0.5) - cameraTracker.y;
+	}
+	var _diff = prevY - pos.y;
+	if (Math.abs(_diff) >= 1)
+		diff = _diff;
+
+	if (trackedHelpActive == help.active) {
+		if (!overlappingSquare) {
+			cameraTracker.y += (_diff) * (oob ? 0.4 : 1.0);
+			if (touch.pressed) {
+				camera.followEnabled = false;
+				camera.scroll.y = (cameraTracker.y - (camera.height * 0.5));
+				if (offsetY != null)
+					camera.scroll.y += offsetY;
+			}
+		} else {
+			prevY = offsetY = null;
+		}
+		if (touch.justReleased) {
+			if (!overlappingSquare && (diff == _diff))
+				cameraTracker.y += diff / camera.followLerp;
+			offsetY = 0;
+			overlappingSquare = false;
+			camera.followEnabled = true;
+		}
+	}
+
+	prevY = pos.y;
+}
+
+var disableBounding = false;
+
+function checkOverlapSquare(touch) {
+	if (!(touch.pressed || touch.justReleased))
+		return;
+	if (touch.pressed) {
+		disableBounding = true;
+		if (hoveringSong != -1 && !overlappingSquare) {
+			overlappingSquare = true;
+		}
+	} else {
+		overlappingSquare = false;
+	}
 }
 
 function update(elapsed) {
 	time += elapsed;
 	FlxG.camera.bgColor = FlxColor.fromHSB(time * 50, 0.3, 0.4);
-
-	var trackedHelpActive = help.active;
+	fuck.shader.black = fuck2.shader.black = col2rgba(FlxColor.fromHSB(time * 50, 0.3, 1));
+	fuck.shader.white = fuck2.shader.white = col2rgba(FlxColor.fromHSB(time * 50, 2, 0.5));
+	trackedHelpActive = help.active;
 
 	if (FlxG.keys.justPressed.F1 || (mobile && FlxG.mouse.justReleased && FlxG.mouse.y <= 200)) {
 		help.active = !help.active;
@@ -523,7 +619,6 @@ function update(elapsed) {
 		Mouse.cursor = 'arrow';
 	}
 	if (controls.CHANGE_MODE && hoveringSong > -1) {
-
 		charsToUse = getCharactersFromSong(hoveringSong);
 
 		var ch = getChangesAvailable(hoveringSong);
@@ -536,75 +631,57 @@ function update(elapsed) {
 
 		var test = new ModSubState('mnh/SideSelect', {chars: charsToUse, changes: ch});
 		openSubState(test);
-
 	}
 	if (hoveringSong < 0) {
 		miscGroup.alpha -= elapsed * 5;
 	}
-	var disableBounding = false;
+	whiteSquare.alpha -= elapsed * 4;
+	var square = songGroup.members[hoveringSong];
+	if (square != null) {
+		var targetX = square.x + (square.width - whiteSquare.width) * 0.5;
+		var targetY = square.y + (square.height - whiteSquare.height) * 0.5;
+		whiteSquare.x = lerp(whiteSquare.x, targetX, 1 / 3);
+		whiteSquare.y = lerp(whiteSquare.y, targetY, 1 / 3);
+		whiteSquare.scale.x = whiteSquare.width + Math.abs(whiteSquare.x - targetX);
+		whiteSquare.scale.y = whiteSquare.height + Math.abs(whiteSquare.y - targetY);
+		whiteSquare.angle = square.angle;
+		whiteSquare.alpha = 1;
+	}
+
+	disableBounding = false;
 	if (mobile) {
 		for (touch in FlxG.touches.list) {
-			if (touch.pressed) {
-				disableBounding = true;
-				if (hoveringSong != -1 && !overlappingSquare) {
-					overlappingSquare = true;
-				}
-			} else {
-				overlappingSquare = false;
-			}
+			checkOverlapSquare(touch);
 		}
-
-		var songIndex = extrasDown ? songGroup.length : (xtraIndex + 1);
-		backSquare.x = ((songMetadata.size + songMetadata.separator) * (songIndex % songMetadata.maxPerRow));
-		backSquare.y = ((songMetadata.size + songMetadata.separator) * Math.floor(songIndex / songMetadata.maxPerRow)) + songMetadata.separator;
-		backSquare.y -= songMetadata.separator;
-
-		backSquare.x += songGroup.x;
-		backSquare.y += songGroup.y;
+	} else {
+		checkOverlapSquare(FlxG.mouse);
 	}
+	// trace(overlappingSquare);
 	var maxH = extrasDown ? songGroup.height - (songMetadata.size * 0.5) : (songGroup.members[xtraIndex]?.y ?? 0) - (songMetadata.size * 0.5);
 	if (!disableBounding) {
 		cameraTracker.y = FlxMath.bound(cameraTracker.y, camera.height * 0.5, songGroup.y + maxH);
 	}
-	var oob = (cameraTracker.y < (camera.height * 0.5)) || (cameraTracker.y > (songGroup.y + maxH));
+	oob = (cameraTracker.y < (camera.height * 0.5)) || (cameraTracker.y > (songGroup.y + maxH));
 	if (controls.UP)
 		cameraTracker.y -= elapsed * scrollSpeed;
 	if (controls.DOWN)
 		cameraTracker.y += elapsed * scrollSpeed;
+
+	if (FlxG.keys.justPressed.HOME) {
+		cameraTracker.y = camera.height * 0.5;
+	} else if (FlxG.keys.justPressed.END) {
+		cameraTracker.y = songGroup.y + maxH;
+	}
+
 	cameraTracker.y += FlxG.mouse.wheel * (scrollSpeed * -0.1);
 
 	if (mobile) {
 		for (touch in FlxG.touches.list) {
-			if (touch.justPressed) {
-				prevY = touch.screenY;
-				if (offsetY != null)
-					offsetY = camera.scroll.y + (camera.height * 0.5) - cameraTracker.y;
-			}
-			var _diff = prevY - touch.screenY;
-			if (Math.abs(_diff) >= 1)
-				diff = _diff;
-
-			if (trackedHelpActive == help.active) {
-				if (!overlappingSquare) {
-					cameraTracker.y += (_diff) * (oob ? 0.4 : 1.0);
-					if (touch.pressed) {
-						camera.scroll.y = (cameraTracker.y - (camera.height * 0.5));
-						if (offsetY != null)
-							camera.scroll.y += offsetY;
-					}
-				}
-				if (touch.justReleased) {
-					if (!overlappingSquare)
-						cameraTracker.y += diff / camera.followLerp;
-					offsetY = 0;
-					overlappingSquare = false;
-				}
-			}
-
-			prevY = touch.screenY;
+			doSwipeBullshit(touch);
 		}
 	} else {
 		camera.targetOffset.set(((FlxG.mouse.x - (camera.width * 0.5)) * 0.01), ((FlxG.mouse.y - (camera.height * 0.5)) * 0.01));
+		doSwipeBullshit(FlxG.mouse); // they share almost the same properties
 	}
 
 	if (controls.getJustPressed('switchvar')) {
@@ -615,10 +692,11 @@ function update(elapsed) {
 			square.shakeAmount = 5;
 			if (square.ID != xtraIndex) {
 				square.locked = songs[square.ID].locked;
-				if (!Assets.exists('songs/' + songs[square.ID].name.toLowerCase() + '/charts/' + variation + '.json')) {
+				var targetMeta = metas.get(variation).get(songs[square.ID].name);
+				if (targetMeta == null) {
 					square.locked = true;
 				} else {
-					square.setColor(CoolUtil.getColorFromDynamic(metas.get(variation).get(songs[square.ID].name.toLowerCase()).color));
+					square.setColor(CoolUtil.getColorFromDynamic(targetMeta.color));
 				}
 			}
 		});
@@ -626,11 +704,29 @@ function update(elapsed) {
 			songGroup.members[hoveringSong].onOverlap();
 		}
 	}
+	if (analyzer != null && FlxG.sound.music.playing) {
+		var time = FlxG.sound.music.time;
+		analyzerLevelsCache = analyzer.getLevels(time, FlxG.sound.music.calcTransformVolume(), vizbars.group.members.length, analyzerLevelsCache,
+			CoolUtil.getFPSRatio(0.2), -30, 0, 100, 24000);
+	} else {
+		if (analyzerLevelsCache == null)
+			analyzerLevelsCache = [];
+		analyzerLevelsCache.resize(vizbars.group.members.length);
+		// for (i in 0...analyzerLevelsCache.length) analyzerLevelsCache[i] = 0;
+	}
+
+	songOBG.color = FlxColor.fromHSB(time * 50, 0.2, 1);
+	for (k => v in vizbars.group.members) {
+		v.scale.y = analyzerLevelsCache[k] * bars.height;
+		v.color = songOBG.color;
+		v.y = songOBG.y;
+	}
 }
 
 function songsquare(data) {
 	var squa = new SongSquare(0, 0, null, data);
 	squa.mobile = mobile;
+	squa.group = songGroup;
 	return squa;
 }
 
@@ -688,7 +784,7 @@ class SongSquare extends flixel.FlxSprite {
 	public var playSprite:FlxSprite;
 	public var overlaySprite:FlxSprite;
 	public var locked:Bool = false;
-
+	public var group:FlxSpriteGroup;
 	public var onClick:Void->Void;
 	public var onOverlap:Void->Void;
 	public var onExit:Void->Void;
@@ -722,11 +818,12 @@ class SongSquare extends flixel.FlxSprite {
 
 		overlaySprite = new FlxSprite().loadGraphic(Paths.image('freeplay/lock'));
 		overlaySprite.setGraphicSize(songMetadata.size);
+		overlaySprite.updateHitbox();
 		overlaySprite.antialiasing = true;
 
 		setColor(CoolUtil.getColorFromDynamic(data.color));
 
-		initialOffsets = {x: offset.x, y: offset.y};
+		initialOffsets = {x: 0, y: 0};
 	}
 
 	var __overlapped = false;
@@ -740,34 +837,37 @@ class SongSquare extends flixel.FlxSprite {
 
 		shakeAmount = FlxMath.lerp(shakeAmount, 0, elapsed * 6);
 
-		offset.set(initialOffsets.x + FlxG.random.float(-shakeAmount, shakeAmount), initialOffsets.y + FlxG.random.float(-shakeAmount, shakeAmount));
+		frameOffset.set(FlxG.random.float(-shakeAmount, shakeAmount), FlxG.random.float(-shakeAmount, shakeAmount));
+		frameOffset.x /= scale.x;
+		frameOffset.y /= scale.y;
 		angle = FlxG.random.float(-shakeAmount, shakeAmount) * 0.3;
 
-		playSprite.x = getGraphicMidpoint().x - (playSprite.width * 0.5) - offset.x;
-		playSprite.y = getGraphicMidpoint().y - (playSprite.height * 0.5) - offset.y;
+		playSprite.x = this.x - (frameOffset.x * scale.x) + (this.width - playSprite.width) * 0.5;
+		playSprite.y = this.y - (frameOffset.y * scale.y) + (this.height - playSprite.height) * 0.5;
 		playSprite.visible = false;
-		if (FlxG.mouse.overlaps(this)) {
-			if (onOverlap != null && !__overlapped) {
-				onOverlap();
-				Mouse.cursor = 'button';
-				__overlapped = true;
-			}
-			if (!locked)
-				playSprite.visible = true;
-			if (mobile ? FlxG.mouse.justReleased : FlxG.mouse.justPressed)
-				if (onClick != null)
-					onClick();
-		} else {
-			if (__overlapped) {
-				Mouse.cursor = 'arrow';
-				__overlapped = false;
-				if (onExit != null) {
-					onExit();
+		if (!accepted) {
+			if (FlxG.mouse.overlaps(this)) {
+				if (onOverlap != null && !__overlapped) {
+					onOverlap();
+					__overlapped = true;
+				}
+				if (!locked) {
+					playSprite.visible = true;
+				}
+				if (mobile ? FlxG.mouse.justReleased : FlxG.mouse.justPressed)
+					if (onClick != null)
+						onClick();
+			} else {
+				if (__overlapped) {
+					__overlapped = false;
+					if (onExit != null) {
+						onExit();
+					}
 				}
 			}
 		}
-		overlaySprite.x = getGraphicMidpoint().x - (overlaySprite.width * 0.5) - offset.x;
-		overlaySprite.y = getGraphicMidpoint().y - (overlaySprite.height * 0.5) - offset.y;
+		overlaySprite.x = this.x - (frameOffset.x * scale.x);
+		overlaySprite.y = this.y - (frameOffset.y * scale.y);
 		overlaySprite.angle = angle;
 
 		if (__lastlock != locked) {
@@ -781,7 +881,7 @@ class SongSquare extends flixel.FlxSprite {
 
 	public function setColor(col) {
 		initialColor = col;
-		var luminance = (0.2126 * (red(col) / 255) + 0.7152 * (green(col) / 255) + 0.0722 * (blue(col) / 255));
+		var luminance = getLuminance(col);
 		var brightestLuminance:Float = 0.83;
 
 		if (useShader) {
@@ -792,9 +892,7 @@ class SongSquare extends flixel.FlxSprite {
 				gm.mult = 1;
 				this.shader = playSprite.shader = gm;
 			}
-			gm.black[0] = red(col) / 255;
-			gm.black[1] = green(col) / 255;
-			gm.black[2] = blue(col) / 255;
+			gm.black = getRGBArray((col & 0xffffff) + 0xFF000000);
 			for (i in 0...3) {
 				gm.white[i] = (luminance >= brightestLuminance) ? 0 : 1;
 			}
@@ -816,6 +914,8 @@ class SongSquare extends flixel.FlxSprite {
 	}
 
 	public override function draw() {
+		if (!visible || !isOnScreen(cameras[0]))
+			return;
 		super.draw();
 		if (locked)
 			overlaySprite.draw();
@@ -825,21 +925,9 @@ class SongSquare extends flixel.FlxSprite {
 		}
 	}
 
-	// color
-	public function red(col) {
-		return (col >> 16) & 0xff;
-	}
-
-	public function green(col) {
-		return (col >> 8) & 0xff;
-	}
-
-	public function blue(col) {
-		return (col & 0xff);
-	}
-
 	public function setColorTransformOffset(sprite, color) {
-		sprite.setColorTransform(1, 1, 1, sprite.alpha, red(color), green(color), blue(color));
+		var c = getRGBArray(color & 0xffffff, false);
+		sprite.setColorTransform(1, 1, 1, sprite.alpha, c[0], c[1], c[2]);
 	}
 
 	public function doPlayThing() {

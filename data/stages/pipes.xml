@@ -1,7 +1,8 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.75" name="pipes" startCamPosY="600" startCamPosX="1000">
+<stage zoom="0.75" name="pipes" startCamPosY="600" startCamPosX="1000" bgColor="#1f008e">
 	<ext script="parody" folder="interfaces/" />
 	<ext script="parody-cam" folder="data/scripts/" />
+	<ext script="parody-gameplay" folder="data/scripts/" />
 
 	<high-memory>
 		<sprite name="bg" sprite="stages/pipes/bg-pipes" x="-200" y="-100" scroll="0.2" zoomfactor="0.4" scale="1.4" updateHitbox="true" />

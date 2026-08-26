@@ -18,20 +18,17 @@
 		<line anim="sad">i nearly couldn't get it out due to electricity problems..</line>
 		<line>but that's probably tmi at this point. srry. lol</line>
 		<line anim="happy">ok i'll go now.. bye..</line>
-		<line>you can still navigate this menu like normal btw. up and down to scroll thru members.. yknow.. alr i'll go now..</line>
+		<line>you can still navigate this menu like normal btw. left and right to scroll thru members.. yknow.. alr i'll go now..</line>
 	</credit>
 
-	<credit name="airhorn76" desc="composer" color="#93cdfa" speaker="airhorn" spkname="airhorn76" url="https://youtube.com/@airhorn76" x="-43" y="56">
+	<credit name="chris" desc="composer" color="#93cdfa" speaker="airhorn" spkname="chris" url="https://youtube.com/@airhorn76" x="-43" y="56">
 		<anim name="open" length="2" loop="false" />
 		<anim name="idle" offset="2" length="2" />
 		<anim name="close" offset="4" length="10" loop="false" />
 		<!-- dialogue -->
-		<line>hey there</line>
-		<line>I made the Awesome music for ts (this) mod</line>
-		<line>if you liked what I did well too bad cause i dont post my music anywhere else</line>
-		<line>but ill post my Mod Name Here songs on my youtube maybe</line>
-		<line>this is not the last time youll see me hopfully</line>
-		<line>*hopefully</line>
+		<line>yo i made music for this mod</line>
+		<line>i didn't do anything else except that</line>
+		<line>follow me for more music yo</line>
 	</credit>
 
 	<credit name="hifish" desc="composer, coder sometimes" color="#66cccc" speaker="fish" spkname="hifish" url="https://twitter.com/hifish__" x="-13" y="90">
@@ -45,7 +42,7 @@
 		<line>Tomorrow is the Fall Of Man</line>
 	</credit>
 
-	<credit name="blue_kyt" desc="ceo of honestly" color="#6666cc" speaker="blue" url="https://twitter.com/Blue_Kyt" x="-173" y="-6">
+	<credit name="polarchunkz" desc="ceo of honestly" color="#6666cc" speaker="blue" spkname="ipe" url="https://twitter.com/PolarChunkz" x="-173" y="-6">
 		<anim name="open" length="3" loop="false" />
 		<anim name="idle" offset="3" length="2" />
 		<anim name="close" offset="5" length="4" loop="false" />
@@ -55,7 +52,7 @@
 		<line>i helped on a song and that's it lmao</line>
 	</credit>
 
-	<credit name="plank" desc="girl why are you here you only made the menu music what the fuck. all you talk about is katamari and littlebigplanet" color="#F9B9E8" speaker="aurora" spkname="aurora" url="https://bsky.app/profile/plankdev.gay" x="-15" y="45">
+	<credit name="libauror.a" desc="girl why are you here you only made the menu music what the fuck. all you talk about is katamari and littlebigplanet" color="#F9B9E8" speaker="aurora" spkname="aurora" url="https://twitter.com/libauror_a" x="-15" y="45">
 		<anim name="open" offset="9" length="7" loop="false" />
 		<anim name="idle" length="2" />
 		<anim name="read" offset="6" length="2" />
@@ -76,7 +73,7 @@
 		<line>bye!!!!!!!!!!!!!!</line>
 	</credit>
 
-	<credit name="stewshop" desc="(future) composer" color="#403646" speaker="stew" url="https://twitter.com/stewsh0p" x="-6" y="339">
+	<credit name="dayuu" desc="(future) composer" color="#403646" speaker="stew" url="https://twitter.com/stewsh0p" x="-6" y="339">
 		<anim name="open" length="3" loop="false" />
 		<anim name="idle" offset="3" length="2" />
 		<anim name="ds" offset="5" length="2"/>
@@ -98,7 +95,7 @@
 		<line>Shoutout to Balatro</line>
 	</credit>
 
-	<credit name="cherrychii" desc="mobile playtester and ui assistant artist" color="#c9a97f" speaker="chi" url="https://twitter.com/cherrychrii" x="-6" y="748">
+	<credit name="chidotnb" desc="mobile playtester and ui assistant artist" color="#c9a97f" speaker="chi" url="https://twitter.com/cherrychrii" x="-6" y="748">
 		<anim name="open" length="2" loop="false" />
 		<anim name="idle" offset="2" length="2" />
 		<anim name="close" offset="4" length="3" loop="false" />
@@ -108,4 +105,12 @@
 		<line>i drew some assets for the mobile support and thats it...gulp</line>
 		<line>(theres not even a real cne port yet i just thought itll be cool)</line>
 	</credit>
+
+	<!-- the "many more people" is for the title screen -->
+	<menu name="Many More People">
+		<credit name="thezoroforce240" icon="zoro" desc="sound filters implementation (in some places)" color="#ffb000" url="https://github.com/TheZoroForce240"/>
+		<credit name="slashjaye" icon="jaye" desc='[NOT YET RELEASED] chart, wiki maintainer' color="#ffcc66" url="https://twitter.com/slashjaye"/>
+		<credit name="terminalangst" icon="kel" desc='they chose to trap themselves in this credits menu' color="#9999cc" url="https://twitter.com/kernuhlpanic"/>
+		<credit name="my friend mika" icon="aqua" desc='special cameo in the song "pixles v3"....say happy birthday to her (august 26)\n\n\nyes that is in fact aqua from Deltarune Chapter 5' color="#63edf5" url="https://deltarune.com/lancer/"/>
+	</menu>
 </menu>

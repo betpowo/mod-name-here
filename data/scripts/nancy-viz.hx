@@ -11,14 +11,6 @@ public var vizHeight:Int = 20;
 public var msGap = 100;
 public var vizSprite = new FunkinSprite();
 analyzer = new AudioAnalyzer(PlayState.instance.inst, 512);
-var levels = [];
 final graphWidth = Math.floor(PlayState.instance.inst.length / msGap);
-vizSprite.makeGraphic(graphWidth, vizHeight, FlxColor.BLACK, 'spectogram');
-for (i in 0...graphWidth) {
-	var o = [];
-	levels.push(analyzer.getLevels(i * msGap, 1, vizHeight, o, CoolUtil.getFPSRatio(0.1), -80, -20, 10, 24000));
-	for (j => v in o) {
-		FlxSpriteUtil.drawRect(vizSprite, i, j, 1, 1, FlxColor.fromRGBFloat(v, v, v));
-	}
-}
+vizSprite.makeGraphic(vizWidth, vizHeight, FlxColor.BLACK, true, 'spectogram');
 vizSprite.updateHitbox();

@@ -12,6 +12,8 @@ var toAdd:Bool = true;  // Using this just to make sure
 function update(elpased) {
 	if(toAdd) {
 		toAdd = false;
+		PlayState.instance.remove(self);
+		PlayState.instance.insert(PlayState.instance.members.indexOf(PlayState.instance.strumLines) + 1, self);
 		PlayState.instance.insert(PlayState.instance.members.indexOf(self), speakers);
 		//disableScript();
 	}

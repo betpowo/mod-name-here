@@ -2,6 +2,12 @@ import haxe.io.Path;
 
 var defaultUIs = ['', 'pixel'];
 
+function new() {
+	if (FlxG.save.data.choiceExample == 'jersey') importScript('data/scripts/jersey');
+	if (mobile && FlxG.save.data.touchGameplay) importScript('data/scripts/mobile');
+	if (FlxG.random.bool(0.01)) importScript('data/scripts/skeleton');
+}
+
 // force these scripts to exist if they werent found
 function create() {
 	for (name in ['Camera Movement', 'Camera Zoom']) {
@@ -10,6 +16,7 @@ function create() {
 			importScript('data/events/' + name);
 		}
 	}
+	camGame.bgColor = CoolUtil.getColorFromDynamic(stage?.stageXML?.get('bgColor') ?? 0);
 }
 
 function postCreate() { // ???????????????
@@ -22,7 +29,7 @@ function postCreate() { // ???????????????
 			i.scale.set(i.defaultScale * iconScale, i.defaultScale * iconScale);
 		}
 		i.updateBump = () -> {
-			var iconLerp = 0.15 * (FlxG.elapsed / (1 / 60));
+			var iconLerp = 0.15 * ((FlxG.elapsed * FlxG.timeScale) / (1 / 60));
 			var scaleX = FlxMath.lerp(Std.int(i.frameWidth * i.scale.x), i.defaultScale * i.frameWidth, iconLerp);
 			var scaleY = FlxMath.lerp(Std.int(i.frameHeight * i.scale.y), i.defaultScale * i.frameHeight, iconLerp);
 			i.setGraphicSize(scaleX, scaleY);
@@ -55,11 +62,13 @@ function onPostCountdown(e) {
 	if (e.spriteTween != null) {
 		e.spriteTween.cancel();
 		var ev = e;
-		e.spriteTween = FlxTween.tween(e.sprite, {alpha: 0}, Conductor.crochet * 0.0009, {
+		e.spriteTween = FlxTween.tween(e.sprite, {alpha: 0}, Conductor.crochet * 0.00075, {
 			ease: FlxEase.cubeInOut,
 			onComplete: (_) -> {
-				ev.sprite.destroy();
-				remove(ev.sprite, true);
+				if (ev.sprite != null) {
+					remove(ev.sprite, true);
+					ev.sprite.destroy();
+				}
 			}
 		});
 		e.sprite.camera = camHUD;
@@ -86,4 +95,13 @@ function onChangeCharacter(e) {
 			healthBar.updateFilledBar();
 		}
 	}
+}
+
+function destroy() {
+	camGame.bgColor = 0;
+}
+
+public var gameOverBGColor = 0;
+function onPostGameOver() {
+	camGame.bgColor = gameOverBGColor;
 }

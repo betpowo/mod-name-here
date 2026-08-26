@@ -1,10 +1,5 @@
 <!DOCTYPE codename-engine-dialogue>
 <dialogue box="mnh">
-	<!-- All characters -->
-	<char name="0" char="blank" position="left" />
-	<char name="1" char="blank" position="right" />
-	<char name="2" char="blank" position="middle" />
-
 	<!-- Lines -->
 	<line char="1" changeMusic="misc/wacky">
 		dude
@@ -13,16 +8,25 @@
 		what... did i beat ur ass...
 	</line>
 	<line char="1">
-		no. what the fuck was that. what the hell were you saying
+		no i just didn't understand a thing. you call THAT rap????
 	</line>
 	<line char="0">
-		idk bruh i didn't understand you either bruh
+		you were speaking like an alien bro. alien boy. oohh
+	</line>
+	<line char="0">
+		veep zep zlorp glorp zoop vloom voom worp zorp zoom
 	</line>
 	<line char="1">
-		...
+		?????
 	</line>
 	<line char="0">
-		lol lmao
+		that's literally how you sound dude
+	</line>
+	<line char="1">
+		no dude. that's just how i rap. at least you can make something out of it unlike your voice
+	</line>
+	<line char="0">
+		man.... ok whatever
 	</line>
 	<line char="2">
 		just for being mean to him, y'all will do another song. now
@@ -60,13 +64,16 @@
 	<line char="0">
 		that won't make me let you in   . dummy
 	</line>
-	<line char="0">
-		unless i <format color="#ff6633">fall onto the ground</format> and stay there like i'm dead there is no way you're getting through that door
+	<line char="0" musicVolume="0.7">
+		unless i <format color="#ff3366">fall onto the ground</format> and stay there like i'm dead there is no way you're getting through that door
 	</line>
-	<line char="0">
-		<format color="#ff6633">not on my watch</format> bruh
+	<line char="0" musicVolume="0.6">
+		<format color="#ff3366">not on my watch</format> bruh
 	</line>
-	<line char="1">
+	<line char="2" musicVolume="0.5">
+		.........................
+	</line>
+	<line char="1" musicVolume="0.8">
 		okay man. whatever you say
 	</line>
 	<line char="2">
@@ -81,11 +88,11 @@
 	<line char="0">
 		you probably own skibidi toilet plushies and you don't want anyone to know huh. stupid kid  .   pink sauce
 	</line>
-	<line char="2">
-		rahh!!!
+	<line char="2" musicVolume="0">
+		That wasn't funny.
 	</line>
-	<line char="2">
-		<format color="#ccff66">phil</format>!!! do something!!!
+	<line char="2" musicVolume="0.8">
+		uhhhhh..!!! phil!!! do something!!!
 	</line>
 	<line char="1">
 		sigh. alright.

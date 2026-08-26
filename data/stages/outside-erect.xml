@@ -1,0 +1,34 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.8" name="outside-erect" folder="" startCamPosY="-600" startCamPosX="500" bgColor="#1e717b">
+	<ext script="mnh" folder="interfaces/" />
+	<ext script="forceFPSshadow" folder="data/scripts/" />
+
+	<high-memory>
+		<sprite name="grad" x="-100" y="130" sprite="menus/transitionSpr" scrollx="0" scrolly="0.3" scalex="1480" scaley="1.5" flipY="true" updateHitbox="true" color="#99eeee" zoomfactor="0">
+			<property type="color" name="colorTransform.color" value="#bcfffc" />
+			<property type="bool" name="forceIsOnScreen" value="true" />
+		</sprite>
+		<sprite name="clouds" x="50" y="0" sprite="stages/outside/clouds" scroll="0.1" scale="5" updateHitbox="true" color="#bcfffc" zoomfactor="0.04">
+			<property type="float" name="velocity.x" value="-3" />
+		</sprite>
+		<sprite name="bg" x="-200" y="100" sprite="stages/outside/lmao" scroll="0.3" scale="4" updateHitbox="true" color="#99eeee" zoomfactor="0" />
+	</high-memory>
+
+	<solid name="floorTile1" x="-600" y="466" width="2500" height="300" color="#ccffdd" scrollx="0" scrolly="0.3" />
+
+	<sprite name="house" x="185" y="130" sprite="stages/outside/house" scroll="0.45" zoomfactor="0.5" scale="0.8" updateHitbox="true">
+		<anim name="action" anim="house" loop="false" />
+		<anim name="action-loop" anim="house" loop="true" indices="8,10,12" fps="12" />
+		<anim name="idle" anim="house" loop="true" indices="0" />
+	</sprite>
+
+	<sprite name="cardboard" x="1011" y="357" sprite="stages/outside/cardboard" scroll="0.58" zoomfactor="0.8" scale="0.8" updateHitbox="true" />
+
+	<solid name="floorTile2" x="-600" y="654" width="2500" height="300" color="#66ffbb" scrollx="0" scrolly="0.9" />
+	<solid name="floorTile3" x="-600" y="685" width="2500" height="400" color="#66ccdd" scrollx="0" scrolly="0.9" />
+
+	<girlfriend x="600" y="145"/>
+	<dad />
+	<boyfriend x="1100"/>
+
+</stage>

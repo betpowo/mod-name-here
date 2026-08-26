@@ -1,4 +1,4 @@
-import openfl.display.BlendMode;
+ 
 import funkin.ui.FunkinText;
 import flixel.text.FlxText;
 import flixel.text.FlxTextBorderStyle;
@@ -33,7 +33,7 @@ function create(event) {
 		var pixelSize = 8;
 		t.size = 40;
 		t.setPosition(20, (FlxG.height - (menuItems.length * t.size * 2)) + (50 + ((t.size + (t.size / pixelSize)) * i)));
-		t.text = ' ' + v.toLowerCase();
+		t.text = ' ' + translate('pause.'+TranslationUtil.raw2Id(v)).toLowerCase();
 		t.font = Paths.font('pixel.otf');
 		texts.push(t);
 		t.borderStyle = FlxTextBorderStyle.SHADOW;
@@ -59,7 +59,7 @@ function create(event) {
 	compText.alignment = 'right';
 	add(compText);
 
-	deathText = new FlxText(0, 0, FlxG.width, 'epic fails x' + PlayState.deathCounter, 30, false);
+	deathText = new FlxText(0, 0, FlxG.width, translate('mnh.pause.parody-deaths', [PlayState.deathCounter]), 30, false);
 	deathText.font = Paths.font('comic.ttf');
 	deathText.alignment = 'right';
 	add(deathText);

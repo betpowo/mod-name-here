@@ -6,7 +6,7 @@
 
 	<high-memory>
 		<sprite sprite="bg" name="bg" x="900" y="200" scroll="0.5" zoomfactor="0.2"/>
-		<sprite sprite="road" name="road" x="1100" y="550" scroll="0.8" zoomfactor="0.4"/>
+		<sprite sprite="road" name="road" x="1100" y="550" scroll="0.6" zoomfactor="0.4"/>
 	</high-memory>
 
 	<solid name="bgwall" x="-1350" y="-300" width="2500" height="1440" color="#ff9c8f" scroll="0.7" zoomfactor="0.6"/>

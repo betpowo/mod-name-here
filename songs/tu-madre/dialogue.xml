@@ -1,10 +1,5 @@
 <!DOCTYPE codename-engine-dialogue>
 <dialogue box="mnh">
-    <!-- All characters -->
-    <char name="0" char="blank" position="left" />
-    <char name="1" char="blank" position="right" />
-    <char name="2" char="blank" position="middle" />
-
     <!-- Lines -->
     <line char="1" changeMusic="misc/wacky">
 		nah.   nah   .  nah. this has to be it right?? can i get in now..

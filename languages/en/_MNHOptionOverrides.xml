@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<language>
+    <str id="optionsMenu.desc-missing">[ no description ]</str>
+    <str id="optionsMenu.start-message">same controls as the original menu, man up</str>
+
+    <group name="OptionsMenu">
+        <str id="optionsMenu.header.desc">select a category to continue</str>
+
+        <str id="optionsTree.controls-desc">change controls for player 1 and player 2!</str>
+
+        <str id="optionsTree.gameplay-desc">change gameplay options such as downscroll, offset, naughtyness...</str>
+        <str id="optionsTree.gameplay.advanced-desc">change more advanced options such as streaming audio...</str>
+
+        <str id="optionsTree.appearance-desc">change appearance options such as fps, flashing lights...</str>
+        <str id="optionsTree.appearance.advanced-desc">change more advanced options such as performance stuff...</str>
+
+        <str id="optionsTree.language-desc">change the language, if you hate english</str>
+
+        <str id="optionsTree.miscellaneous-desc">use this menu to reset save data or engine settings</str>
+
+        <str id="optionsTree.debug-desc">debug options for developer mode.</str>
+    </group>
+
+    <group name="KeybindOptions" prefix="KeybindsOptions.">
+    </group>
+
+    <group name="AppearanceOptions" prefix="AppearanceOptions.">
+        <str id="framerate-desc">EXTREME GAMING ACTIVATE</str>
+        <str id="flashingMenu-desc">disable if you're sensitive to flashing lights. i'm serious (this does nothing atm PLEASE ADD THIS)</str>
+        <str id="colorHealthBar-desc">that newgrounds sovl going thru my veins rn.......ouggghh</str>
+        <str id="week6PixelPerfect-desc">this has no effects on the mod but i kept it here cus why not</str>
+
+        <group name="AppearanceOptionsAdvanced" prefix="Advanced.">
+            <str id="quality-desc">quality presets. "LOW" = everything disabled ; "HIGH" = everything enabled ; "CUSTOM" = mix and match :3</str>
+            <str id="antialiasing-desc">if UNchecked it will make everything CRUNChy ok</str>
+            <str id="lowMemoryMode-desc">removes some sprites from the stage if they are too big idk</str>
+            <str id="gameplayShaders-desc">effects on the screen that do fancy shit, if you're on a potato pc, disable this (SOME CANNOT BE DISABLED !!!)</str>
+            <str id="gpuOnlyBitmaps-desc">stores all bitmaps in gpu, if not then all sprites will clog up memory and then the mod becomes VS Sonic.exe Remastered V2 Restored Build</str>
+        </group>
+    </group>
+
+    <group name="GameplayOptions" prefix="GameplayOptions.">
+        <str id="downscroll-desc">if checked, will flip the ui</str>
+        <str id="ghostTapping-desc">if UNchecked, pressing any key while there are no notes will fucking kill you</str>
+        <str id="naughtyness-desc">they don't call it "friday night fucking" for nothing</str>
+        <str id="camZoomOnBeat-desc">if UNchecked, the camera will not bump</str>
+        <str id="autoPause-desc">pauses the game when out of focus, as all fucking games should be</str>
+        <str id="volumeMusic-desc">how loud the music and vocals are</str>
+        <str id="volumeSFX-desc">do i need to explain</str>
+        <str id="songOffset-desc">audio delay, in case you use cheap bluetooth headphones</str>
+
+        <group name="GameplayOptionsAdvanced" prefix="Advanced.">
+            <str id="windowSize-desc">...</str>
+            <str id="streamedMusic-desc">loads the instrumental as you play, freeing memory usage a bit</str>
+            <str id="streamedVocals-desc">loads the vocals as you play, freeing memory usage a bit</str>
+        </group>
+    </group>
+
+    <group name="LanguageOptions" prefix="LanguageOptions.">
+        <!--just to make it lowercase without using toLowerCase, some users have uppercases in their name -->
+        <str id="language-desc">language by {0} (version: {1})</str>
+    </group>
+
+    <group name="MiscOptions" prefix="MiscOptions.">
+        <str id="forceCrash-desc">blow up</str>
+        <str id="checkForUpdates-desc">please ... please do</str>
+        <str id="betaUpdates-desc">i need it bruh</str>
+        <str id="devMode-desc">*enters own password* i'm in.</str>
+        <str id="allowConfigWarning-desc">"modpack.ini not found" sybau 💔🥀</str>
+        <str id="resetSaveData-desc">IF YOU PRESS IT EARTH WILL BLOW UP</str>
+    </group>
+
+    <group name="DebugOptions" prefix="DebugOptions.">
+        <str id="showConsole-desc">enter hacker mode! ...even though you can't type anything.</str>
+        <str id="editorsResizable-desc">i don't CARE if the game is 1280x720 i WILL adapt to whatever i can. Fucj yo</str>
+        <str id="bypassEditorsResize-desc">FUCK the minimum resolution man i dont. i Dont gaf</str>
+        <str id="editorSFX-desc">I HATE THE WINDOW OPEN SOUND GRAHHHH</str>
+        <str id="editorCharterPrettyPrint-desc">if UNchecked chart files become a mess but it's optimized so who cares</str>
+        <str id="editorCharacterPrettyPrint-desc">if UNchecked character files become a mess but it's optimized so who cares</str>
+        <str id="editorStagePrettyPrint-desc">if UNchecked stage files become a mess but it's optimized so who cares</str>
+        <str id="charterSwapEventSides-desc">puts the good events on the right and the Useless events on the left   . that is NOT How it should be You are weird if u turn this on</str>
+        <str id="intensiveBlur-desc">DO NOT . TURN THIS ON *cough* FUCK,.  *cough* DO NOT   . TUR NTHIS ON</str>
+        <str id="charterAutoSaves-desc">hmm yes. save my work for me so i don't lose my marbles</str>
+        <str id="charterAutoSaveTime-desc">how often it should save (in seconds...)</str>
+        <str id="charterAutoSaveWarningTime-desc">how long until Impending Doom Arrives. (in seconds...)</str>
+        <str id="charterAutoSavesSeparateFolder-desc">if you don't like your files being overwritten by autosaving, use this</str>
+        <str id="songOffsetAffectEditors-desc">hm yes.  delay my audio time in the chart editor  . yes. it makes sense</str>
+        <str id="legacyMemoryCounter-desc">use gc memory instead of tasque manager working memory ... wait ............. tasque manager :drool:</str>
+    </group>
+
+    <group name="MobileOptions" prefix="MobileControls.">
+        <str id="navigationHelp-name">Navigation Help</str>
+        <str id="navigationHelp-desc">HELP????? WHERE AM I?????????</str>
+
+        <str id="touchGameplay-name">Touchscreen Gameplay</str>
+        <str id="touchGameplay-desc">if checked, will move arrows to the center, forces downscroll, and enables tapping on the strums to hit notes. if your cne port already has the Four Dreaded Rectangular Lanes, or if it hinders performance, disable this</str>
+    </group>
+
+</language>

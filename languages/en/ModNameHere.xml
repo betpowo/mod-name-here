@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<language>
+    <group name="Overrides">
+        <str id="game.rating.perfect">P</str>
+        <str id="game.rating.perfect?">P</str>
+        <str id="game.rating.excellent">E</str>
+        <str id="game.rating.great">G</str>
+        <str id="game.rating.good">G</str>
+        <str id="game.rating.loss">L</str>
+        <str id="pause.deathCounter">{0} Blue Balls</str>
+        <str id="mods.disableMods">[ disable. ]</str>
+        <str id="mods.backButton">[ back to the fun! ]</str>
+    </group>
+    <group name="ModNameHere" prefix="mnh.">
+        <group name="Misc" prefix="misc.">
+            <str id="warningTitle">WARNING</str>
+            <str id="warningText">This mod is *not* funny, and has flashing lights.\nIt also uses lots of shaders, some can't be disabled.\nBy continuing, you agree to *all* that will happen.</str>
+            <str id="guestTitle">special thanks!</str>
+        </group>
+        <group name="Pause" prefix="pause.">
+            <str id="by">by {0}</str>
+            <str id="mnh-deaths">({0} fails)</str>
+            <str id="parody-deaths">epic fails x{0}</str>
+        </group>
+        <group name="Results" prefix="results.">
+            <str id="songByArtist">{0} by {1}</str>
+            <group name="ResultRanks" prefix="ranks.">
+                <str id="shit">LOSS</str>
+                <str id="good">GOOD</str>
+                <str id="great">GREAT</str>
+                <str id="excellent">EXCELLENT</str>
+                <str id="aperfect">PERFECT?</str>
+                <str id="perfect">PERFECT</str>
+            </group>
+        </group>
+        <group name="MainMenu" prefix="main.">
+            <str id="bottomText">mod name here v{0}\ncne v{1} ({2})\n[{3}] to switch mods,\nbut why would you?</str>
+        </group>
+        <group name="FreeplayMenu" prefix="fp.">
+            <str id="title">freeplay!</str>
+            <str id="help">press [{0}] for\nnavigation help</str>
+            <str id="help-mobile">tap here for\nnavigation help</str>
+        </group>
+        <group name="UI" prefix="ui.">
+            <group name="ParodyUI" prefix="parody.">
+                <str id="score">points          {0}</str>
+                <str id="misses">misses          {0}</str>
+                <str id="comboBreaks">breaks          {0}</str>
+                <str id="accuracy">amount of cool{0}</str>
+                <str id="rank">GAMER RANK {0}</str>
+            </group>
+        </group>
+    </group>
+</language>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="mechanics.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bat0000" x="2" y="2" width="172" height="217"/>
+	<SubTexture name="spam0000" x="176" y="2" width="150" height="150"/>
+</TextureAtlas>

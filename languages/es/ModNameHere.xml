@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<language>
+    <group name="Overrides">
+        <str id="game.rating.good">B</str>        <!--lmao-->
+        <str id="pause.deathCounter">{0} Bolas Azules</str>
+        <str id="mods.disableMods">[ deshabilitar. ]</str>
+        <str id="mods.backButton">[ ¡de vuelta a la diversión! ]</str>
+        <!--just to make it lowercase without using toLowerCase, some users have uppercases in their name -->
+        <str id="LanguageOptions.language-desc">idioma hecho por {0} (versión: {1})</str>
+    </group>
+    <group name="ModNameHere" prefix="mnh.">
+        <group name="Misc" prefix="misc.">
+            <str id="warningTitle">ADVERTENCIA</str>
+            <str id="warningText">Este mod *no* es gracioso, y contiene luces intermitentes.\nTambién usa varios shaders, algunos no se pueden quitar.\nAl continuar, usted acepta *todo* lo que pasará.</str>
+        </group>
+        <group name="Pause" prefix="pause.">
+            <str id="by">por {0}</str>
+            <str id="mnh-deaths">({0} fallas)</str>
+            <str id="parody-deaths">fallas epicas x{0}</str>
+        </group>
+        <group name="Results" prefix="results.">
+            <str id="songByArtist">{0} por {1}</str>
+            <group name="ResultRanks" prefix="ranks.">
+                <str id="shit">LA RECONCHA DE TU PUTISISIMA MADRE</str>
+                <str id="good">BIEN</str>
+                <str id="great">GENIAL</str>
+                <str id="excellent">EXCELENTE</str>
+                <str id="aperfect">¿PERFECTO?</str>
+                <str id="perfect">PERFECTO</str>
+            </group>
+        </group>
+        <group name="MainMenu" prefix="main.">
+            <str id="bottomText">mod name here v{0}\ncne v{1} ({2})\n[{3}] para cambiar mods,\n¿pero porqué lo harías?</str>
+        </group>
+        <group name="FreeplayMenu" prefix="fp.">
+            <str id="title">¡freeplay!</str>
+            <str id="help">presiona [{0}] para\nayuda de navegación</str>
+            <str id="help-mobile">presiona aquí para\nayuda de navegación</str>
+        </group>
+        <group name="UI" prefix="ui.">
+            <group name="ParodyUI" prefix="parody.">
+                <str id="score">puntos          {0}</str>
+                <str id="accuracy">cantidad de cool{0}</str>
+                <str id="rank">RANGO GAMER EPICO {0}</str>
+            </group>
+        </group>
+    </group>
+</language>

@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-character>
+<character y="350" flipX="true" sprite="baxter/die" camx="25" camy="50" isPlayer="true" icon="baxter" color="#2EAEAC" gameOverChar="die/baxter-dead" centercam="true">
+    <anim name="firstDeath" anim="baxter/die" fps="20" indices="0..34"/>
+    <anim name="deathLoop" anim="baxter/die" indices="34" loop="true"/>
+    <anim name="deathConfirm" anim="baxter/die" fps="20" indices="35..38"/>
+</character>

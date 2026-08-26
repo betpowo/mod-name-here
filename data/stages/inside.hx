@@ -1,7 +1,3 @@
-function create() {
-	camGame.bgColor = -1;
-}
-
 function postCreate() {
 	for (i in [floor, ceiling, bgwall, sky]) {
 		// i.makeSolid(2500, 1440, i.color);
@@ -21,8 +17,4 @@ function update(e) {
 	mat.angle = (wall.skew.y * -33 * (Math.PI / 180)) - 10;
 
 	// camGame.targetOffset.y += FlxG.mouse.wheel * -100;
-}
-
-function onPostGameOver() {
-	FlxG.camera.bgColor = 0xFF330066;
 }

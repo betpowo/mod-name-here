@@ -5,7 +5,7 @@ function rareDeath() {
 }
 
 function do1up() {
-    displayRating('game/score/1up');
+    displayRating('1up');
     var popup = CoolUtil.last(comboGroup.members); // comboGroup.members.last(), but i cant do that here since im on a script
 
     popup.scale.set(0.7, 0.7);

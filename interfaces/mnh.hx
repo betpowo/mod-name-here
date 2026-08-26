@@ -3,6 +3,9 @@ import PsychBar;
 import funkin.backend.FunkinText;
 import funkin.backend.system.framerate.Framerate;
 import flixel.util.FlxColor;
+import flixel.util.FlxStringUtil;
+import flixel.text.FlxTextFormat;
+import flixel.text.FlxTextFormatMarkerPair;
 
 public var testBar = new PsychBar(150, 150, 0, 0, 'game/healthBar', function() {
 	return health / maxHealth;
@@ -11,18 +14,29 @@ public var testBar = new PsychBar(150, 150, 0, 0, 'game/healthBar', function() {
 public var scoreTxt, missesTxt, accuracyTxt, rankTxt:FunkinText;
 var accBar = new PsychBar(0, FlxG.height * 0.8 + 50, 0, 0, 'game/healthBar', null, 0, 1);
 var accBG = new FunkinSprite();
-public var comboGroup:FlxSpriteGroup = new FlxSpriteGroup();
+public var comboDefaultPos = FlxPoint.get();
 public var forceComboXmlPos:Bool = false;
 var game = PlayState.instance;
 var scoreBG = new FunkinSprite();
 var lerpHP:Float = 0.5;
+var bruhhhFormatFR = new FlxTextFormat();
+var bruhhhFormat = new FlxTextFormatMarkerPair(bruhhhFormatFR, "*");
 
 function create() {
 	for (content in Paths.getFolderContent('images/game/score/mnh', true, true))
 		graphicCache.cache(Paths.getPath(content));
 
 	PauseSubState.script = 'data/states/pause/mnh';
-
+	for (i => j in [
+		[0xAB52FF, 0x150060],
+		[0x47EAD9, 0x1A5598],
+		[0xE5FF3E, 0x006B61],
+		[0xFF439E, 0x710465]
+	]) {
+		noteColors[i][0] = j[0];
+		noteColors[i][2] = j[1];
+	}
+	gameOverBGColor = 0xFF330066;
 	currentUI = 'mnh';
 }
 
@@ -34,12 +48,12 @@ function postCreate() {
 	}
 
 	lerpHP = health / maxHealth;
-
 	// kill
-	scoreTxt = new FunkinText(healthBarBG.x + 50, healthBarBG.y, -1, "0", 16);
-	missesTxt = new FunkinText(healthBarBG.x + 50, healthBarBG.y, -1, "0", 16);
-	accuracyTxt = new FunkinText(healthBarBG.x + 50, healthBarBG.y, -1, "?", 16);
-	rankTxt = new FunkinText(healthBarBG.x + 50, healthBarBG.y, -1, "---", 16);
+	var startY = FlxG.height - 90;
+	scoreTxt = new FunkinText(healthBarBG.x + 50, startY - 3, -1, "0", 16);
+	missesTxt = new FunkinText(healthBarBG.x + 50, startY - 3, -1, "0", 16);
+	accuracyTxt = new FunkinText(healthBarBG.x + 50, startY, -1, "?", 16);
+	rankTxt = new FunkinText(healthBarBG.x + 50, startY, -1, "---", 16);
 
 	for (i in [scoreTxt, missesTxt, accuracyTxt, rankTxt]) {
 		insert(1, i);
@@ -55,10 +69,19 @@ function postCreate() {
 		i.fieldWidth = 475;
 		i.screenCenter(0x01);
 		i.offset.y = 6;
-		i.height = 28;
+		i.height = i.size;
 	}
+	bruhhhFormatFR.format.size = 20;
+	bruhhhFormatFR.format.bold = true;
+	bruhhhFormatFR.borderColor = 0xff3f0048;
+
 	scoreTxt.alignment = 'right';
 	missesTxt.alignment = 'left';
+
+	scoreTxt.origin.x = scoreTxt.fieldWidth;
+	scoreTxt.scale.set(0.8, 0.8);
+	missesTxt.origin.x = 0;
+	missesTxt.scale.set(0.8, 0.8);
 
 	var offs = -10;
 
@@ -94,18 +117,17 @@ function postCreate() {
 	}
 	testBar.regenerateClips();
 	testBar.set_barWidth(testBar.bg.frameWidth);
-	testBar.y = FlxG.height * 0.8;
+	testBar.y = startY - 50;
 	setupFancyBarShaders();
 
-	insert(members.indexOf(testBar.bg), accBG);
+	accBar.camera = camHUD;
+	accBar.addFuckers(PlayState.instance, members.indexOf(testBar.leftBar));
+	accBar.setColors(0xffcc66, 0xb20069);
+	insert(members.indexOf(accBar.bg), accBG);
 	accBG.camera = camHUD;
 	accBG.makeGraphic(1, 1, -1);
 	accBG.setGraphicSize(70, 70);
 	accBG.updateHitbox();
-
-	accBar.camera = camHUD;
-	accBar.addFuckers(PlayState.instance, members.indexOf(testBar.bg));
-	accBar.setColors(0xffcc66, 0xb20069);
 
 	accBar.bg.frames = uiImage;
 	accBar.bg.animation.addByPrefix('idle', 'accurext', 12, true);
@@ -117,19 +139,17 @@ function postCreate() {
 	accBar.regenerateClips();
 	accBar.set_barWidth(150);
 	accBar.set_barHeight(17);
-	accBar.y = FlxG.height * 0.8 + 50;
 	accBar.updateBar();
+	accBar.bg.y = startY - 35;
 
 	accBG.x = accBar.bg.x + accBar.barOffset.x + 154;
-	accBG.y = accBar.y + 3;
+	accBG.y = accBar.bg.y + 3;
 
 	for (i in iconArray) {
 		i.y = 15 + testBar.y - i.height * 0.5;
 	}
 
 	reloadIcons([getIcon(dad), getIcon(boyfriend)]);
-
-	accBar.bg.y = FlxG.height * 0.865;
 
 	/*
 		// rest in piece
@@ -145,21 +165,10 @@ function postCreate() {
 
 	// comboGroup.camera = camHUD;
 	// comboGroup.setPosition(gf.x + (gf.width * 0.5) + 30, gf.y + 460);
-	insert(members.indexOf(game.comboGroup) + 1, comboGroup);
-	//comboGroup.add(new FlxSprite(-99999, 0));
+	comboDefaultPos.set(comboGroup.x, comboGroup.y);
+	// comboGroup.add(new FlxSprite(-99999, 0));
 	if (gf != null)
 		comboGroup.scrollFactor.set(gf.scrollFactor.x, gf.scrollFactor.y);
-
-	var shads = scripts.getByName('NoteHandler.hx').get('shaderMap');
-	for (i => j in [
-		[0xAB52FF, 0x150060],
-		[0x47EAD9, 0x1A5598],
-		[0xE5FF3E, 0x006B61],
-		[0xFF439E, 0x710465]
-	]) {
-		shads.get(i).r = getFUCKINGcolor(j[0]);
-		shads.get(i).b = getFUCKINGcolor(j[1]);
-	}
 
 	if (FlxG.save.data.compact) {
 		for (i in [missesTxt, accuracyTxt, rankTxt, accBG]) {
@@ -237,6 +246,16 @@ function postCreate() {
 		iconP2.health = 1 - (healthBarPercent / 100);
 	}
 	updateIconPositions();
+
+	// optimizing 100
+	if (gf != null) {
+		gf.extra['combox'] ??= 0; gf.extra['comboy'] ??= 0;
+		if (gf.extra['combox'] is String)
+			gf.extra['combox'] = Std.parseFloat(gf.extra['combox']);
+
+		if (gf.extra['comboy'] is String)
+			gf.extra['comboy'] = Std.parseFloat(gf.extra['comboy']);
+	}
 }
 
 function getIcon(char)
@@ -300,7 +319,8 @@ function setupFancyBarShaders() {
 
 function postUpdate(elapsed) {
 	// testBar.updateBar();
-	accBar.percent = Math.max(accuracy * 100, 0);
+	var acc = accuracy; // because its a getter with divisions and shi
+	accBar.percent = Math.max(acc * 100, 0);
 	accBar.updateBar();
 
 	var hp = Math.min(health, maxHealth);
@@ -318,11 +338,18 @@ function postUpdate(elapsed) {
 		curRating.color = 0xFFcc99cc;
 	}
 
-	scoreTxt.text = songScore;
-	missesTxt.text = misses;
-	accuracyTxt.text = CoolUtil.quantize(accuracy * 100, 100) + '%';
-	if (accuracy < 0)
+	scoreTxt.text = FlxStringUtil.formatMoney(songScore, false);
+	missesTxt.text = FlxStringUtil.formatMoney(misses, false);
+	if (acc < 0)
 		accuracyTxt.text = '?';
+	else {
+		var result = '' + Math.floor(acc * 100);
+		if (acc < 1)
+			result += '.*' + (Math.floor(acc * 1000) % 10) + '' + (Math.floor(acc * 10000) % 10) + '*';
+		result += '%';
+		accuracyTxt.applyMarkup(result, [bruhhhFormat]);
+	}
+
 	rankTxt.text = curRating.rating;
 	accBG.color = curRating.color;
 }
@@ -350,8 +377,10 @@ function onChangeCharacter(e) {
 		var g = 0x33ff66;
 		testBar.setColors(PlayState.opponentMode ? g : r, PlayState.opponentMode ? r : g);
 		if (Options.colorHealthBar) {
-			if (dad.iconColor != null) testBar.leftBar.color = dad.iconColor;
-			if (boyfriend.iconColor != null) testBar.rightBar.color = boyfriend.iconColor;
+			if (dad.iconColor != null)
+				testBar.leftBar.color = dad.iconColor;
+			if (boyfriend.iconColor != null)
+				testBar.rightBar.color = boyfriend.iconColor;
 		}
 		reloadIcons([dad?.getIcon() ?? 'face', boyfriend?.getIcon() ?? 'face']);
 		for (i in iconArray) {
@@ -378,38 +407,10 @@ function getThing(ae) {
 function newRGBShader(?r:FlxColor = 0xff0000, ?g:FlxColor = 0x00ff00, ?b:FlxColor = 0x0000ff) {
 	var aberration:CustomShader = new CustomShader('rgbPalette');
 	aberration.mult = 1;
-	aberration.r = [redf(r), greenf(r), bluef(r)];
-	aberration.g = [redf(g), greenf(g), bluef(g)];
-	aberration.b = [redf(b), greenf(b), bluef(b)];
+	aberration.r = getRGBArray(r);
+	aberration.g = getRGBArray(g);
+	aberration.b = getRGBArray(b);
 	return aberration;
-}
-
-function red(col) {
-	return (col >> 16) & 0xff;
-}
-
-function green(col) {
-	return (col >> 8) & 0xff;
-}
-
-function blue(col) {
-	return col & 0xff;
-}
-
-function redf(col) {
-	return red(col) / 255;
-}
-
-function greenf(col) {
-	return green(col) / 255;
-}
-
-function bluef(col) {
-	return blue(col) / 255;
-}
-
-function getFUCKINGcolor(col) {
-	return [redf(col), greenf(col), bluef(col)];
 }
 
 function onNoteCreation(e) {
@@ -429,128 +430,78 @@ function onHoldCoverCreation(e) {
 }
 
 function onNoteHit(e) {
-	e.ratingPrefix = 'game/score/mnh/';
+	if (e.note.isSustainNote || !(e.showRating || (e.showRating == null && e.player)))
+		return;
+	comboGroup.forEachAlive((a) -> {
+		a.kill();
+	});
+}
 
-	// combo = FlxG.random.int(0, 10000);
-	if (e.showRating ?? (!e.note.isSustainNote && e.player)) {
-		popUpScore(e);
+function onPostNoteHit(e) {
+	if (e.note.isSustainNote || !(e.showRating || (e.showRating == null && e.player)))
+		return;
+		// i dont even care anymore man
+	if (!forceComboXmlPos && gf != null) {
+		comboGroup.setPosition(gf.x + gf.globalOffset.x + (gf.width * 0.5) + gf.extra['combox'], gf.y + 420 + gf.extra['comboy']);
 	}
-
-	e.ratingPrefix = 'game/score/';
-	e.showRating = false;
-
-	if (!forceComboXmlPos && gf != null)
-		comboGroup.setPosition((gf.x + (gf.width - comboGroup.width) * 0.5) + 5, gf.y + 444);
 	else
-		comboGroup.setPosition(game.comboGroup.x - (comboGroup.width * 0.5), game.comboGroup.y - 30);
-}
+		comboGroup.setPosition(comboDefaultPos.x, comboDefaultPos.y);
 
-var thefuckingtimer = null;
-var frame_length:Float = 2 / 24;
-
-function popUpScore(e) {
-	try {
-		/*if (comboGroup.members.length > 0) {
-			comboGroup.forEachAlive(function(spr) {
-				spr.kill();
-				comboGroup.remove(spr, true);
-				spr.destroy();
-			});
-		}*/
-		if (thefuckingtimer != null) {
-			thefuckingtimer.cancel();
-		}
-
-		var numOffset = 0;
-
-		// rating
-
-		var rating:FlxSprite = comboGroup.members[0] ?? new FlxSprite();
-		rating.frames = Paths.getFrames(e.ratingPrefix + 'ratings' + e.ratingSuffix);
-		rating.animation.addByPrefix('idle', e.rating, 0, true);
-		rating.animation.play('idle', true);
-		rating.acceleration.y = 200;
-		rating.velocity.set(0, 0);
-		rating.angle = 0;
-		rating.velocity.y -= FlxG.random.int(20, 60);
-		rating.velocity.x = FlxG.random.int(-3, 3);
-		rating.angularVelocity = FlxG.random.int(-5, 5);
-		rating.scale.set(e.ratingScale, e.ratingScale);
-		rating.antialiasing = e.ratingAntialiasing ?? true;
-		rating.updateHitbox();
-		rating.setPosition(0, rating.height * -0.5);
-		numOffset = rating.width + 30;
-		comboGroup.add(rating);
-		rating.alpha = 1;
-		FlxTween.cancelTweensOf(rating, ['alpha']);
-		FlxTween.tween(rating, {alpha: 0}, 0.2, {
-			startDelay: Conductor.crochet * 0.001
-		});
-
-		rating.scale.set(e.ratingScale * 1.1, e.ratingScale * 1.1);
-
-		// numbers
-
-		if (e.countAsCombo)
-			combo += 1; // lazy
-
-		var nums = [];
-
-		if (combo >= minDigitDisplay) {
-			var separatedScore = Std.string(combo).split('');
-			if (combo < 10) {
-				separatedScore = ['0', Std.string(combo)];
-			}
-
-			for (i in 0...separatedScore.length) {
-				var bleh = separatedScore[i];
-				var num:FlxSprite = comboGroup.members[i + 1] ?? new FlxSprite();
-				num.frames = Paths.getFrames(e.ratingPrefix + 'ratings' + e.ratingSuffix);
-				num.animation.addByPrefix('idle', 'num' + bleh, 0, true);
-				num.animation.play('idle', true);
-				num.acceleration.y = 200;
-				num.velocity.set(0, 0);
-				num.angle = 0;
-				num.velocity.y -= FlxG.random.int(20, 60);
-				num.velocity.x = FlxG.random.int(-5, 5) + 3;
-				num.angularVelocity = FlxG.random.int(-5, 5);
-				num.scale.set(e.numScale, e.numScale);
-				num.antialiasing = e.numAntialiasing ?? true;
-				num.updateHitbox();
-				num.setPosition(numOffset + (num.width * i), num.height * -0.5);
-				comboGroup.add(num);
-				num.alpha = 1;
-				FlxTween.cancelTweensOf(num, ['alpha']);
-				FlxTween.tween(num, {alpha: 0}, 0.2, {
-					startDelay: (Conductor.crochet * 0.002) + FlxG.random.float(-0.4, 0.1)
-				});
-				nums.push(num);
-				num.scale.set(e.numScale * 1.1, e.numScale * 1.1);
-			}
-			if (comboGroup.members.length > separatedScore.length + 1) {
-				for (idx => i in comboGroup.members) {
-					if (idx > separatedScore.length) {
-						comboGroup.remove(i, true);
-						i.kill();
-						i.destroy();
-					}
-				}
-			}
-		}
-		if (e.countAsCombo)
-			combo -= 1; // lazy
-
-		// idk
-		thefuckingtimer = new FlxTimer().start(frame_length, (_) -> {
-			rating.scale.set(e.ratingScale, e.ratingScale);
-			for (i in nums)
-				i.scale.set(e.numScale, e.numScale);
-		});
-	} catch (e:Dynamic) {
-		trace(e);
+	final bembers = [];
+	comboGroup.forEachAlive((i) -> {
+		bembers.push(i);
+	});
+	// bring rating to front since its the last one to spawn
+	bembers.insert(0, bembers.pop());
+	var newX = 0;
+	for (x => i in bembers) {
+		i.setPosition(comboGroup.x + newX, comboGroup.y - (i.height * 0.5));
+		newX += i.width + 5;
+		if (x == 0)
+			newX += 25;
+	}
+	for (i in bembers) {
+		i.x -= newX * 0.5;
 	}
 }
 
+var stupidIndex = -1;
+
+function onRatingsShown(e) {
+	final sprite = e.ratingSprite ?? e.numberSprite ?? e.comboSprite;
+	e.position.set(comboGroup.x, comboGroup.y);
+	e.ratingPrefix = 'game/score/mnh/';
+	e.acceleration = 200;
+	e.velocity.y = FlxG.random.int(20, 60);
+	sprite.angularVelocity = FlxG.random.int(-5, 5);
+	sprite.angle = 0;
+	if (e.ratingSprite != null) {
+		e.velocity.x = FlxG.random.int(-3, 3) * -1;
+		stupidIndex = -1;
+	}
+	if (e.numberSprite == null)
+		return;
+	e.velocity.x = FlxG.random.int(-3, 7) * -1;
+	e.startDelay += FlxG.random.float(-0.4, 0.1);
+	final log = Math.floor(Math.log(combo) / Math.log(10));
+	stupidIndex += 1;
+	if (combo >= Math.pow(10, 2))
+		return;
+	if ((2 - stupidIndex) > 1)
+		e.cancel();
+}
+
+function onPostRatingsShown(e) {
+	final sprite = e.ratingSprite ?? e.numberSprite ?? e.comboSprite;
+	final ox = sprite.scale.x;
+	final oy = sprite.scale.y;
+	sprite.scale.set(ox * 1.1, oy * 1.1);
+	new FlxTimer().start(frame_length, (_) -> {
+		sprite.scale.set(ox, oy);
+	});
+}
+
+var frame_length:Float = 2 / 24;
 var prevSprite:FlxSprite = null;
 
 function onCountdown(e) {
@@ -576,7 +527,7 @@ function onPostCountdown(e) {
 
 	if (prevSprite != null) {
 		prevSprite.zoomFactor = 0;
-		prevSprite.cameras = [camGame];
+		prevSprite.cameras = [camHUD];
 		new FlxTimer().start(frame_length, function(_) {
 			prevSprite.scale.set(1, 1);
 		});
@@ -584,9 +535,21 @@ function onPostCountdown(e) {
 		if (e.swagCounter == introLength - 2) {
 			prevSprite.moves = true;
 			prevSprite.velocity.x = FlxG.random.float(-200, 200);
-			prevSprite.velocity.y -= FlxG.random.float(90, 300);
-			prevSprite.acceleration.y = 700;
+			prevSprite.velocity.y = FlxG.random.float(90, 300);
+			prevSprite.acceleration.y = -900;
 			prevSprite.angularVelocity = FlxG.random.float(-1, 1) * ((e.swagCounter == introLength - 2) ? 60 : 20);
+			var prevSprite = prevSprite; // Kill HScript
+			new FlxTimer().start(3, function(_) {
+				FlxTween.tween(prevSprite, {alpha: 0}, 0.3, {
+					onComplete: (_) -> {
+						new FlxTimer().start(1, function(_) {
+							prevSprite.kill();
+							remove(prevSprite, true);
+							prevSprite.destroy();
+						});
+					}
+				});
+			});
 		}
 	}
 }

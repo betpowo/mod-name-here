@@ -15,7 +15,7 @@
 	"name": "carlos",
 	"color": "#FF6430",
 	"customValues": {
-		"composer": "plank",
+		"composer": "libauror.a",
 		"stars": "9"
 	}
 }

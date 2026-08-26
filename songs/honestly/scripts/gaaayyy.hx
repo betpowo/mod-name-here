@@ -5,7 +5,7 @@ var house = null;
 var doorHitbox;
 
 function postCreate() {
-    house = scripts.getByName('outside.hx').get('house');
+    house = stage.stageSprites['house'];
     doorHitbox = new FlxSprite(house.x + 150, house.y + 275).makeSolid(111, 111, -1);
     doorHitbox.scrollFactor.set(house.scrollFactor.x, house.scrollFactor.y);
     add(doorHitbox);

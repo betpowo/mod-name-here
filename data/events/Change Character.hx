@@ -2,26 +2,34 @@
 import haxe.io.Path;
 import funkin.backend.scripting.Script;
 import funkin.backend.scripting.DummyScript;
+import haxe.ds.StringMap;
 
-var dummy = new FunkinSprite();
+var dummies:StringMap = new StringMap();
 
 function postCreate() {
-	add(dummy);
 	for (event in events) {
 		if (event.name == 'Change Character') {
 			var ch = event.params[1] ?? 'bf';
 			var xml = Character.getXMLFromCharName(ch);
 			var sprite = xml.get('sprite') ?? ch;
 			
-			dummy.loadGraphic(Assets.exists(Paths.image('characters/' + sprite))?Paths.image('characters/' + sprite):Paths.image('characters/' + sprite + '/spritemap1'));
-			dummy.graphic.destroyOnNoUse = false;
-			dummy.graphic.useCount++;
+			if (dummies.get(ch) != null) continue;
 
-			dummy.drawComplex(camGame);
+			var dummy = new FunkinSprite();
+			dummy.loadGraphic(Assets.exists(Paths.image('characters/' + sprite))?Paths.image('characters/' + sprite):Paths.image('characters/' + sprite + '/spritemap1'));
+			add(dummy);
+
+			dummies.set(ch, dummy);
 		}
 	}
-	remove(dummy, true);
-	dummy.destroy();
+}
+
+function postUpdate(elapsed) {
+	if (dummies.keys().array.length > 0) {
+		for (k => v in dummies) {
+			v.alpha = 0;
+		}
+	}
 }
 
 function onEvent(event) {

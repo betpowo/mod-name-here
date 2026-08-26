@@ -141,4 +141,7 @@ function addRandomEffect(a) {
     if (FlxG.random.bool(30)) {
         a.font = 'normal';
     }
+    if (FlxG.random.bool(30)) {
+        a.font = 'silly';
+    }
 }

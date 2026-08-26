@@ -1,0 +1,18 @@
+{
+	"color": "#9271FD",
+	"customValues": {
+		"composer": "Betopia",
+		"stars": "7"
+	},
+	"opponentModeAllowed": true,
+	"icon": "dad",
+	"difficulties": [
+		"normal"
+	],
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "da",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 105
+}

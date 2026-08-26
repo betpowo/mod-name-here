@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="real.png" color="cc4c3a">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="real0000" x="334" y="2" width="328" height="385" frameX="-28" frameY="-101" frameWidth="388" frameHeight="487"/>
+	<SubTexture name="real0001" x="2" y="2" width="330" height="387" frameX="-27" frameY="-100" frameWidth="388" frameHeight="487"/>
+	<SubTexture name="real0002" x="334" y="389" width="328" height="385" frameX="-28" frameY="-101" frameWidth="388" frameHeight="487"/>
+	<SubTexture name="real0003" x="2" y="391" width="330" height="387" frameX="-27" frameY="-100" frameWidth="388" frameHeight="487"/>
+	<SubTexture name="real0004" x="664" y="2" width="388" height="287" frameX="0" frameY="0" frameWidth="388" frameHeight="487"/>
+	<SubTexture name="real0005" x="664" y="291" width="375" height="285" frameX="0" frameY="-2" frameWidth="388" frameHeight="487"/>
+</TextureAtlas>

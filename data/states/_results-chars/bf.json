@@ -20,6 +20,7 @@
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsPERFECT",
+				"anim": "boyfriend perfect rank",
 				"zIndex": 500,
 				"offsets": [
 					1342,
@@ -30,6 +31,7 @@
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsPERFECT/hearts",
+				"anim": "hearts full anim",
 				"zIndex": 501,
 				"delay": 4.41,
 				"offsets": [
@@ -43,6 +45,7 @@
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsPERFECT",
+				"anim": "boyfriend perfect rank",
 				"zIndex": 500,
 				"offsets": [
 					1342,
@@ -53,6 +56,7 @@
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsPERFECT/hearts",
+				"anim": "hearts full anim",
 				"zIndex": 501,
 				"delay": 4.41,
 				"offsets": [
@@ -66,10 +70,11 @@
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsEXCELLENT",
+				"anim": "bf results excellent",
 				"zIndex": 500,
 				"offsets": [
-					1329,
-					429
+					1309,
+					390
 				],
 				"loopFrame": 29
 			}
@@ -78,11 +83,12 @@
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsGREAT/gf",
+				"anim": "gf jumping",
 				"scale": 0.93,
 				"delay": 0.25,
 				"offsets": [
 					802,
-					331
+					301
 				],
 				"zIndex": 499,
 				"loopFrame": 9,
@@ -91,11 +97,12 @@
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsGREAT/bf",
+				"anim": "bf jumping ",
 				"scale": 0.93,
 				"zIndex": 500,
 				"offsets": [
 					929,
-					363
+					303
 				],
 				"loopFrame": 15
 			}
@@ -128,6 +135,7 @@
 			{
 				"renderType": "animateatlas",
 				"assetPath": "resultsSHIT",
+				"anim": "LOSS Animation",
 				"zIndex": 500,
 				"offsets": [
 					0,

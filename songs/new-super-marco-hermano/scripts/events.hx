@@ -1,3 +1,5 @@
+ 
+
 var shit = new FunkinSprite();
 var fire = new FunkinSprite();
 var bfgfFly = new FunkinSprite();
@@ -6,7 +8,7 @@ var bf_fnf;
 
 function postCreate() {
 	shit.makeGraphic(1, 1, 0xffffffff, 'ughhhhhhmarcothing');
-	shit.blend = 14;
+	shit.blend = BlendMode.SUBTRACT;
 	shit.alpha = 0.9;
 
 	insert(members.indexOf(gf) + 1, shit);
@@ -154,11 +156,11 @@ function capture() {
 		shitTweens.remove(i, true);
 	}
 
-	shit.blend = 0; // 14
+	shit.blend = BlendMode.ADD; // 14
 	shit.alpha = 1;
 	shit.shader.radius = 0;
 	new FlxTimer().start(1 / 24, (_) -> {
-		shit.blend = 14;
+		shit.blend = BlendMode.SUBTRACT;
 		new FlxTimer().start(1 / 24, (_) -> {
 			shit.alpha = 0;
 			shit.shader.radius = 1;
@@ -316,36 +318,4 @@ function KILLHIMYEAHHHHH() {
 			});
 		}
 	});
-}
-
-var starNoteRGBShader = new CustomShader('rgbPalette');
-
-starNoteRGBShader.r = [for (i in 0...3) 0.50];
-starNoteRGBShader.g = [for (i in 0...3) 1.00];
-starNoteRGBShader.b = [for (i in 0...3) 0.05];
-function onPostNoteHit(e) {
-	if (!star || e.note.isSustainNote)
-		return;
-	var note = new Note(e.note.strumLine, {
-		time: -1000,
-		id: e.note.strumID
-	});
-	note.scrollFactor.set(1, 1);
-
-	final spr = (e.character == marco) ? marco.script.get('playerSpr') : e.character;
-	final isChar = (spr == e.character);
-
-	note.x = spr.getMidpoint().x + (isChar ? spr.globalOffset.x * (spr.isPlayer ? -1 : 1) : 0);
-	note.y = spr.getMidpoint().y + (isChar ? spr.globalOffset.y : 0);
-
-	note.x -= note.width * 0.5;
-	note.y -= note.width * 0.5;
-
-	note.shader = starNoteRGBShader;
-
-	note.moves = true;
-	note.velocity.y = -1000;
-	note.blend = 0;
-
-	insert(members.indexOf(e.character), note);
 }

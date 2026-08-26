@@ -35,7 +35,7 @@ function onSongEnd(e) {
 				score: songScore,
 				misses: misses,
 				accuracy: accuracy,
-				hits: [],
+				hits: hits,
 				date: Date.now().toString()
 			}, PlayState.getSongChanges());
 			#end
@@ -89,12 +89,12 @@ function postCreate() {
 		}
 	}
 	comboRatings = [
-		new ComboRating(0.00, 'L', 0xff0099ff),
-		new ComboRating(0.69, 'G', 0xffef6644),
-		new ComboRating(0.80, 'G', 0xffaaaaaa),
-		new ComboRating(0.90, 'E', 0xffffcc44),
-		new ComboRating(0.99, 'P', 0xffff66ee),
-		new ComboRating(1.00, 'P', 0xffffffcc),
+		new ComboRating(0.00, 'loss', 0xff0099ff),
+		new ComboRating(0.69, 'good', 0xffef6644),
+		new ComboRating(0.80, 'great', 0xffaaaaaa),
+		new ComboRating(0.90, 'excellent', 0xffffcc44),
+		new ComboRating(0.99, 'perfect?', 0xffff66ee),
+		new ComboRating(1.00, 'perfect', 0xffffffcc),
 	];
 	scripts.remove(__script__);
 	scripts.insert(scripts.scripts.length, __script__);

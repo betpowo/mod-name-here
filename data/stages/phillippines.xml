@@ -1,7 +1,8 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.78" name="phillippines" startCamPosY="600" startCamPosX="1000">
+<stage zoom="0.78" name="phillippines" startCamPosY="600" startCamPosX="1000" bgColor="#83afc8">
 	<ext script="parody" folder="interfaces/" />
 	<ext script="parody-cam" folder="data/scripts/" />
+	<ext script="parody-gameplay" folder="data/scripts/" />
 
 	<sprite name="bg" sprite="stages/phillippines" x="-900" y="-1700" scalex="13" scaley="18" updateHitbox="true" antialiasing="false" />
 	<girlfriend y="-100" />

@@ -1,14 +1,14 @@
 import funkin.backend.scripting.events.CancellableEvent;
 import funkin.backend.scripting.EventManager;
 
-var noteColors = [
+public var noteColors = [
 	[0xC24B99, -1, 0x3C1F56],
 	[0x00FFFF, -1, 0x1542B7],
 	[0x12FA05, -1, 0x0A4447],
 	[0xF9393F, -1, 0x651038]
 ];
-
 var shaderMap:Map<Int, CustomShader> = [];
+var hasBrokenFromHit = (FlxG.save.data.comboBreakText == 'breaks');
 
 function new() {
 	FlxG.camera.bgColor = 0;
@@ -16,11 +16,10 @@ function new() {
 
 function postCreate() {
 	minDigitDisplay = 0;
-	if (noteAngleFix) {
-		strumLines.forEach((s) -> {
-			s.onNoteUpdate.add(onNoteUpdate);
-		});
-	}
+
+	strumLines.forEach((s) -> {
+		s.onNoteUpdate.add(__onNoteUpdate);
+	});
 
 	if (!mobile && FlxG.save.data.middleScroll) {
 		var angles = [90, 0, 180, -90];
@@ -51,23 +50,20 @@ function onNoteCreation(e) {
 }
 
 function onPostNoteCreation(e) {
-	e.note.alpha = 1;
-	if (noteAngleFix) {
-		e.note.forceIsOnScreen = true;
-		e.note.strumRelativePos = false;
-	}
-	e.note.useAntialiasingFix = true;
+	if (e.note.isSustainNote)
+		e.note.alpha /= 0.6;
+	e.note.strumRelativePos = false;
 }
 
 function onStrumCreation(e) {
 	var stru = e.strum;
-	var bleh = shade(getColors(e.strumID), e.strumID % noteColors.length);
+	var bleh = shade(getColors(e.strumID), e.strumID);
 	stru.extra.set('shader', bleh);
-	stru.animation.callback = function(a, b, c) {
+	stru.animation.onPlay.add(function(a, f, r, i) {
 		if (a != 'confirm') {
 			stru.shader = (a == 'static') ? null : stru.extra.get('shader');
 		}
-	}
+	});
 	if (e.__doAnimation) {
 		e.__doAnimation = false;
 		stru.colorTransform.alphaOffset = -255;
@@ -88,6 +84,7 @@ function onPostStrumCreation(e) {
 	var stru = e.strum;
 	var bleh = stru.extra.get('shader');
 
+	stru.extra.set('shouldDrawCover', false);
 	stru.extra.set('cover', new FunkinSprite());
 	var cover = stru.extra.get('cover');
 	cover.shader = bleh;
@@ -126,84 +123,36 @@ function onPostStrumCreation(e) {
 	cover.playAnim('idle');
 	cover.health = -100;
 	cover.extra.set('strum', stru);
-	cover.visible = false;
+	// cover.visible = false;
 
 	cover.onDraw = (c) -> {
-		/*var oldDefaultCameras = FlxCamera._defaultCameras;
-			if (stru.lastDrawCameras != null)
-				FlxCamera._defaultCameras = stru.lastDrawCameras.copy(); */
-		cover.cameras = stru.lastDrawCameras; // stru.cameras;
-		if (!(stru.visible && (c.health > 0 || (!stru.cpu && c.skipNegativeBeats && !c.isAnimAtEnd()))))
-			return;
-		c.draw();
-		// FlxCamera._defaultCameras = oldDefaultCameras;
+		c.cameras = c.extra.get('strum').lastDrawCameras;
+		if (c.extra.get('strum').extra.get('shouldDrawCover'))
+			c.draw();
 	}
 
 	lane.extra.get('holdCovers').push(cover);
-	cover.ID = e.strum.strumLine.ID;
+	cover.ID = e.strum.ID;
 	insert(members.indexOf(strumLines) + 1, cover);
 
 	// stru.extraCopyFields.push('alpha');
 }
 
-// fix the stupid noteAngle bug
-var noteAngleFix = true;
-
-function onNoteUpdate(e) {
+function __onNoteUpdate(e) {
+	if (!e.note.exists)
+		return;
 	if (e.__reposNote) {
-		if (!e.note.exists)
-			return;
-
 		e.strum.updateNotePosition(e.note);
-		updateNotePos(e.note, e.strum);
+		e.cancelPositionUpdate();
 	}
-	e.cancelPositionUpdate();
-}
-
-final PIX180:Float = 565.4866776461628; // 180 * Math.PI
-final N_WIDTHDIV2:Float = Note.swagWidth / 2;
-final _noteOffset = FlxPoint.get(0, 0);
-final TO_RAD:Float = 0.017453292519943295; // Math.PI / 180;
-final helperOffset = 90;
-
-function updateNotePos(daNote, strum) {
-	var shouldX = strum.updateNotesPosX && daNote.updateNotesPosX;
-	var shouldY = strum.updateNotesPosY && daNote.updateNotesPosY;
-
-	if (shouldX || shouldY) {
-		final distance = (Conductor.songPosition - daNote.strumTime) * (-0.45 * strum.getScrollSpeed(daNote));
-		final angleX = Math.cos((daNote.__noteAngle + helperOffset) * TO_RAD);
-		final angleY = Math.sin((daNote.__noteAngle + helperOffset) * TO_RAD);
-		_noteOffset.set(angleX * distance, angleY * distance);
-		_noteOffset.x += -daNote.origin.x + daNote.offset.x;
-		_noteOffset.y += -daNote.origin.y + daNote.offset.y;
-		if (daNote.isSustainNote) {
-			final m = (daNote.height * 0.5);
-			_noteOffset.x += angleX * m;
-			_noteOffset.y += angleY * m;
-		}
-		_noteOffset.x += strum.x + (strum.width * 0.5);
-		_noteOffset.y += strum.y + (strum.height * 0.5);
-		if (shouldX)
-			daNote.x = _noteOffset.x;
-		if (shouldY)
-			daNote.y = _noteOffset.y;
-	}
+	scripts.event('onNoteUpdate', e);
 }
 
 function update(elapsed) {
-	// player.members[3].angle += elapsed * 180;
-	// THIS IS A NIGHTMARE
-
-	/*if (FlxG.keys.pressed.Z)
-			scrollSpeed -= elapsed * 2;
-		if (FlxG.keys.pressed.X)
-			scrollSpeed += elapsed * 2; */
-
+	if (!hasBrokenFromHit) {
+		comboBreaks = !Options.ghostTapping;
+	}
 	for (lane in strumLines.members) {
-		/*for (i in lane.members) {
-			i.angle += elapsed * 60;
-		}*/
 		if (FlxG.save.data.holdCovers) {
 			for (cover in lane.extra.get('holdCovers')) {
 				cover.health -= FlxG.elapsed;
@@ -221,45 +170,29 @@ function update(elapsed) {
 					if (cover.getAnimName() == 'end')
 						cover.angle = 0;
 				}
+
+				if ((stru.cpu && cover.health <= 0) || !(cover.health > 0 || (cover.skipNegativeBeats && !cover.isAnimAtEnd()))) {
+					stru.extra.set('shouldDrawCover', false);
+				}
 			}
 		}
 	}
 }
 
-function newRGBShader(colArray) {
+public function newRGBShader(colArray) {
 	var r = colArray[0];
 	var g = colArray[1];
 	var b = colArray[2];
 	var aberration:CustomShader = new CustomShader('rgbPalette');
 	aberration.mult = 1;
-	aberration.r = [redf(r), greenf(r), bluef(r)];
-	aberration.g = [redf(g), greenf(g), bluef(g)];
-	aberration.b = [redf(b), greenf(b), bluef(b)];
+	aberration.r = col2rgbf(r); // [redf(r), greenf(r), bluef(r)];
+	aberration.g = col2rgbf(g); // [redf(g), greenf(g), bluef(g)];
+	aberration.b = col2rgbf(b); // [redf(b), greenf(b), bluef(b)];
 	return aberration;
 }
 
-function red(col) {
-	return (col >> 16) & 0xff;
-}
-
-function green(col) {
-	return (col >> 8) & 0xff;
-}
-
-function blue(col) {
-	return col & 0xff;
-}
-
-function redf(col) {
-	return red(col) / 255;
-}
-
-function greenf(col) {
-	return green(col) / 255;
-}
-
-function bluef(col) {
-	return blue(col) / 255;
+function col2rgbf(col) {
+	return [((col >> 16) & 0xff) / 255, ((col >> 8) & 0xff) / 255, ((col >> 0) & 0xff) / 255];
 }
 
 function getColors(id) {
@@ -276,13 +209,9 @@ function shade(colors:Array<Int>, ?colorID:Int = -1) {
 	return shaderMap.get(colorID);
 }
 
-function onPlayerHit(e) {
-	if (FlxG.save.data.cbreak) {
-		if (['bad', 'shit'].indexOf(e.rating) != -1) {
-			combo = -1;
-		}
-	}
+public var ghostNoteShader = shade([0xcccccc, -1, 0x666666], -1);
 
+function onPlayerHit(e) {
 	if (FlxG.save.data.susLink) {
 		if (!e.cancelled && e.note != null) {
 			if (e.note.extra.get('__missedSustain') == true) {
@@ -299,6 +228,26 @@ function onPlayerHit(e) {
 			songScore += (e.score = Std.int(250 * (e.note.sustainLength * 0.001)));
 		} else
 			pbotScore(e);
+	}
+
+	if (e.misses && !e.note.isSustainNote) {
+		if (!hasBrokenFromHit) {
+			hasBrokenFromHit = true;
+			comboBreaks = (FlxG.save.data.comboBreakText != 'misses');
+		}
+		if ((e.note.extra['noBreakShader'] == true) || !FlxG.save.data.comboBreakGhost) return;
+		e.cancelDeletion();
+		var not = e.note;
+		if (!e.note.isSustainNote && (e.note.nextNote?.isSustainNote ?? false)) {
+			not.shader = ghostNoteShader;
+			not.alpha *= 0.5;
+			not = e.note.nextNote;
+		}
+		while (not != null) {
+			not.shader = ghostNoteShader;
+			not.alpha *= 0.5;
+			not = not.nextSustain;
+		}
 	}
 }
 
@@ -349,14 +298,14 @@ function ghostNote(n) {
 }
 
 function onNoteHit(e) {
-	e.note.__strum.shader = e.note.shader;
-	if (e.showSplash) {
-		e.showSplash = false;
-		var grp = splashHandler.getSplashGroup(e.note.splash);
-		splashHandler.showSplash(e.note.splash, e.note.__strum);
-		grp.__splash.shader = grp.__splash.strum.shader;
+	for (c in e.characters) {
+		if (c != null) {
+			c.scripts.event('onCharacterNoteHit', e);
+		}
 	}
+	
 	if (!e.cancelled) {
+		e.note.__strum.shader = e.note.shader;
 		if (!FlxG.save.data.holdCovers)
 			return;
 		if (e.note.isSustainNote) {
@@ -364,7 +313,7 @@ function onNoteHit(e) {
 			var tail = findTailNote(e.note);
 
 			var strumTime = par.strumTime;
-			var length = tail.strumTime - strumTime + (e.player ? 0 : Conductor.stepCrochet);
+			var length = tail.strumTime - strumTime + (e.player ? 0 : Conductor.stepCrochet) + 10;
 			var strum = e.note.__strum;
 			if (strum != null) {
 				var res = (strumTime + length - Conductor.songPosition);
@@ -374,13 +323,18 @@ function onNoteHit(e) {
 					strum.extra.get('cover').playAnim('idle', true);
 					strum.extra.get('cover').skipNegativeBeats = false;
 					strum.extra.get('cover').health = res * 0.001;
-					strum.extra.get('cover').visible = true;
 					strum.extra.get('cover').shader = e.note.shader;
+
+					strum.extra.set('shouldDrawCover', true);
 				}
 				strum.extra.set('curNote', e.note);
 			}
 		}
 	}
+}
+
+function onSplashShown(e) {
+	e.splash.shader = e.splash.strum.shader;
 }
 
 function onInputUpdate(e) {
@@ -392,18 +346,25 @@ function onInputUpdate(e) {
 		var holdCovers = e.strumLine.extra.get('holdCovers');
 		if (v && holdCovers[i].health > 0) {
 			holdCovers[i].health = 0;
-			holdCovers[i].visible = false;
+			holdCovers[i].extra.get('strum').extra.set('shouldDrawCover', false);
 		}
 	}
 }
 
 function onPostNoteHit(e) {
-	if (e.player) return;
+	for (c in e.characters) {
+		if (c != null) {
+			c.scripts.event('onPostCharacterNoteHit', e);
+		}
+	}
+
+	if (e.player)
+		return;
 
 	final resetMS = 150;
 	e.data.strumGlowCancelled = e.strumGlowCancelled;
 	if (!e.strumGlowCancelled) {
-		if (e.note.nextNote == null ? true : !e.note.nextNote.isSustainNote || e.note.nextSustain == null) {
+		if ((e.note.nextNote == null) ? true : (!e.note.nextNote.isSustainNote || e.note.nextSustain == null)) {
 			e.note.__strum.lastHit = (e.note.strumTime - (Conductor.crochet / 2)) + resetMS;
 		} else {
 			e.note.__strum.lastHit = inst.length;

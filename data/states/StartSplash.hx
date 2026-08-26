@@ -1,7 +1,9 @@
 import funkin.backend.MusicBeatState;
 import flixel.text.FlxTextFormat;
 import flixel.text.FlxTextFormatMarkerPair;
+import funkin.backend.system.macros.GitCommitMacro;
 
+var isOutdated = GitCommitMacro.commitNumber <= 1;
 var flixel = new FunkinSprite();
 var flixelSnd = FlxG.sound.load(Paths.sound('flixel'));
 
@@ -18,14 +20,13 @@ public function getIntroTextShit() {
 function create() {
 	FlxG.camera.bgColor = 0x0;
 
-	titleAlphabet = new Alphabet(0, 0, "WARNING", true);
+	titleAlphabet = new Alphabet(0, 0, translate('mnh.misc.warningTitle'), true);
 	titleAlphabet.screenCenter(0x01);
 	add(titleAlphabet);
 
 	disclaimer = new FunkinText(16, titleAlphabet.y + titleAlphabet.height + 10, FlxG.width - 32, "", 32);
 	disclaimer.alignment = 'center';
-	disclaimer.applyMarkup('This mod is *not* funny, and has flashing lights.\nIt also uses lots of shaders, some can\'t be disabled.\nBy continuing, you agree to *all* that will happen.',
-		[new FlxTextFormatMarkerPair(new FlxTextFormat(0xFF717171), "*")]);
+	disclaimer.applyMarkup(translate('mnh.misc.warningText'), [new FlxTextFormatMarkerPair(new FlxTextFormat(0xFF717171), "*")]);
 	add(disclaimer);
 	var off = Std.int((FlxG.height - (disclaimer.y + disclaimer.height)) / 2);
 	disclaimer.y += off;
@@ -85,7 +86,7 @@ function update(elapsed) {
 		if (waitTime == 0) {
 			waitTime = -1;
 			MusicBeatState.skipTransIn = MusicBeatState.skipTransOut = true;
-			FlxG.switchState(new TitleState());
+			FlxG.switchState((isOutdated ? new ModState('OutdatedState') : new TitleState()));
 		}
 	}
 }
